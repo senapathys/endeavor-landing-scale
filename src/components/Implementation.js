@@ -39,6 +39,7 @@ function Implementation() {
         <div id="implementation" className="mb-16">
             <div className="relative bg-zinc-50">
                 <div className="absolute inset-0 cosmic-grid opacity-20 pointer-events-none z-0"></div>
+                <div className="absolute left-0 right-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-zinc-50 pointer-events-none z-20"></div>
                 <div className="relative z-10 px-8 md:px-24 py-16 pb-24">
                     {/* Header with button */}
                     <div className="text-center space-y-3 mb-12 flex items-center flex-col mx-auto max-w-2xl">

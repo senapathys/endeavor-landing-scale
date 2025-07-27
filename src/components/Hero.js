@@ -15,7 +15,7 @@ function Hero(
         </h1>
         <div className="max-w-2xl mx-auto">
           <p className="text-base md:text-xl text-zinc-800 mt-6">
-            Accurate and easy to use AI, built for manufacturers and distributors.
+            Accurate and easy to use AI, built for <span className="border-b-2 border-zinc-800">manufacturers</span> and <span className="border-b-2 border-zinc-800">distributors</span>.
           </p>
         </div>
         <div className="mt-12">

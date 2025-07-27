@@ -22,7 +22,7 @@ function Testimonials() {
             company: "Viking Group Inc."
         },
         {
-            quote: "Endeavor has been an invaluable strategic partner to solve several critical business problems facing our company and the construction industry at large.",
+            quote: "Endeavor has been an invaluable strategic partner to solve several critical business problems facing our company and the construction industry.",
             logo: "/customer_logos/ClarkDietrich_rgb.png",
             name: "Brian Panuccio",
             role: "CEO and President",
@@ -45,7 +45,7 @@ function Testimonials() {
                     {testimonials.map((testimonial, index) => (
                         <div key={index} className="bg-zinc-50 rounded-lg p-6">
                             {/* Quote */}
-                            <blockquote className="text-zinc-700 text-sm md:text-base leading-relaxed mb-6">
+                            <blockquote className="text-zinc-700 text-md md:text-xl leading-relaxed mb-6">
                                 "{testimonial.quote}"
                             </blockquote>
                             

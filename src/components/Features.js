@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { useState } from "react";
+import { FiCpu, FiZap, FiAirplay, FiClock } from "react-icons/fi";
 
 function Features() {
     const [activeFeature, setActiveFeature] = useState(0);
@@ -10,25 +11,29 @@ function Features() {
             title: "Delegate manual order entry and quoting to AI.",
             description: "Leverage our comprehensive AI platform to optimize your entire quoting process.",
             svg: "/features/platform.svg",
-            name: "AI Platform"
+            name: "AI Platform",
+            icon: <FiCpu />
         },
         {
             title: "Scale AI to as many customers as you want.",
             description: "Why limit yourself to your top 20% of your customers?",
             svg: "/features/crawl.svg",
-            name: "AI Auto-Fill"
+            name: "AI Auto-Fill",
+            icon: <FiZap />
         },
         {
             title: "You do business differently than others",
             description: "Endeavor builds a customer-specific knowledge base so you can respond.",
             svg: "/features/logic.svg",
-            name: "AI Knowledge"
+            name: "AI Knowledge",
+            icon: <FiAirplay />
         },
         {
             title: "Implement AI Order Entry in just one day.",
             description: "Preserve your business knowledge and know-how with AI.",
             svg: "/features/teach.svg",
-            name: "AI Memory"
+            name: "AI Memory",
+            icon: <FiClock />
         }
     ];
 
@@ -52,10 +57,10 @@ function Features() {
                     <div className="flex flex-col space-y-4 xl:col-span-1">
                         <div className="space-y-4">
                             <h3 className="text-3xl md:text-4xl 2xl:text-5xl text-zinc-900">
-                                {features[activeFeature].title}
+                                All the AI features you want, for the best price
                             </h3>
-                            <p className="text-zinc-600 mt-2 max-w-lg text-md md:text-lg lg:text-xl 2xl:text-xl">
-                                {features[activeFeature].description}
+                            <p className="text-zinc-700 max-w-lg">
+                                We've built the most comprehensive AI platform for order entry and quoting.
                             </p>
                         </div>
                         <div className="space-y-4 mt-6">
@@ -63,24 +68,30 @@ function Features() {
                                 <div key={index}>
                                     <button
                                         onClick={() => setActiveFeature(index)}
-                                        className={`w-full text-left p-3 transition-all duration-200 ${
+                                        className={`w-full text-left p-6 transition-all duration-200 ${
                                             activeFeature === index
-                                                ? 'text-zinc-900 font-medium'
-                                                : 'text-zinc-500 hover:text-zinc-700'
+                                                ? 'text-zinc-900 font-medium bg-white border border-zinc-300 rounded-lg'
+                                                : 'text-zinc-500 hover:text-zinc-700 bg-zinc-50 border border-zinc-200 rounded-lg hover:border-zinc-300'
                                         }`}
                                     >
-                                        <div className="flex items-center space-x-3">
-                                            <div className={`w-3 h-3 rounded transition-colors duration-200 ${
-                                                activeFeature === index ? 'bg-zinc-900' : 'bg-zinc-400'
-                                            }`} />
-                                            <span className="text-sm md:text-base">
+                                        <div className="flex items-center space-x-4">
+                                            <div className="bg-zinc-100 border border-zinc-300 w-8 h-8 rounded-lg flex items-center justify-center text-black">
+                                                {feature.icon}
+                                            </div>
+                                            <span className="text-base md:text-xl">
                                                 {feature.name}
                                             </span>
                                         </div>
+                                        <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                                            activeFeature === index
+                                                ? 'max-h-20 opacity-100 mt-4'
+                                                : 'max-h-0 opacity-0 mt-0'
+                                        }`}>
+                                            <p className="text-zinc-600 max-w-lg text-sm lg:text-base font-normal">
+                                                {feature.description}
+                                            </p>
+                                        </div>
                                     </button>
-                                    {index < features.length - 1 && (
-                                        <div className="border-b border-zinc-200 mt-3"></div>
-                                    )}
                                 </div>
                             ))}
                         </div>
