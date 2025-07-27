@@ -24,3 +24,17 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.cosmic-grid {
+  background-image: 
+    linear-gradient(rgba(64, 64, 64, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(64, 64, 64, 0.15) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.cosmic-grid-dark {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.3) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.3) 2px, transparent 2px);
+  background-size: 30px 30px;
+}
