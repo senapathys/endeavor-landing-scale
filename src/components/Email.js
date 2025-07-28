@@ -7,6 +7,7 @@ function Email({ style = 'fill'}) {
 
     const [invalidEmail, setInvalidEmail] = useState(false);
     const [email, setEmail] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     function sanitizeInput(input) {
         return DOMPurify.sanitize(input);
@@ -31,19 +32,28 @@ function Email({ style = 'fill'}) {
             setInvalidEmail(false);
         }
 
-        const res = await fetch('/api/email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body),
-        });
+        setIsSubmitting(true);
 
-        if (res.ok) {
-            document.querySelector('#submit' + style).textContent = 'Sent!';
-            document.querySelector('#submit' + style).disabled = true;
-            document.querySelector('#email' + style).disabled = true;
+        try {
+            const res = await fetch('/api/mailgun', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body),
+            });
 
+            if (res.ok) {
+                document.querySelector('#submit' + style).textContent = 'Sent!';
+                document.querySelector('#submit' + style).disabled = true;
+                document.querySelector('#email' + style).disabled = true;
+            } else {
+                console.error('Failed to send email');
+            }
+        } catch (error) {
+            console.error('Error sending email:', error);
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -56,13 +66,12 @@ function Email({ style = 'fill'}) {
                     type="email"
                     placeholder="What's your email?"
                     className="px-3 bg-transparent w-full focus:outline-none placeholder-zinc-900 disabled:opacity-50 disabled:cursor-not-allowed" />
-                {/* <button
-                    id={"submit" + style} 
-                    className="min-w-28 md:min-w-32 bg-emerald-300 hover:bg-emerald-200 transition-color duration-200 text-zinc-900 rounded px-2 py-4 disabled:opacity-50 disabled:cursor-not-allowed">
-                    Get started
-                </button> */}
-                <Button className="min-w-28 md:min-w-32 min-h-12">
-                    Get started
+                <Button 
+                    id={"submit" + style}
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="min-w-28 md:min-w-32 min-h-12">
+                    {isSubmitting ? 'Sending...' : 'Get started'}
                 </Button>
             </div>
             {invalidEmail && <p className="text-orange-400 text-sm mt-2">Please enter a valid email address</p>}
