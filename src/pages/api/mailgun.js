@@ -12,16 +12,16 @@ export default async function handler(req, res) {
   try {
     const formData = new URLSearchParams();
     formData.append('from', 'Endeavor Support <support@endeavorai.com>');
-    formData.append('to', 'Dev O <devojha.up@gmail.com>');
+    formData.append('to', 'Endeavor Support <support@endeavorai.com>');
     formData.append('cc', email);
     formData.append('subject', 'New User Query');
-    formData.append('text', `A new user has signed up for Endeavor:\n\nEmail: ${email}\n\nThis email was sent from the Endeavor landing page.`);
+    formData.append('text', `Thank you for reaching out to Endeavor. We will get back to you as soon as possible.\n\nThis email was sent from the Endeavor landing page.`);
 
     const apiKey = process.env.MAILGUN_API_KEY;
     console.log('API Key length:', apiKey ? apiKey.length : 'undefined');
     console.log('Email being CC\'d:', email);
     
-    const response = await fetch('https://api.mailgun.net/v3/sandbox0a0ddf6d3797434d983b041999df264d.mailgun.org/messages', {
+    const response = await fetch('https://api.mailgun.net/v3/comms.endeavorai.com/messages', {
       method: 'POST',
       headers: {
         'Authorization': `Basic ${Buffer.from(`api:${apiKey}`).toString('base64')}`,
