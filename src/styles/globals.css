@@ -5,6 +5,116 @@
   --foreground: #171717;
 }
 
+@theme {
+  /* === LEGACY BRAND COLORS === */
+  --color-brand-red: #d01e28;
+  --color-brand-blue: #2573a3;
+  --color-brand-bright: #f6f6f6;
+  --color-brand-dark: #313030;
+
+  /* === DESIGN TOKENS - PRIMARY COLORS === */
+  --color-primary-50: #f4f7f8;
+  --color-primary-100: #e9eef2;
+  --color-primary-200: #c9d6de;
+  --color-primary-300: #93acbe;
+  --color-primary-400: #5e839d;
+  --color-primary-500: #285a7d;
+  --color-primary-600: #1e445e;
+  --color-primary-700: #142d3f;
+  --color-primary-800: #0a171f;
+  --color-primary-900: #04090d;
+
+  /* === DESIGN TOKENS - SECONDARY COLORS === */
+  --color-secondary-50: #fafbfc;
+  --color-secondary-100: #f5f7f9;
+  --color-secondary-200: #e5e7eb;
+  --color-secondary-300: #d1d5db;
+  --color-secondary-400: #9ca3af;
+  --color-secondary-500: #6b7280;
+  --color-secondary-600: #4b5563;
+  --color-secondary-700: #313130;
+  --color-secondary-800: #1f1f1f;
+  --color-secondary-900: #1a1a1a;
+  --color-secondary-950: #121212;
+
+  --color-secondary-700-rgb: 49, 49, 48;
+  --color-secondary-800-rgb: 31, 31, 31;
+
+  /* === DESIGN TOKENS - SUCCESS COLORS === */
+  --color-success-50: #ecfdf5;
+  --color-success-100: #d1fae5;
+  --color-success-200: #a7f3d0;
+  --color-success-300: #6ee7b7;
+  --color-success-400: #34d399;
+  --color-success-500: #10b981;
+  --color-success-600: #059669;
+  --color-success-700: #047857;
+  --color-success-800: #065f46;
+  --color-success-900: #064e3b;
+
+  /* === DESIGN TOKENS - WARNING COLORS === */
+  --color-warning-50: #fffbeb;
+  --color-warning-100: #fef3c7;
+  --color-warning-200: #fde68a;
+  --color-warning-300: #fcd34d;
+  --color-warning-400: #fbbf24;
+  --color-warning-500: #f59e0b;
+  --color-warning-600: #d97706;
+  --color-warning-700: #b45309;
+  --color-warning-800: #92400e;
+  --color-warning-900: #78350f;
+
+  /* === DESIGN TOKENS - ERROR COLORS === */
+  --color-error-50: #fef2f2;
+  --color-error-100: #fee2e2;
+  --color-error-200: #fecaca;
+  --color-error-300: #fca5a5;
+  --color-error-400: #f87171;
+  --color-error-500: #ef4444;
+  --color-error-600: #dc2626;
+  --color-error-700: #b91c1c;
+  --color-error-800: #991b1b;
+  --color-error-900: #7f1d1d;
+
+  /* === DESIGN TOKENS - PURPLE COLORS === */
+  --color-purple-50: #f7f7fe;
+  --color-purple-100: #eff0fe;
+  --color-purple-200: #d8d9fb;
+  --color-purple-300: #b1b2f8;
+  --color-purple-400: #8a8cf5;
+  --color-purple-500: #6366f1;
+  --color-purple-600: #4a4db5;
+  --color-purple-700: #323379;
+  --color-purple-800: #191a3c;
+  --color-purple-900: #0a0a18;
+
+  /* === DESIGN TOKENS - CYAN COLORS === */
+  --color-cyan-50: #f3f9fb;
+  --color-cyan-100: #e6f4f7;
+  --color-cyan-200: #c1e3ec;
+  --color-cyan-300: #83c8d9;
+  --color-cyan-400: #46adc5;
+  --color-cyan-500: #0891b2;
+  --color-cyan-600: #066d85;
+  --color-cyan-700: #044959;
+  --color-cyan-800: #02242d;
+  --color-cyan-900: #010f12;
+
+  /* === AI GRADIENT === */
+  --gradient-ai: linear-gradient(
+    135deg,
+    var(--color-secondary-600) 0%,
+    var(--color-secondary-500) 100%
+  );
+  --gradient-ai-dark: linear-gradient(
+    135deg,
+    var(--color-secondary-700) 0%,
+    var(--color-secondary-600) 100%
+  );
+
+  --color-transparent: transparent;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -14,9 +124,56 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* --background: #0a0a0a;
+    --foreground: #ededed; */
+    --background: #ffffff;
+    --foreground: #171717;
   }
+}
+
+@keyframes timeline-fill {
+  0% {
+    opacity: 1;
+    transform: translateY(-50%) scaleX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-50%) scaleX(1);
+  }
+}
+
+@keyframes marker-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes card-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-timeline-fill {
+  animation: timeline-fill 2s ease-out 0.2s forwards;
+}
+
+.animate-marker-appear {
+  animation: marker-appear 0.4s ease-out forwards;
+}
+
+.animate-card-appear {
+  animation: card-appear 0.6s ease-out forwards;
 }
 
 body {
@@ -26,15 +183,16 @@ body {
 }
 
 .cosmic-grid {
-  background-image: 
-    linear-gradient(rgba(64, 64, 64, 0.23) 1px, transparent 1px),
+  background-image: linear-gradient(rgba(64, 64, 64, 0.23) 1px, transparent 1px),
     linear-gradient(90deg, rgba(64, 64, 64, 0.23) 1px, transparent 1px);
   background-size: 30px 30px;
 }
 
 .cosmic-grid-dark {
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.4) 2px, transparent 2px),
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.4) 2px,
+      transparent 2px
+    ),
     linear-gradient(90deg, rgba(255, 255, 255, 0.4) 2px, transparent 2px);
   background-size: 30px 30px;
 }

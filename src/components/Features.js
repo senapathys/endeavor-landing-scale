@@ -39,24 +39,24 @@ function Features() {
 
     return (
         <div id="features" className="pt-10 md:pt-24">
-            <div className="text-center space-y-3 mb-12 flex items-center flex-col mx-auto">
+            <div className="text-center space-y-3 mb-12 flex items-center flex-col mx-auto py-4">
                 <div className="bg-black w-4 h-4 rounded" />
                 <h2 className="text-3xl md:text-4xl text-zinc-900">Save an average of 65% on quoting time.
                 </h2>
-                <p className="px-12 text-zinc-700 max-w-lg">
+                <p className="px-12 text-zinc-700 max-w-lg mb-8">
                     Endeavor helps you respond to your customer RFQs
                     faster and more accurately.
                 </p>
-                <Button className="min-w-28 md:min-w-32 min-h-12">
+                <Button className="min-w-28 md:min-w-32 min-h-12 bg-[#1A1A1A]!">
                     See it in action
                 </Button>
             </div>
-            <div className="relative bg-zinc-50 pb-0">
+            <div className="relative bg-zinc-50 pb-0 flex justify-center">
                 <div className="absolute inset-0 cosmic-grid opacity-20 pointer-events-none z-0"></div>
-                <div className="relative z-10 grid grid-cols-1 xl:grid-cols-3 gap-12 mx-8 md:mx-24 py-16">
+                <div className="relative z-10 grid grid-cols-1 xl:grid-cols-3 gap-12 mx-8 md:mx-24 py-16 max-w-7xl ">
                     <div className="flex flex-col space-y-4 xl:col-span-1">
                         <div className="space-y-4">
-                            <h3 className="text-3xl md:text-4xl 2xl:text-5xl text-zinc-900">
+                            <h3 className="text-2xl font-light md:text-4xl 2xl:text-5xl text-zinc-900">
                                 All the AI features you want, for the best price
                             </h3>
                             <p className="text-zinc-700 max-w-lg">
