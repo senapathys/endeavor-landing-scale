@@ -3,7 +3,7 @@ import { Plus, X } from "lucide-react";
 import Email from "./Email";
 
 const FAQ = () => {
-  const [openItems, setOpenItems] = useState(new Set([0, 1, 5])); // Pre-opened items
+  const [openItems, setOpenItems] = useState(new Set([]));
 
   const faqData = [
     {
@@ -51,9 +51,9 @@ const FAQ = () => {
   const getIcon = (index) => {
     const isOpen = openItems.has(index);
     if (isOpen) {
-      return <X className="w-5 h-5 text-gray-600" />;
+      return <X className="w-5 h-5 text-gray-600 transition-transform duration-150" />;
     } else {
-      return <Plus className="w-5 h-5 text-gray-600" />;
+      return <Plus className="w-5 h-5 text-gray-600 transition-transform duration-150" />;
     }
   };
 
@@ -68,7 +68,7 @@ const FAQ = () => {
           <div key={index} className="border-b border-gray-200">
             <button
               onClick={() => toggleItem(index)}
-              className="w-full flex items-center justify-between py-6 text-left transition-colors duration-200"
+              className="w-full flex items-center justify-between py-6 text-left transition-colors duration-150"
             >
               <h3 className="text-lg md:text-xl font-medium text-gray-900 hover:text-gray-900/70 pr-4">
                 {item.question}
@@ -77,11 +77,16 @@ const FAQ = () => {
             </button>
 
             <div
-              className={`overflow-hidden transition-all duration-300 ease-in-out ${
+              className={`overflow-hidden ${
                 openItems.has(index)
-                  ? "max-h-96 opacity-100 pb-6"
-                  : "max-h-0 opacity-0"
+                  ? "opacity-100"
+                  : "opacity-0"
               }`}
+              style={{
+                transition: 'opacity 0.15s ease-out, max-height 0.15s ease-out, padding-bottom 0.15s ease-out',
+                maxHeight: openItems.has(index) ? '200px' : '0px',
+                paddingBottom: openItems.has(index) ? '1.5rem' : '0px'
+              }}
             >
               <div className="pr-8">
                 <p className="text-gray-700 leading-relaxed">{item.answer}</p>

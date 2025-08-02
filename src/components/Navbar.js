@@ -5,13 +5,15 @@ import { useState, useEffect } from "react";
 import { NavigationMenuDemo } from "./NavigationMenu";
 
 function Navbar() {
-  const [navbarState, setNavbarState] = useState("hero"); // 'hero', 'scrolled', 'scroll-feature', 'security'
+  const [navbarState, setNavbarState] = useState("hero"); // 'hero', 'scrolled', 'scroll-feature', 'security', 'testimonials', 'form'
 
   useEffect(() => {
     const handleScroll = () => {
       const heroHeight = window.innerHeight;
       const scrollFeatureSection = document.getElementById("scroll-feature"); // Add this ID to your scroll feature section
       const securitySection = document.getElementById("security");
+      const testimonialsSection = document.getElementById("testimonials");
+      const formSection = document.getElementById("form");
 
       // Check hero first
       const pastHero = window.scrollY > heroHeight * 1.5;
@@ -25,6 +27,28 @@ function Navbar() {
 
         nearScrollFeature =
           scrollPosition > sectionTop && window.scrollY < sectionBottom + 20;
+      }
+
+      // Check testimonials section
+      let nearTestimonials = false;
+      if (testimonialsSection) {
+        const sectionTop = testimonialsSection.offsetTop;
+        const sectionBottom = sectionTop + testimonialsSection.offsetHeight;
+        const scrollPosition = window.scrollY + window.innerHeight * 0.1;
+
+        nearTestimonials =
+          scrollPosition > sectionTop && window.scrollY < sectionBottom - 50;
+      }
+
+      // Check form section
+      let nearForm = false;
+      if (formSection) {
+        const sectionTop = formSection.offsetTop + 120;
+        const sectionBottom = sectionTop + formSection.offsetHeight;
+        const scrollPosition = window.scrollY + window.innerHeight * 0.1;
+
+        nearForm =
+          scrollPosition > sectionTop && window.scrollY < sectionBottom - 50;
       }
 
       // Check security section
@@ -41,6 +65,10 @@ function Navbar() {
       // Set state based on priority (order matters!)
       if (nearSecurity) {
         setNavbarState("security");
+      } else if (nearForm) {
+        setNavbarState("form");
+      } else if (nearTestimonials) {
+        setNavbarState("testimonials");
       } else if (nearScrollFeature) {
         setNavbarState("scroll-feature");
       } else if (pastHero) {
@@ -62,6 +90,10 @@ function Navbar() {
         return "text-zinc-900 bg-transparent";
       case "scroll-feature":
         return "text-zinc-900 bg-white"; // Different style for scroll feature
+      case "testimonials":
+        return "text-zinc-900 bg-transparent";
+      case "form":
+        return "text-zinc-900 bg-transparent";
       case "security":
         return "text-zinc-900 bg-transparent";
       default:
@@ -77,6 +109,10 @@ function Navbar() {
         return "text-[#121212] hover:!text-[#121212]/60";
       case "scroll-feature":
         return "text-[#121212] hover:!text-[#121212]/60"; // Dark text for scroll feature
+      case "testimonials":
+        return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
+      case "form":
+        return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
       case "security":
         return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
       default:
@@ -92,6 +128,10 @@ function Navbar() {
         return "";
       case "scroll-feature":
         return ""; // Normal logo for scroll feature
+      case "testimonials":
+        return "invert";
+      case "form":
+        return "invert";
       case "security":
         return "invert";
       default:
@@ -113,48 +153,6 @@ function Navbar() {
             height={30}
           />
         </Link>
-        {/* <div className="lg:space-x-6 items-center hidden md:flex text-xs md:text-sm lg:text-sm">
-          <Button plain asChild>
-            <Link
-              href="#demo"
-              className={`transition-colors duration-300 ${getLinkClasses()}`}
-            >
-              Demo
-            </Link>
-          </Button>
-          <Button plain asChild>
-            <Link
-              href="#solution"
-              className={`transition-colors duration-300 ${getLinkClasses()}`}
-            >
-              Solution
-            </Link>
-          </Button>
-          <Button plain asChild>
-            <Link
-              href="#features"
-              className={`transition-colors duration-300 ${getLinkClasses()}`}
-            >
-              Features
-            </Link>
-          </Button>
-          <Button plain asChild>
-            <Link
-              href="#security"
-              className={`transition-colors duration-300 ${getLinkClasses()}`}
-            >
-              Security
-            </Link>
-          </Button>
-          <Button plain asChild>
-            <Link
-              href="#faq"
-              className={`transition-colors duration-300 ${getLinkClasses()}`}
-            >
-              FAQs
-            </Link>
-          </Button>
-        </div> */}
         <NavigationMenuDemo getLinkClasses={getLinkClasses} />
         <Button
           color={`${navbarState === "scrolled" || navbarState === "scroll-feature" ? "dark" : "white"}`}
