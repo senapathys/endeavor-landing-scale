@@ -49,6 +49,54 @@ function Step({ step, onInView }) {
   );
 }
 
+function MobileStep({ step, isActive, onInView }) {
+  const { ref, inView } = useInView({
+    threshold: 0.3,
+    rootMargin: "-10% 0px -10% 0px",
+  });
+
+  React.useEffect(() => {
+    if (inView) {
+      onInView(step.id);
+    }
+  }, [inView, step.id, onInView]);
+
+  return (
+    <motion.div
+      ref={ref}
+      className="relative"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ 
+        opacity: isActive ? 1 : 0.3, 
+        y: isActive ? 0 : 10 
+      }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      {/* Content */}
+      <div className="space-y-4 mb-8">
+        <h2 className="text-2xl font-semibold text-gray-900">
+          {step.title}
+        </h2>
+        <p className="text-gray-600 leading-relaxed">
+          {step.description}
+        </p>
+      </div>
+
+      {/* Full-width Image */}
+      <div className="mb-8">
+        <img 
+          src={step.image} 
+          alt={step.title}
+          className="w-full rounded-lg shadow-lg"
+        />
+      </div>
+
+      {/* Bottom border for visual separation */}
+      <div className="mt-8 pt-8 border-t border-gray-100"></div>
+    </motion.div>
+  );
+}
+
 function StickyPanel({ activeStepId, scrollDirection }) {
   const currentIndex = stepsData.findIndex((s) => s.id === activeStepId);
 
@@ -149,29 +197,55 @@ export default function ScrollFeatureSection() {
   }, []);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-2 gap-20">
-      {/* LEFT COLUMN */}
-      <div className="relative h-[calc(100%-25vh)]">
-        <div className="sticky top-16 bg-white pb-4 z-10 border-b border-gray-200 pt-4">
-          <h2 className="text-4xl font-normal mb-2">
-            Order entry in seconds, not hours
+    <section className="max-w-7xl mx-auto px-4 py-12">
+      {/* MOBILE LAYOUT */}
+      <div id="scroll-feature-mobile" className="md:hidden">
+        <div className="sticky top-16 bg-white pb-4 z-10 border-b border-gray-200 pt-4 mb-8">
+          <h2 className="text-3xl font-normal mb-2">
+            Turn complexity into conviction
           </h2>
-          <span className="font-light">
-            Simplify your order process and respond to your customers instantly
-            with AI.
+          <span className="font-light text-gray-600">
+            Incredibly flexible and fun finance copilot
           </span>
         </div>
 
-        <div className="flex flex-col pb-[30vh]">
-          {stepsData.map((step) => (
-            <Step key={step.id} step={step} onInView={handleStepInView} />
+        <div className="space-y-16">
+          {stepsData.map((step, index) => (
+            <MobileStep 
+              key={step.id} 
+              step={step} 
+              isActive={step.id === activeStep}
+              onInView={handleStepInView}
+            />
           ))}
         </div>
       </div>
 
-      {/* RIGHT COLUMN */}
-      <div>
-        <StickyPanel activeStepId={activeStep} scrollDirection={scrollDirection} />
+      {/* DESKTOP LAYOUT */}
+      <div id="scroll-feature" className="hidden md:grid md:grid-cols-2 gap-20">
+        {/* LEFT COLUMN */}
+        <div className="relative h-[calc(100%-25vh)]">
+          <div className="sticky top-16 bg-white pb-4 z-10 border-b border-gray-200 pt-4">
+            <h2 className="text-4xl font-normal mb-2">
+              Order entry in seconds, not hours
+            </h2>
+            <span className="font-light">
+              Simplify your order process and respond to your customers instantly
+              with AI.
+            </span>
+          </div>
+
+          <div className="flex flex-col pb-[30vh]">
+            {stepsData.map((step) => (
+              <Step key={step.id} step={step} onInView={handleStepInView} />
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT COLUMN */}
+        <div>
+          <StickyPanel activeStepId={activeStep} scrollDirection={scrollDirection} />
+        </div>
       </div>
     </section>
   );
