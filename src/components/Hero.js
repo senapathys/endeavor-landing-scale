@@ -20,7 +20,7 @@ function Hero({ heroRef }) {
             .
           </p>
         </div>
-        <div className="mt-12">
+        <div className="mt-12 w-full flex justify-center">
           <Email style="fill" />
           {/* <EmailSpotlightBorder style="fill" /> */}
         </div>

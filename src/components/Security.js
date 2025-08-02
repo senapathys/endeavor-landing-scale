@@ -40,7 +40,7 @@ const securityCards = [
 function Security() {
     return (
         <div id="security" className="bg-black py-10 px-8 md:px-24 md:py-20 relative flex justify-center">
-            <div className="absolute inset-0 bg-[url(/dark-gradient-bg-1.png)] bg-cover pointer-events-none"></div>
+            <div className="absolute inset-0 bg-[url(/gradient-bg.svg)] bg-cover pointer-events-none"></div>
             <div className="relative z-10 max-w-7xl">
                 <h2 className="text-white text-2xl md:text-4xl">Enterprise-grade Security</h2>
                 <p className="text-zinc-100 mt-2">Endeavor is committed to protecting your data and your business.</p>

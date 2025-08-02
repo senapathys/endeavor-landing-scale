@@ -50,16 +50,23 @@ function Email({ style = "fill" }) {
   };
 
   return (
-    <form onSubmit={sendEmail} className="relative z-10">
+    <form onSubmit={sendEmail} className="relative z-10 max-w-lg min-w-lg">
+              <GlowEffect
+            colors={["#D01E28aa", "#EF4444aa", "#46ADCaa", "#2573A3aa"]}
+            mode="rotate"
+            blur="softest"
+            duration={10}
+            scale={1}
+          />
       <div
-        className={`px-1 py-1 flex items-center max-w-lg mx-auto ${containerClass} rounded-md text-sm md:text-base border border-zinc-800 shadow-lg relative z-10 shadow-lg !bg-[#121212]/90 backdrop-blur-md`}
+        className={`relative px-1 py-1 flex items-center mx-auto ${containerClass} rounded-md text-sm md:text-base border border-zinc-800 shadow-lg relative z-10 shadow-lg !bg-[#121212] backdrop-blur-md`}
       >
         <input
           onChange={(e) => setEmail(e.target.value)}
           id={"email" + style}
           type="email"
           placeholder="What's your email?"
-          className="px-3 bg-transparent w-full focus:outline-none placeholder-[#F6F6F6]/90 disabled:opacity-50 disabled:cursor-not-allowed !text-[#F6F6F6]"
+          className="relative px-3 bg-transparent w-full focus:outline-none placeholder-[#F6F6F6]/90 disabled:opacity-50 disabled:cursor-not-allowed !text-[#F6F6F6]"
         />
         {/* <button
                     id={"submit" + style} 
@@ -67,14 +74,14 @@ function Email({ style = "fill" }) {
                     Get started
                 </button> */}
         <div className="relative">
-          <GlowEffect
+          {/* <GlowEffect
             colors={["#D01E28", "#EF4444", "#46ADC5", "#2573A3"]}
             mode="rotate"
             blur="softest"
             duration={10}
             scale={1}
-          />
-          <Button className="min-w-28 md:min-w-32 min-h-12 bg-[#1A1A1A]!">Get started</Button>
+          /> */}
+          <Button className="min-w-28 md:min-w-32 min-h-12 !bg-[#52525C]">Get started</Button>
         </div>
       </div>
       {invalidEmail && (

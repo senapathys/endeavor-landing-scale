@@ -3,7 +3,7 @@ function Solution() {
     <div
       id="solution"
     >
-      <div className="pt-10 md:pt-24 pb-16 max-w-7xl mx-auto ">
+      <div className="pt-10 md:pt-24 pb-16 max-w-7xl mx-auto">
         <div className="text-center space-y-3 mb-12 flex items-center flex-col mx-auto">
           <div className="bg-black w-4 h-4 rounded" />
           <h2 className="text-3xl md:text-4xl text-zinc-900">

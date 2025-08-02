@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
+import { NavigationMenuDemo } from "./NavigationMenu";
 
 function Navbar() {
   const [navbarState, setNavbarState] = useState("hero"); // 'hero', 'scrolled', 'scroll-feature', 'security'
@@ -71,15 +72,15 @@ function Navbar() {
   const getLinkClasses = () => {
     switch (navbarState) {
       case "hero":
-        return "text-[#F6F6F6]";
+        return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
       case "scrolled":
-        return "text-[#121212]";
+        return "text-[#121212] hover:!text-[#121212]/60";
       case "scroll-feature":
-        return "text-[#121212]"; // Dark text for scroll feature
+        return "text-[#121212] hover:!text-[#121212]/60"; // Dark text for scroll feature
       case "security":
-        return "text-[#F6F6F6]";
+        return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
       default:
-        return "text-[#F6F6F6]";
+        return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
     }
   };
 
@@ -112,7 +113,7 @@ function Navbar() {
             height={30}
           />
         </Link>
-        <div className="lg:space-x-6 items-center hidden md:flex text-xs md:text-sm lg:text-sm">
+        {/* <div className="lg:space-x-6 items-center hidden md:flex text-xs md:text-sm lg:text-sm">
           <Button plain asChild>
             <Link
               href="#demo"
@@ -153,9 +154,10 @@ function Navbar() {
               FAQs
             </Link>
           </Button>
-        </div>
+        </div> */}
+        <NavigationMenuDemo getLinkClasses={getLinkClasses} />
         <Button
-          color={`${navbarState === "scrolled" || navbarState === "scroll-feature" ? "dark" : "dark/white"}`}
+          color={`${navbarState === "scrolled" || navbarState === "scroll-feature" ? "dark" : "white"}`}
           className="transition-all duration-300"
         >
           Book a demo

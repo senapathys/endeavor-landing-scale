@@ -4,15 +4,15 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="text-white relative overflow-hidden pb-12">
-      <div className="bg-[url(/dark-gradient-bg-1.png)] bg-cover max-w-7xl mx-auto px-8 md:px-16 py-16 rounded-2xl">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-16">
+    <footer className="text-white relative overflow-hidden ">
+      <div className=" max-w-7xl mx-auto  py-16 rounded-2xl">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-8">
           <div className="lg:col-span-1">
             <Link className="flex items-center space-x-2 md:space-x-3" href="/">
               <Image
-                src="/logo-white.svg"
+                src="/industrial-ai-logo.svg"
                 alt="Endeavor"
-                className="h-6 w-auto md:h-6 lg:h-14"
+                className="h-6 w-auto md:h-6 lg:h-8"
                 width={500}
                 height={80}
               />
@@ -73,7 +73,7 @@ const Footer = () => {
 
           {/* Product */}
           <div>
-            <h3 className="text-white font-medium mb-6">Product</h3>
+            <h3 className="text-zinc-900 font-medium mb-6">Product</h3>
             <ul className="space-y-4">
               <li>
                 <a
@@ -112,7 +112,7 @@ const Footer = () => {
 
           {/* Resources */}
           <div>
-            <h3 className="text-white font-medium mb-6">Resources</h3>
+            <h3 className="text-zinc-900 font-medium mb-6">Resources</h3>
             <ul className="space-y-4">
               <li>
                 <a
@@ -151,7 +151,7 @@ const Footer = () => {
 
           {/* Company */}
           <div>
-            <h3 className="text-white font-medium mb-6">Company</h3>
+            <h3 className="text-zinc-900 font-medium mb-6">Company</h3>
             <ul className="space-y-4">
               <li>
                 <a

@@ -24,24 +24,26 @@ const Demo = () => {
         ref={demoRef}
       >
         <div
-          className={`mx-auto relative rounded-t-xl md:rounded-t-2xl lg:rounded-t-3xl bg-transparent z-30 shadow-xl transition-all duration-1000 ease-out ${
-            isVisible 
-              ? 'opacity-100 transform translate-y-0 scale-100' 
-              : 'opacity-0 transform translate-y-4 scale-97'
-          }`}
-          style={{
-            width: "70%",
-            margin: "auto",
-          }}
-        >
-          {/* <div className="p-2 bg-transparent"> */}
-            <img
-              src="/dashboard-dark-2.svg"
-              alt="Sample Web Application Dashboard"
-              className="w-full h-auto object-cover"
-            />
-          {/* </div> */}
-        </div>
+  className={`mx-auto relative rounded-t-xl md:rounded-t-2xl lg:rounded-t-3xl bg-transparent z-30 shadow-xl transition-all duration-1000 ease-out ${
+    isVisible 
+      ? 'opacity-100 transform translate-y-0 scale-100' 
+      : 'opacity-0 transform translate-y-4 scale-97'
+  }`}
+  style={{
+    width: "70%",
+    margin: "auto",
+  }}
+>
+  <div className="relative">
+    <img
+      src="/dashboard-dark-2.svg"
+      alt="Sample Web Application Dashboard"
+      className="w-full h-auto object-cover rounded-t-xl md:rounded-t-2xl lg:rounded-t-3xl"
+    />
+    {/* Gradient overlay that fades image to transparent */}
+    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#121212] pointer-events-none rounded-t-xl md:rounded-t-2xl lg:rounded-t-3xl"></div>
+  </div>
+</div>
       </div>
     </div>
   );

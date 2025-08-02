@@ -12,13 +12,81 @@ import ScrollFeatureSection from "@/components/ScrollFeature";
 import { InfiniteSliderHoverSpeed } from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
+import Form from "@/components/Form";
+
+const logos = [
+  {
+    quote:
+      "Endeavor's AI has transformed our order processing. What used to take hours now happens in minutes, and the accuracy is incredible.",
+    logo: "../customer_logos/Building-Supply.png",
+    name: "Jason Cohen",
+    role: "President",
+    company: "Northeast Building Supply",
+  },
+  {
+    quote:
+      "Endeavor has shown us that AI Agents are the future of the food and beverage industry. Love it - we're going to be using this for a lot of things.",
+    logo: "../customer_logos/image.png",
+    name: "Michael Wagner",
+    role: "Global Director, PIM",
+    company: "Schreiber Foods",
+  },
+  {
+    quote:
+      "F**k that’s awesome. This makes my life so much easier and with just this one tool. I can turn around quotes in half the time as I was before.",
+    logo: "../customer_logos/viking-group-inc-logo-png-transparent.png",
+    name: "Matt S.",
+    role: "Customer Success Rep",
+    company: "Viking Group Inc.",
+  },
+  {
+    quote:
+      "Endeavor has been an invaluable strategic partner to solve several critical business problems facing our company and the construction industry.",
+    logo: "../customer_logos/ClarkDietrich_rgb.png",
+    name: "Brian Panuccio",
+    role: "CEO and President",
+    company: "ClarkDietrich Building Systems",
+  },
+    {
+    quote:
+      "Endeavor's AI has transformed our order processing. What used to take hours now happens in minutes, and the accuracy is incredible.",
+    logo: "../customer_logos/Building-Supply.png",
+    name: "Jason Cohen",
+    role: "President",
+    company: "Northeast Building Supply",
+  },
+  {
+    quote:
+      "Endeavor has shown us that AI Agents are the future of the food and beverage industry. Love it - we're going to be using this for a lot of things.",
+    logo: "../customer_logos/image.png",
+    name: "Michael Wagner",
+    role: "Global Director, PIM",
+    company: "Schreiber Foods",
+  },
+  {
+    quote:
+      "F**k that’s awesome. This makes my life so much easier and with just this one tool. I can turn around quotes in half the time as I was before.",
+    logo: "../customer_logos/viking-group-inc-logo-png-transparent.png",
+    name: "Matt S.",
+    role: "Customer Success Rep",
+    company: "Viking Group Inc.",
+  },
+  {
+    quote:
+      "Endeavor has been an invaluable strategic partner to solve several critical business problems facing our company and the construction industry.",
+    logo: "../customer_logos/ClarkDietrich_rgb.png",
+    name: "Brian Panuccio",
+    role: "CEO and President",
+    company: "ClarkDietrich Building Systems",
+  }
+];
 
 function Home() {
   const heroRef = useRef(null);
   const demoRef = useRef(null);
 
   return (
-    <div>
+    <div className="">
       <Head>
         <title>Quoting Made Smarter | Respond to RFQs in Seconds</title>
         <meta
@@ -32,20 +100,22 @@ function Home() {
         <meta property="og:image" content="/hero.png" />
       </Head>
       <Navbar heroRef={heroRef} demoRef={demoRef} />
-      <div className="relative bg-[url(/dark-gradient-bg.svg)] bg-cover before:absolute before:inset-0 before:bg-gradient-to-b before:from-transparent before:to-black before:pointer-events-none">
+      <div className="relative bg-[url(/dark-gradient-bg.svg)] bg-cover before:absolute before:inset-0 before:bg-gradient-to-b before:from-transparent before:to-[#121212] before:pointer-events-none">
         <div className="relative z-10">
           <Hero heroRef={heroRef} />
           <Demo demoRef={demoRef} />
         </div>
       </div>
+
       <InfiniteSliderHoverSpeed />
       <ScrollFeatureSection />
       <Solution />
-      <Features />
+      {/* <Features /> */}
       <Security />
       <Implementation />
       {/* <CardsSection /> */}
       <FAQ />
+      <Form />
       <Footer />
     </div>
   );

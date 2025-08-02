@@ -97,7 +97,7 @@ function StickyPanel({ activeStepId, scrollDirection }) {
                   width: "90%",
                   zIndex: isActive ? 20 : (10 - Math.abs(index - currentIndex))
                 }}
-                className="absolute bottom-0 right-0"
+                className="absolute bottom-0 right-0 rounded-tl-lg"
               />
             );
           })}

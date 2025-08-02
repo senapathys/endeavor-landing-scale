@@ -58,7 +58,7 @@ const FAQ = () => {
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-16">
+    <section className="max-w-7xl mx-auto py-16">
       <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-12">
         FAQs
       </h2>
@@ -91,12 +91,12 @@ const FAQ = () => {
         ))}
       </div>
 
-      <div className="mt-5 mb-5 py-16 mx-8">
+      {/* <div className="mt-5 mb-5 py-16 mx-8">
         <div className="text-center text-zinc-900 text-2xl mb-6">
           Time is money. Save both.
         </div>
         <Email style="border" />
-      </div>
+      </div> */}
     </section>
   );
 };
