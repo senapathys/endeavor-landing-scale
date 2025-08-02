@@ -39,19 +39,19 @@ const securityCards = [
 
 function Security() {
     return (
-        <div id="security" className="bg-black py-10 px-8 md:px-24 md:py-20 relative flex justify-center">
+        <div id="security" className="bg-black py-8 sm:py-10 px-4 sm:px-8 md:px-24 md:py-20 relative flex justify-center">
             <div className="absolute inset-0 bg-[url(/gradient-bg.svg)] bg-cover pointer-events-none"></div>
-            <div className="relative z-10 max-w-7xl">
-                <h2 className="text-white text-2xl md:text-4xl">Enterprise-grade Security</h2>
-                <p className="text-zinc-100 mt-2">Endeavor is committed to protecting your data and your business.</p>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+            <div className="relative z-10 max-w-7xl w-full">
+                <h2 className="text-white text-xl sm:text-2xl md:text-4xl">Enterprise-grade Security</h2>
+                <p className="text-zinc-100 mt-2 text-sm sm:text-base">Endeavor is committed to protecting your data and your business.</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mt-6 sm:mt-8">
                     {securityCards.map((card, idx) => (
-                        <div key={idx} className="bg-[#1F1F1F]/40 text-[#F5F7F9] backdrop-blur-lg p-8 rounded-xl border-[#F5F7F9]/10 border-1">
-                            <span className="text-5xl text-[#F5F7F9] flex items-center">
+                        <div key={idx} className="bg-[#1F1F1F]/40 text-[#F5F7F9] backdrop-blur-lg p-4 sm:p-6 md:p-8 rounded-xl border-[#F5F7F9]/10 border-1">
+                            <span className="text-3xl sm:text-4xl md:text-5xl text-[#F5F7F9] flex items-center">
                                 {card.icon}
                             </span>
-                            <h3 className="text-xl text-[#F5F7F9] font-medium mt-4">{card.title}</h3>
-                            <p className="text-[#F5F7F9]/60 mt-2">{card.description}</p>
+                            <h3 className="text-lg sm:text-xl text-[#F5F7F9] font-medium mt-3 sm:mt-4">{card.title}</h3>
+                            <p className="text-[#F5F7F9]/60 mt-2 text-sm sm:text-base">{card.description}</p>
                         </div>
                     ))}
                 </div>

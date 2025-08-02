@@ -69,19 +69,19 @@ const testimonials = [
 
 export function InfiniteSliderHoverSpeed() {
   return (
-    <div id="testimonials" className="bg-[#121212] py-16 md:py-24 mb-8">
+    <div id="testimonials" className="bg-[#121212] py-12 sm:py-16 md:py-24 mb-8 px-4 sm:px-6">
       <div className="">
         {/* Header */}
-        <div className="text-center space-y-3 mb-12 flex items-center flex-col mx-auto">
+        <div className="text-center space-y-3 mb-8 sm:mb-12 flex items-center flex-col mx-auto">
           <div className="bg-white w-4 h-4 rounded" />
-          <h2 className="text-3xl md:text-4xl text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl text-white px-4">
             "
             <span className="hover:scale-110 transition-transform duration-200 inline-block">
               F**k
             </span>
             , that's awesome."
           </h2>
-          <p className="px-12 text-zinc-300 max-w-lg">
+          <p className="px-4 sm:px-12 text-zinc-300 max-w-lg text-sm sm:text-base">
             Teams at companies doing $10M to $10B love using Endeavor to grow
             sales and support their customers.
           </p>
@@ -91,27 +91,27 @@ export function InfiniteSliderHoverSpeed() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className={`bg-[#1a1a1a] rounded-lg p-6 max-w-[400px] max-h-[300px] shadow-md ${
-                index % 2 ? "mt-16" : ""
+              className={`bg-[#1a1a1a] rounded-lg p-4 sm:p-6 max-w-[350px] sm:max-w-[400px] max-h-[280px] sm:max-h-[300px] shadow-md ${
+                index % 2 ? "mt-8 sm:mt-16" : ""
               }`}
             >
               {/* Quote */}
-              <blockquote className="text-zinc-400 text-md md:text-lg leading-relaxed mb-6">
+              <blockquote className="text-zinc-400 text-sm sm:text-md md:text-lg leading-relaxed mb-4 sm:mb-6">
                 "{testimonial.quote}"
               </blockquote>
 
               {/* Company Logo */}
-              <div className="mb-4">
+              <div className="mb-3 sm:mb-4">
                 <img
                   src={testimonial.logo}
                   alt={`${testimonial.company} logo`}
-                  className="h-8 w-auto brightness-0 invert"
+                  className="h-6 sm:h-8 w-auto brightness-0 invert"
                 />
               </div>
 
               {/* Person Info */}
               <div>
-                <p className="text-zinc-400 font-medium text-sm">
+                <p className="text-zinc-400 font-medium text-xs sm:text-sm">
                   {testimonial.name}
                 </p>
                 <p className="text-zinc-500 text-xs">{testimonial.role}, {testimonial.company}</p>

@@ -58,8 +58,8 @@ const FAQ = () => {
   };
 
   return (
-    <section className="max-w-7xl mx-auto py-16">
-      <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-12">
+    <section className="max-w-7xl mx-auto py-8 sm:py-16 px-4 sm:px-6 md:px-8">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 mb-8 sm:mb-12">
         FAQs
       </h2>
 
@@ -68,9 +68,9 @@ const FAQ = () => {
           <div key={index} className="border-b border-gray-200">
             <button
               onClick={() => toggleItem(index)}
-              className="w-full flex items-center justify-between py-6 text-left transition-colors duration-150"
+              className="w-full flex items-center justify-between py-4 sm:py-6 text-left transition-colors duration-150"
             >
-              <h3 className="text-lg md:text-xl font-medium text-gray-900 hover:text-gray-900/70 pr-4">
+              <h3 className="text-base sm:text-lg md:text-xl font-medium text-gray-900 hover:text-gray-900/70 pr-4 leading-relaxed">
                 {item.question}
               </h3>
               <div className="flex-shrink-0">{getIcon(index)}</div>
@@ -88,8 +88,8 @@ const FAQ = () => {
                 paddingBottom: openItems.has(index) ? '1.5rem' : '0px'
               }}
             >
-              <div className="pr-8">
-                <p className="text-gray-700 leading-relaxed">{item.answer}</p>
+              <div className="pr-4 sm:pr-8">
+                <p className="text-gray-700 leading-relaxed text-sm sm:text-base">{item.answer}</p>
               </div>
             </div>
           </div>

@@ -73,11 +73,11 @@ function Implementation() {
         {/* cosmic-grid */}
         <div className="absolute inset-0 opacity-20 pointer-events-none z-0"></div>
         <div className="absolute left-0 right-0 bottom-0 h-32 pointer-events-none z-20"></div>
-        <div className="relative z-10 px-8 md:px-24 py-16 pb-24">
+        <div className="relative z-10 px-4 sm:px-8 md:px-24 py-12 sm:py-16 pb-20 sm:pb-24">
           {/* Header with button */}
-          <div className="text-center space-y-3 mb-12 flex items-center flex-col mx-auto max-w-2xl">
+          <div className="text-center space-y-3 mb-8 sm:mb-12 flex items-center flex-col mx-auto max-w-2xl px-4">
             <div className="bg-black w-4 h-4 rounded" />
-            <h2 className="text-3xl md:text-4xl text-zinc-900">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl text-zinc-900">
               AI shouldn't take months to implement.
             </h2>
             <Button className="min-w-28 md:min-w-32 min-h-12" plain>
@@ -169,18 +169,18 @@ function Implementation() {
 
                   {/* Content card */}
                   <div
-                    className={`h-full rounded-xl border border-zinc-300 bg-white px-4 py-6 md:px-6 md:py-8 ${
+                    className={`h-full rounded-xl border border-zinc-300 bg-white px-3 sm:px-4 py-4 sm:py-6 md:px-6 md:py-8 ${
                       index === 2 ? "shadow-xl shadow-zinc-300" : ""
                     }`}
                   >
-                    <h3 className="text-lg font-medium mb-4 leading-trim text-zinc-900">
+                    <h3 className="text-base sm:text-lg font-medium mb-3 sm:mb-4 leading-trim text-zinc-900">
                       {step.contentTitle}
                     </h3>
                     <ul className="space-y-2">
                       {step.bullets.map((bullet, bulletIndex) => (
-                        <li key={bulletIndex} className="flex items-center">
-                          <FiCheck className="text-zinc-600 mr-2 size-4 flex-none md:size-5" />
-                          <span className="leading-trim text-sm text-zinc-700">
+                        <li key={bulletIndex} className="flex items-start">
+                          <FiCheck className="text-zinc-600 mr-2 size-3 sm:size-4 flex-none md:size-5 mt-0.5" />
+                          <span className="leading-trim text-xs sm:text-sm text-zinc-700">
                             {bullet}
                           </span>
                         </li>

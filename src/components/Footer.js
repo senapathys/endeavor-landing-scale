@@ -4,9 +4,9 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="text-white relative overflow-hidden ">
-      <div className=" max-w-7xl mx-auto  py-16 rounded-2xl">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-8">
+    <footer className="text-white relative overflow-hidden px-4 sm:px-6 md:px-8">
+      <div className=" max-w-7xl mx-auto py-12 sm:py-16 rounded-2xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-8">
           <div className="lg:col-span-1">
             <Link className="flex items-center space-x-2 md:space-x-3" href="/">
               <Image
@@ -19,7 +19,7 @@ const Footer = () => {
             </Link>
 
             {/* Social links */}
-            <div className="flex space-x-4 mt-8">
+            <div className="flex space-x-4 mt-6 sm:mt-8">
               <a
                 href="#"
                 className="w-10 h-10 bg-[#121212] hover:bg-zinc-700 rounded-lg flex items-center justify-center transition-colors"
@@ -188,17 +188,17 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="relative mb-16">
+        <div className="relative mb-12 sm:mb-16">
           <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none overflow-hidden">
-            <span className="text-[clamp(8rem,20vw,24rem)] font-bold leading-none tracking-tight">
+            <span className="text-[clamp(6rem,15vw,24rem)] font-bold leading-none tracking-tight">
               Endeavor
             </span>
           </div>
         </div>
         {/* Bottom section */}
-        <div className="pt-8">
+        <div className="pt-6 sm:pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-zinc-400 text-light text-xs">
+            <div className="text-zinc-400 text-light text-xs leading-relaxed">
               832 Sansome St, San Francisco CA, 94114
               <br />
               <br />© 2025 Endeavor AI, Inc. All rights reserved. The services
