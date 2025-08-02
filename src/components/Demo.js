@@ -24,7 +24,7 @@ const Demo = () => {
         ref={demoRef}
       >
         <div
-  className={`mx-auto relative rounded-t-lg sm:rounded-t-xl md:rounded-t-2xl lg:rounded-t-3xl bg-transparent z-30 shadow-xl transition-all duration-1000 ease-out w-[75%] sm:w-[80%] md:w-[85%] lg:w-[70%] ${
+  className={`mx-auto relative rounded-t-lg sm:rounded-t-xl md:rounded-t-2xl lg:rounded-t-3xl bg-transparent z-30 shadow-xl transition-all duration-1000 ease-out w-[85%] sm:w-[80%] md:w-[75%] lg:w-[70%] xl:w-[70%] ${
     isVisible 
       ? 'opacity-100 transform translate-y-0 scale-100' 
       : 'opacity-0 transform translate-y-4 scale-97'
@@ -37,7 +37,7 @@ const Demo = () => {
       className="w-full h-auto object-cover rounded-t-lg sm:rounded-t-xl md:rounded-t-2xl lg:rounded-t-3xl"
     />
     {/* Gradient overlay that fades image to transparent */}
-    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#121212] pointer-events-none rounded-t-lg sm:rounded-t-xl md:rounded-t-2xl lg:rounded-t-3xl"></div>
+    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#121212] pointer-events-none rounded-t-lg sm:rounded-t-xl md:rounded-t-2xl lg:rounded-t-3xl" style={{ marginBottom: '-1px' }}></div>
   </div>
 </div>
       </div>

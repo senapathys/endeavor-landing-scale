@@ -14,8 +14,8 @@ function Solution() {
             with AI.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4 sm:gap-6 text-center mb-6">
-          <div className="col-span-1 md:col-span-2 p-4 sm:p-6 md:p-8 rounded-lg bg-[#E5E7EB]/40 border-secondary-200/40 border-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 text-center mb-6">
+          <div className="col-span-1 md:col-span-2 lg:col-span-2 p-4 sm:p-6 md:p-8 rounded-lg bg-[#E5E7EB]/40 border-secondary-200/40 border-1">
             <h3 className="text-lg sm:text-xl text-zinc-900">
               Email, Handwritten, and Docs
             </h3>
@@ -24,28 +24,28 @@ function Solution() {
             </p>
             <img src="/solution/formats.svg" alt="formats" className="mt-2 sm:mt-4" />
           </div>
-          <div className="col-span-1 md:col-span-2 p-4 sm:p-6 md:p-8 rounded-lg bg-[#E5E7EB]/40 border-secondary-200/40 border-1">
+          <div className="col-span-1 md:col-span-2 lg:col-span-2 p-4 sm:p-6 md:p-8 rounded-lg bg-[#E5E7EB]/40 border-secondary-200/40 border-1">
             <h3 className="text-lg sm:text-xl text-zinc-900">AI Quote Generation</h3>
             <p className="text-zinc-600 text-xs sm:text-sm mt-2">
               AI Quotes exported as PDF or Excel
             </p>
             <img src="/solution/quote.svg" alt="quote" className="mt-2 sm:mt-4" />
           </div>
-          <div className="col-span-1 md:col-span-2 p-4 sm:p-6 md:p-8 rounded-lg bg-[#E5E7EB]/40 backdrop-blur-md border-secondary-200/40 border-1">
+          <div className="col-span-1 md:col-span-2 lg:col-span-2 p-4 sm:p-6 md:p-8 rounded-lg bg-[#E5E7EB]/40 backdrop-blur-md border-secondary-200/40 border-1">
             <h3 className="text-lg sm:text-xl text-zinc-900">Purchase Order Entry</h3>
             <p className="text-zinc-600 text-xs sm:text-sm mt-2">
               Automatically enter POs into your ERP
             </p>
             <img src="/solution/po.svg" alt="po" className="mt-2 sm:mt-4" />
           </div>
-          <div className="col-span-1 sm:col-span-2 md:col-span-3 p-4 sm:p-6 md:p-8 rounded-lg bg-[#E5E7EB]/40 border-secondary-200/40 border-1">
+          <div className="col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-3 p-4 sm:p-6 md:p-8 rounded-lg bg-[#E5E7EB]/40 border-secondary-200/40 border-1">
             <h3 className="text-lg sm:text-xl text-zinc-900">AI-Powered Pricing</h3>
             <p className="text-zinc-600 text-xs sm:text-sm mt-2">
               Intelligent pricing based on customer, product, and volume
             </p>
             <img src="/solution/pricing.svg" alt="pricing" className="mt-2 sm:mt-4" />
           </div>
-          <div className="col-span-1 sm:col-span-2 md:col-span-3 p-4 sm:p-6 md:p-8 rounded-lg bg-[#E5E7EB]/40 border-secondary-200/40 border-1">
+          <div className="col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-3 p-4 sm:p-6 md:p-8 rounded-lg bg-[#E5E7EB]/40 border-secondary-200/40 border-1">
             <h3 className="text-lg sm:text-xl text-zinc-900 px-2 sm:px-8">Automated Emailing</h3>
             <p className="text-zinc-600 text-xs sm:text-sm mt-2 px-2 sm:px-8">
               Email quotes directly to your customers with one click

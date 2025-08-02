@@ -60,7 +60,7 @@ const Form = () => {
 
   return (
     <section id="form" className="flex justify-center items-center py-8 sm:py-16 px-4 sm:px-6">
-      <div className="w-full rounded-xl max-w-7xl flex flex-col lg:flex-row bg-[url(/gradient-bg.svg)] bg-cover p-4 sm:p-6 md:p-8 gap-6 lg:gap-8">
+      <div className="w-full rounded-xl max-w-7xl flex flex-col lg:flex-row bg-[url(/gradient-bg.svg)] bg-cover p-4 sm:p-6 md:p-8 gap-6 md:gap-8">
         <div className="flex flex-1 flex-col">
           <div className="text-[#F6F6F6] text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
             Accelerate,

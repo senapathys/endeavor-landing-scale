@@ -50,7 +50,7 @@ function Email({ style = "fill" }) {
   };
 
   return (
-    <form onSubmit={sendEmail} className="relative z-10 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg w-full">
+    <form onSubmit={sendEmail} className="relative z-10 max-w-xs sm:max-w-sm md:max-w-sm lg:max-w-md xl:max-w-lg w-full">
               <GlowEffect
             colors={["#D01E28aa", "#EF4444aa", "#46ADCaa", "#2573A3aa"]}
             mode="rotate"

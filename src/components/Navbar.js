@@ -30,18 +30,18 @@ function Navbar() {
         const sectionBottom = sectionTop + testimonialsSection.offsetHeight;
         const scrollPosition =
           window.scrollY +
-          window.innerHeight * (window.innerWidth < 768 ? 0.05 : 0.1);
+          window.innerHeight * (window.innerWidth < 1024 ? 0.05 : 0.1);
 
         nearTestimonials =
           scrollPosition > sectionTop &&
-          window.scrollY < sectionBottom - (window.innerWidth < 768 ? 30 : 50);
+          window.scrollY < sectionBottom - (window.innerWidth < 1024 ? 30 : 50);
       }
 
       // Check scroll-feature section
       let nearScrollFeature = false;
       
       // Check desktop scroll feature
-      if (scrollFeatureSection && window.innerWidth >= 768) {
+      if (scrollFeatureSection && window.innerWidth >= 1024) {
         const sectionTop = scrollFeatureSection.offsetTop;
         const sectionBottom = sectionTop + scrollFeatureSection.offsetHeight;
         const scrollPosition = window.scrollY + window.innerHeight * 0.1;
@@ -52,7 +52,7 @@ function Navbar() {
       }
       
       // Check mobile scroll feature
-      if (scrollFeatureMobile && window.innerWidth < 768) {
+      if (scrollFeatureMobile && window.innerWidth < 1024) {
         const sectionTop = scrollFeatureMobile.offsetTop;
         const sectionBottom = sectionTop + scrollFeatureMobile.offsetHeight;
         const scrollPosition = window.scrollY + window.innerHeight * 0.05;
@@ -66,15 +66,15 @@ function Navbar() {
       let nearForm = false;
       if (formSection) {
         const sectionTop =
-          formSection.offsetTop + (window.innerWidth < 768 ? 40 : 120);
+          formSection.offsetTop + (window.innerWidth < 1024 ? 40 : 120);
         const sectionBottom = sectionTop + formSection.offsetHeight;
         const scrollPosition =
           window.scrollY +
-          window.innerHeight * (window.innerWidth < 768 ? 0.05 : 0.1);
+          window.innerHeight * (window.innerWidth < 1024 ? 0.05 : 0.1);
 
         nearForm =
           scrollPosition > sectionTop &&
-          window.scrollY < sectionBottom - (window.innerWidth < 768 ? 30 : 50);
+          window.scrollY < sectionBottom - (window.innerWidth < 1024 ? 30 : 50);
       }
 
       // Check security section
@@ -84,11 +84,11 @@ function Navbar() {
         const sectionBottom = sectionTop + securitySection.offsetHeight;
         const scrollPosition =
           window.scrollY +
-          window.innerHeight * (window.innerWidth < 768 ? 0.03 : 0.05);
+          window.innerHeight * (window.innerWidth < 1024 ? 0.03 : 0.05);
 
         nearSecurity =
           scrollPosition > sectionTop &&
-          window.scrollY < sectionBottom - (window.innerWidth < 768 ? 30 : 50);
+          window.scrollY < sectionBottom - (window.innerWidth < 1024 ? 30 : 50);
       }
 
       // Update scroll state

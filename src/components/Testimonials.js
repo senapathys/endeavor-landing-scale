@@ -69,7 +69,7 @@ const testimonials = [
 
 export function InfiniteSliderHoverSpeed() {
   return (
-    <div id="testimonials" className="bg-[#121212] py-12 sm:py-16 md:py-24 mb-8 px-4 sm:px-6">
+    <div id="testimonials" className="bg-[#121212] py-12 sm:py-16 md:py-24 mb-8 sm:px-6">
       <div className="">
         {/* Header */}
         <div className="text-center space-y-3 mb-8 sm:mb-12 flex items-center flex-col mx-auto">
@@ -91,7 +91,7 @@ export function InfiniteSliderHoverSpeed() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className={`bg-[#1a1a1a] rounded-lg p-4 sm:p-6 max-w-[350px] sm:max-w-[400px] max-h-[280px] sm:max-h-[300px] shadow-md ${
+              className={`bg-[#1a1a1a] rounded-lg p-4 sm:p-6 max-w-[350px] sm:max-w-[400px] md:max-w-[350px] max-h-[280px] sm:max-h-[300px] shadow-md ${
                 index % 2 ? "mt-8 sm:mt-16" : ""
               }`}
             >

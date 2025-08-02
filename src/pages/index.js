@@ -6,7 +6,7 @@ import Solution from "@/components/Solution";
 import Security from "@/components/Security";
 import Demo from "@/components/Demo";
 import Features from "@/components/Features";
-import Implementation from "@/components/Implementation";
+import MobileTimeline from "@/components/MobileTimeline";
 import Head from "next/head";
 import ScrollFeatureSection from "@/components/ScrollFeature";
 import { InfiniteSliderHoverSpeed } from "@/components/Testimonials";
@@ -100,7 +100,7 @@ function Home() {
         <meta property="og:image" content="/hero.png" />
       </Head>
       <Navbar heroRef={heroRef} demoRef={demoRef} />
-      <div className="relative bg-[url(/dark-gradient-bg.svg)] bg-cover before:absolute before:inset-0 before:bg-gradient-to-b before:from-transparent before:to-[#121212] before:pointer-events-none">
+      <div className="relative bg-[url(/dark-gradient-bg.svg)] bg-cover before:absolute before:inset-0 before:bg-gradient-to-b before:from-transparent before:to-[#121212] before:pointer-events-none" style={{ marginBottom: '-1px' }}>
         <div className="relative z-10">
           <Hero heroRef={heroRef} />
           <Demo demoRef={demoRef} />
@@ -112,7 +112,7 @@ function Home() {
       <Solution />
       {/* <Features /> */}
       <Security />
-      <Implementation />
+      <MobileTimeline />
       {/* <CardsSection /> */}
       <FAQ />
       <Form />
