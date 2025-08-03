@@ -9,11 +9,6 @@ const ANIMATION_CONFIG = {
         duration: 3000, // ms
         class: "duration-[3000ms]"
     },
-    skeleton: {
-        fadeInDelay: 1500, // ms before transition ends
-        fadeInDuration: 500, // ms
-        class: "duration-[500ms]"
-    }
 } as const;
 
 // Layout configuration
@@ -90,11 +85,6 @@ export default function InteractiveDemo({
         if (isDraggingFile && isOverUpload) {
             setIsUploading(true);
 
-            // Show skeletons 750ms before transition ends
-            setTimeout(() => {
-                setShowSkeletons(true);
-            }, ANIMATION_CONFIG.transition.duration - ANIMATION_CONFIG.skeleton.fadeInDelay);
-
             // After transition duration, set extraction complete
             setTimeout(() => {
                 setExtractionComplete(true);
@@ -139,7 +129,7 @@ export default function InteractiveDemo({
                         </p>
                         {badgeText && badgeLink && (
                             <a href={badgeLink}>
-                                <Badge variant="secondary" className="mt-2 mb-4 bg-slate-600 hover:bg-slate-400 hover:text-slate-900 transition-colors cursor-pointer">
+                                <Badge variant="secondary" className="mt-2 mb-4 !text-secondary-foreground !bg-slate-600 hover:!bg-slate-400 !hover:text-slate-900 transition-colors cursor-pointer">
                                     {badgeText} →
                                 </Badge>
                             </a>
@@ -258,7 +248,7 @@ export default function InteractiveDemo({
                                     <div className="absolute inset-[3px] rounded-lg bg-[#121212]" />
                                 </div>
                                 {extractionComplete ? (
-                                    <div className="flex flex-col items-center justify-center relative z-10 w-full h-full">
+                                    <div className="flex items-center justify-center relative z-10 w-full h-full">
                                         {extractionCompleteContent}
                                     </div>
                                 ) : isUploading ? (
@@ -277,37 +267,6 @@ export default function InteractiveDemo({
                                         <p className="text-blue-400">
                                             Processing your document
                                         </p>
-
-                                        {/* Skeletons that fade in */}
-                                        <div className={`transition-opacity ${ANIMATION_CONFIG.skeleton.class} ${showSkeletons ? 'opacity-100' : 'opacity-0'}`}>
-                                            <div className="mt-8 space-y-4">
-                                                {/* Header skeleton */}
-                                                <div className="h-6 bg-slate-700 rounded animate-pulse w-3/4 mx-auto"></div>
-
-                                                {/* Content skeletons */}
-                                                <div className="space-y-3">
-                                                    <div className="h-4 bg-slate-700 rounded animate-pulse w-full"></div>
-                                                    <div className="h-4 bg-slate-700 rounded animate-pulse w-5/6"></div>
-                                                    <div className="h-4 bg-slate-700 rounded animate-pulse w-4/5"></div>
-                                                </div>
-
-                                                {/* Data rows */}
-                                                <div className="space-y-2 mt-6">
-                                                    <div className="flex justify-between items-center">
-                                                        <div className="h-3 bg-slate-700 rounded animate-pulse w-1/4"></div>
-                                                        <div className="h-3 bg-slate-700 rounded animate-pulse w-1/3"></div>
-                                                    </div>
-                                                    <div className="flex justify-between items-center">
-                                                        <div className="h-3 bg-slate-700 rounded animate-pulse w-1/3"></div>
-                                                        <div className="h-3 bg-slate-700 rounded animate-pulse w-1/4"></div>
-                                                    </div>
-                                                    <div className="flex justify-between items-center">
-                                                        <div className="h-3 bg-slate-700 rounded animate-pulse w-1/2"></div>
-                                                        <div className="h-3 bg-slate-700 rounded animate-pulse w-1/5"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 ) : (
                                     <div className="text-center relative z-10">

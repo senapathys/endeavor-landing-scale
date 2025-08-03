@@ -7,44 +7,137 @@ function OrderEntry() {
     // Custom extraction complete content for Order Entry
     const orderEntryExtractionContent = (
         <>
-            <div className="w-16 h-16 bg-green-900 rounded-full flex items-center justify-center mb-4">
-                <span className="text-green-400 text-2xl">✅</span>
-            </div>
-            <h4 className="text-xl font-semibold text-green-300 mb-2 text-center">
-                Order Entry Complete!
-            </h4>
-            <p className="text-green-400 text-center mb-4">
-                Your order has been successfully entered into the system
-            </p>
-            <div className="bg-slate-800 rounded-lg p-4 max-w-md">
-                <h5 className="text-green-300 font-medium mb-2">Order Details:</h5>
-                <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                        <span className="text-slate-400">Order #:</span>
-                        <span className="text-white">OE-2024-001</span>
-                    </div>
-                    <div className="flex justify-between">
-                        <span className="text-slate-400">Customer:</span>
-                        <span className="text-white">Tech Solutions Inc</span>
-                    </div>
-                    <div className="flex justify-between">
-                        <span className="text-slate-400">Items:</span>
-                        <span className="text-white">15</span>
-                    </div>
-                    <div className="flex justify-between">
-                        <span className="text-slate-400">Total:</span>
-                        <span className="text-white">$8,750.00</span>
-                    </div>
-                    <div className="flex justify-between">
-                        <span className="text-slate-400">Status:</span>
-                        <span className="text-green-400">Ready for Processing</span>
-                    </div>
+            {/* Left half - JPG Display */}
+            <div className="w-1/2 h-full flex flex-col items-center justify-center pr-4">
+                <div className="rounded-lg shadow-lg border border-slate-700 overflow-hidden bg-slate-800">
+                    <img
+                        src="/mason_steel.jpg"
+                        className="max-w-[600px] max-h-[650px] object-contain"
+                        alt="Extracted Document"
+                    />
                 </div>
             </div>
-            <div className="mt-4 text-center">
-                <p className="text-slate-400 text-sm">
-                    Order has been sent to your ERP system
-                </p>
+
+            {/* Right half - Form */}
+            <div className="w-1/2 h-full flex flex-col items-start justify-start pr-25 pt-8 space-y-6">
+                {/* Order Details title centered */}
+                <div className="flex justify-center w-full">
+                    <h4 className="text-xl font-semibold text-green-300">
+                        Order Details
+                    </h4>
+                </div>
+
+                {/* Two inputs in a row */}
+                <div className="flex space-x-4 w-full">
+                    <div className="flex-1">
+                        <label className="block text-sm font-medium text-slate-300 mb-2">
+                            Company
+                        </label>
+                        <input
+                            type="text"
+                            className="w-full px-3 py-2 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
+                            defaultValue="Mason Steel"
+                        />
+                    </div>
+                    <div className="flex-1">
+                        <label className="block text-sm font-medium text-slate-300 mb-2">
+                            Purchase Order
+                        </label>
+                        <input
+                            type="text"
+                            className="w-full px-3 py-2 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-blue-500"
+                            defaultValue="98765431"
+                        />
+                    </div>
+                </div>
+
+                {/* Large address input */}
+                <div className="w-full">
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                        Address
+                    </label>
+                    <input
+                        type="text"
+                        className="w-full px-3 py-2 bg-slate-800 border border-slate-600 rounded-lg text-white focus:outline-none focus:border-blue-500"
+                        defaultValue="123 Steel Road Iron City, WA, 456789"
+                    />
+                </div>
+
+                {/* Table with 3 rows and 2 columns */}
+                <div className="w-full">
+                    <label className="block text-sm font-medium text-slate-300 mb-2">
+                        Order Items
+                    </label>
+                    <div className="bg-slate-800 border border-slate-600 rounded-lg overflow-hidden">
+                        <table className="w-full">
+                            <thead>
+                                <tr className="bg-slate-700">
+                                    <th className="px-4 py-2 text-left text-sm font-medium text-slate-300">Extracted Item</th>
+                                    <th className="px-4 py-2 text-left text-sm font-medium text-slate-300">Matched Item</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr className="border-t border-slate-600">
+                                    <td className="px-4 py-2">
+                                        <input
+                                            type="text"
+                                            className="w-full px-2 py-1 bg-slate-700 border border-slate-500 rounded text-white text-sm focus:outline-none focus:border-blue-500"
+                                            defaultValue="AeroSteel Lightweight Steel Tubes - 2” Diameter"
+                                        />
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        <select className="w-full px-2 py-1 bg-slate-700 border border-slate-500 rounded text-white text-sm focus:outline-none focus:border-blue-500">
+                                            <option value="">Select</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr className="border-t border-slate-600">
+                                    <td className="px-4 py-2">
+                                        <input
+                                            type="text"
+                                            className="w-full px-2 py-1 bg-slate-700 border border-slate-500 rounded text-white text-sm focus:outline-none focus:border-blue-500"
+                                            defaultValue="MagnumSteel Hot-Rolled Steel Plates - S275JR"
+                                        />
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        <select className="w-full px-2 py-1 bg-slate-700 border border-slate-500 rounded text-white text-sm focus:outline-none focus:border-blue-500">
+                                            <option value="">Select</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr className="border-t border-slate-600">
+                                    <td className="px-4 py-2">
+                                        <input
+                                            type="text"
+                                            className="w-full px-2 py-1 bg-slate-700 border border-slate-500 rounded text-white text-sm focus:outline-none focus:border-blue-500"
+                                            defaultValue="ArmorFlex Hardened Steel Bars - EN31"
+                                        />
+                                    </td>
+                                    <td className="px-4 py-2">
+                                        <select className="w-full px-2 py-1 bg-slate-700 border border-slate-500 rounded text-white text-sm focus:outline-none focus:border-blue-500">
+                                            <option value="">Select</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </>
     );
@@ -64,7 +157,7 @@ function OrderEntry() {
                 <meta property="og:image" content="/hero.png" />
             </Head>
             <Navbar />
-            
+
             <InteractiveDemo
                 title="Order Entry"
                 description="Experience the power of our AI-powered order entry automation."
