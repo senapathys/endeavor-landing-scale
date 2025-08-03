@@ -32,7 +32,7 @@ const Demo = () => {
 >
   <div className="relative">
     <img
-      src="/dashboard-dark-2.svg"
+      src="/dashboard-with-chat.svg"
       alt="Sample Web Application Dashboard"
       className="w-full h-auto object-cover rounded-t-lg sm:rounded-t-xl md:rounded-t-2xl lg:rounded-t-3xl"
     />
