@@ -18,14 +18,6 @@ const ANIMATION_CONFIG = {
 
 // Layout configuration
 const LAYOUT_CONFIG = {
-    expanded: {
-        width: "125%",
-        widthOffset: "15%",
-        height: "700px"
-    },
-    normal: {
-        height: "h-105" // 420px
-    },
     grid: {
         normal: "grid-cols-[30%_70%]",
         expanded: "grid-cols-[0%_100%]"
@@ -40,12 +32,12 @@ interface InteractiveDemoProps {
     extractionCompleteContent: React.ReactNode;
 }
 
-export default function InteractiveDemo({ 
-    title, 
-    description, 
-    badgeText, 
-    badgeLink, 
-    extractionCompleteContent 
+export default function InteractiveDemo({
+    title,
+    description,
+    badgeText,
+    badgeLink,
+    extractionCompleteContent
 }: InteractiveDemoProps) {
     const [isOverUpload, setIsOverUpload] = useState(false);
     const [extractionComplete, setExtractionComplete] = useState(false);
@@ -237,9 +229,9 @@ export default function InteractiveDemo({
                             <div
                                 ref={uploadRef}
                                 className={`
-                                    ${extractionComplete || isUploading ? `w-[${LAYOUT_CONFIG.expanded.width}] -mx-[${LAYOUT_CONFIG.expanded.widthOffset}]` : 'w-full'} ${extractionComplete || isUploading ? `h-[${LAYOUT_CONFIG.expanded.height}]` : LAYOUT_CONFIG.normal.height} rounded-xl
+                                    ${extractionComplete || isUploading ? 'w-[125%] -mx-[15%]' : 'w-full'} ${extractionComplete || isUploading ? 'h-[700px]' : 'h-105'} rounded-xl
                                     flex items-center justify-center transition-all relative border-2 border-dashed border-slate-600
-                                    ${extractionComplete || isUploading ? `duration-[${ANIMATION_CONFIG.transition.duration}ms]` : 'duration-1000'}
+                                    ${extractionComplete || isUploading ? 'duration-[3000ms]' : 'duration-1000'}
                                     ${isOverUpload && !extractionComplete
                                         ? 'bg-blue-900/20 shadow-lg scale-105'
                                         : 'bg-[#1a1a1a]/50'

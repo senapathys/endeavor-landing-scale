@@ -4,14 +4,22 @@ import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
 import { NavigationMenuDemo } from "./NavigationMenu";
 import { Menu, X } from "lucide-react";
+import { GlowEffect } from "@/components/core/glow-effect";
 
 function Navbar() {
   const [navbarState, setNavbarState] = useState("hero"); // 'hero', 'scrolled', 'scroll-feature', 'security', 'testimonials', 'form'
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
+      if (typeof window === 'undefined') return;
+
       const heroHeight = window.innerHeight;
       const scrollFeatureSection = document.getElementById("scroll-feature"); // Desktop scroll feature
       const scrollFeatureMobile = document.getElementById("scroll-feature-mobile"); // Mobile scroll feature
@@ -39,24 +47,24 @@ function Navbar() {
 
       // Check scroll-feature section
       let nearScrollFeature = false;
-      
+
       // Check desktop scroll feature
       if (scrollFeatureSection && window.innerWidth >= 1024) {
         const sectionTop = scrollFeatureSection.offsetTop;
         const sectionBottom = sectionTop + scrollFeatureSection.offsetHeight;
         const scrollPosition = window.scrollY + window.innerHeight * 0.1;
-        
+
         nearScrollFeature =
           scrollPosition > sectionTop &&
           window.scrollY < sectionBottom + 20;
       }
-      
+
       // Check mobile scroll feature
       if (scrollFeatureMobile && window.innerWidth < 1024) {
         const sectionTop = scrollFeatureMobile.offsetTop;
         const sectionBottom = sectionTop + scrollFeatureMobile.offsetHeight;
         const scrollPosition = window.scrollY + window.innerHeight * 0.05;
-        
+
         nearScrollFeature =
           scrollPosition > (sectionTop - 100) &&
           window.scrollY < sectionBottom + 10;
@@ -93,7 +101,7 @@ function Navbar() {
 
       // Update scroll state
       setIsScrolled(window.scrollY > 30);
-      
+
       // Set state based on priority (order matters!)
       if (nearSecurity) {
         console.log("security");
@@ -116,13 +124,15 @@ function Navbar() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    if (typeof window !== 'undefined') {
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
   }, []);
 
   const getNavbarClasses = () => {
     const backdropClass = isScrolled ? "backdrop-blur-md" : "";
-    
+
     switch (navbarState) {
       case "hero":
         return `text-zinc-900 bg-transparent ${backdropClass}`;
@@ -199,13 +209,33 @@ function Navbar() {
           <NavigationMenuDemo getLinkClasses={getLinkClasses} />
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden md:flex items-center space-x-4">
+          <div className="relative">
+            <GlowEffect
+              mode="rotate"
+              blur="softest"
+              colors={['rgba(208, 30, 40, 0.8)', 'rgba(37, 115, 163, 0.8)', 'rgba(208, 30, 40, 0.8)']}
+              duration={5}
+              scale={1.1}
+              className="rounded-lg"
+            />
+            <Link href="/order-entry">
+              <Button
+                color={isClient ? `${navbarState === "scrolled" || navbarState === "scroll-feature"
+                  ? "white"
+                  : "dark"
+                  }` : "dark"}
+                className="relative z-20 transition-all duration-300 cursor-pointer"
+              >
+                Experience Endeavor
+              </Button>
+            </Link>
+          </div>
           <Button
-            color={`${
-              navbarState === "scrolled" || navbarState === "scroll-feature"
-                ? "dark"
-                : "white"
-            }`}
+            color={`${navbarState === "scrolled" || navbarState === "scroll-feature"
+              ? "dark"
+              : "white"
+              }`}
             className="transition-all duration-300"
           >
             Book a demo
@@ -259,7 +289,28 @@ function Navbar() {
                 Contact
               </Link>
             </div>
-            <div className="pt-4 border-t border-gray-200/20">
+            <div className="pt-4 border-t border-gray-200/20 space-y-3">
+              <div className="relative">
+                <GlowEffect
+                  mode="rotate"
+                  blur="softest"
+                  colors={['rgba(208, 30, 40, 0.8)', 'rgba(37, 115, 163, 0.8)', 'rgba(208, 30, 40, 0.8)']}
+                  duration={5}
+                  scale={1.1}
+                  className="rounded-lg"
+                />
+                <Link href="/order-entry">
+                  <Button
+                    color={isClient ? `${navbarState === "scrolled" || navbarState === "scroll-feature"
+                      ? "white"
+                      : "dark"
+                      }` : "dark"}
+                    className="relative z-20 w-full transition-all duration-300 cursor-pointer"
+                  >
+                    Experience Endeavor
+                  </Button>
+                </Link>
+              </div>
               <Button color="dark" className="w-full">
                 Book a demo
               </Button>
