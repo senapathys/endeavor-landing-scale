@@ -80,7 +80,7 @@ export function NavigationMenuDemo({ getLinkClasses }: NavigationMenuProps) {
                 <NavigationMenuLink asChild className="hover:!bg-[#1F1F1F]/80">
                   <a
                     className="bg-[#1F1F1F]/40 text-[#F5F7F9] backdrop-blur-lg p-6 rounded-xl border-[#F5F7F9]/10 border block no-underline outline-none select-none transition-all duration-300 hover:bg-[#1F1F1F]/90 hover:border-[#F5F7F9]/20 shadow-[inset_0_1px_0_rgba(245,247,249,0.1),inset_0_-1px_0_rgba(0,0,0,0.2),0_4px_8px_rgba(0,0,0,0.3)] hover:shadow-[inset_0_1px_0_rgba(245,247,249,0.15),inset_0_-1px_0_rgba(0,0,0,0.3),0_8px_16px_rgba(0,0,0,0.4)]"
-                    href="/"
+                    href="/omelas"
                   >
                     <h3 className="text-xl text-[#F5F7F9] font-medium">
                       App 1
