@@ -173,10 +173,10 @@ export function NavigationMenuDemo({ getLinkClasses }: NavigationMenuProps) {
             className={`!bg-transparent hover:!bg-transparent focus:bg-transparent data-[state=open]:!bg-transparent hover:text-current focus:text-current data-[state=open]:text-current ${navigationMenuTriggerStyle()}`}
           >
             <Link
-              href="/docs"
+              href="/careers"
               className={`bg-transparent transition-colors duration-300 ${getLinkClasses()}`}
             >
-              Docs
+              Careers
             </Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
