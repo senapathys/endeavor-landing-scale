@@ -47,6 +47,14 @@
   --color-brand-bright: #f6f6f6;
   --color-brand-dark: #313030;
 
+  --color-bright: #f6f6f6;
+  --color-bright20: #f6f6f630;
+  --color-dark: #313130;
+  --color-fulldark: #18181b;
+  --color-fulldark50: #18181b80;
+  --color-mainred: #d01e28;
+  --color-mainblue: #2573a3;
+
   /* === DESIGN TOKENS - PRIMARY COLORS === */
   --color-primary-50: #f4f7f8;
   --color-primary-100: #e9eef2;

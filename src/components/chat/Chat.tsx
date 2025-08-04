@@ -22,17 +22,17 @@ const suggestedActions = [
   {
     title: "Compare designs",
     label: "Find the design that best suits multiple retailers",
-    action: "Please compare the following designs: "
+    action: "Please compare the following designs: ",
   },
   {
     title: "Find examples",
     label: "Show specific examples from the documentation",
-    action: "Find examples of "
+    action: "Find examples of ",
   },
   {
     title: "Create charts",
     label: "Build graphs to visualize data",
-    action: "Create a chart plotting "
+    action: "Create a chart plotting ",
   },
 ];
 
@@ -115,7 +115,7 @@ const Chat = forwardRef<ChatRef, ChatProps>(
       The original text was: "${citation.originalText}"
       
       This is a sample document that would normally contain the actual PDF content. In a real implementation, this would load the actual document from the backend.`;
-      
+
       setFileContent(mockContent);
       setPageNumber(citation.pageNumber);
       setIsArtifactOpened(true);
@@ -140,7 +140,10 @@ const Chat = forwardRef<ChatRef, ChatProps>(
                 );
               }
               return (
-                <code className="bg-gray-700 px-1 py-0.5 rounded text-sm" {...props}>
+                <code
+                  className="bg-gray-700 px-1 py-0.5 rounded text-sm"
+                  {...props}
+                >
                   {children}
                 </code>
               );
@@ -157,7 +160,7 @@ const Chat = forwardRef<ChatRef, ChatProps>(
                   start: 0,
                   end: (children as string).length,
                 };
-                
+
                 return (
                   <button
                     onClick={() => handleCitationClick(citationData)}
@@ -167,7 +170,14 @@ const Chat = forwardRef<ChatRef, ChatProps>(
                   </button>
                 );
               }
-              return <a href={href} className="text-blue-400 hover:text-blue-300 underline">{children}</a>;
+              return (
+                <a
+                  href={href}
+                  className="text-blue-400 hover:text-blue-300 underline"
+                >
+                  {children}
+                </a>
+              );
             },
           }}
         >
@@ -190,7 +200,7 @@ const Chat = forwardRef<ChatRef, ChatProps>(
         timestamp: new Date().toISOString(),
       };
 
-      setMessages(prev => [...prev, newUserMessage]);
+      setMessages((prev) => [...prev, newUserMessage]);
 
       // Simulate AI response
       setTimeout(() => {
@@ -216,20 +226,11 @@ Here are some relevant sections from the documentation:
 
 ## Code Example
 
-\`\`\`javascript
-// Example API call
-const response = await fetch('/api/documents/search', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ query: userMessage })
-});
-\`\`\`
-
 Would you like me to provide more specific information about any of these topics?`,
           timestamp: new Date().toISOString(),
         };
 
-        setMessages(prev => [...prev, aiResponse]);
+        setMessages((prev) => [...prev, aiResponse]);
       }, 1000);
     };
 
@@ -257,23 +258,44 @@ Would you like me to provide more specific information about any of these topics
               <p className="text-gray-400 mb-8">
                 Ask questions about your documents and get instant answers
               </p>
-              
+
+              {/* <div className="grid grid-cols-2 gap-2 p-2">              <div className="grid grid-cols-2 gap-2 p-2">
+                {suggestedActions.map((suggestedAction, index) => (
+                  <motion.button
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ delay: 0.05 * index }}
+                    // variant="ghost"
+                    onClick={() => {setNewMessage(suggestedAction.action)}}
+                    // disabled={disabled}
+                    className="flex flex-col justify-center items-start bg-[#FAFBFC]/40 dark:bg-fulldark50 dark:text-bright rounded-lg border border-[#6b7c93]/40 p-3 text-xs font-light hover:border-[#6b7c93]/60"
+                  >
+                    <span className="font-medium mb-1">
+                      {suggestedAction.title}
+                    </span>
+                    <span className="dark:text-bright/60">
+                      {suggestedAction.label}
+                    </span>
+                  </motion.button>
+                ))}
+              </div> */}
               {/* Suggested Actions */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
                 {suggestedActions.map((action, index) => (
                   <motion.button
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ delay: 0.05 * index }}
                     key={index}
                     onClick={() => handleSuggestedAction(action.action)}
-                    className="p-4 bg-gray-800 hover:bg-gray-700 rounded-lg border border-gray-700 hover:border-gray-600 transition-all duration-200 text-left"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    className="flex flex-col justify-center items-start bg-[#18181b80] text-[#f6f6f6] rounded-lg border border-[#6b7c93]/40 p-3 text-xs font-light hover:border-[#6b7c93]/60 text-left"
                   >
                     <h3 className="font-medium text-gray-200 mb-1">
                       {action.title}
                     </h3>
-                    <p className="text-sm text-gray-400">
-                      {action.label}
-                    </p>
+                    <p className="text-sm text-gray-400">{action.label}</p>
                   </motion.button>
                 ))}
               </div>
@@ -289,24 +311,33 @@ Would you like me to provide more specific information about any of these topics
                 <div
                   className={`max-w-3xl rounded-lg px-4 py-3 ${
                     message.role === "user"
-                      ? "bg-blue-600 text-white"
-                      : "bg-gray-800 text-gray-200"
+                      ? "bg-white dark:bg-fulldark lg:max-w-2xl"
+                      : "text-[#F6F6F6] border-none lg:max-w-full text-left"
                   }`}
                 >
                   {message.isStreaming ? (
                     <div className="flex items-center space-x-2">
                       <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
+                      <div
+                        className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                        style={{ animationDelay: "0.1s" }}
+                      ></div>
+                      <div
+                        className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                        style={{ animationDelay: "0.2s" }}
+                      ></div>
                     </div>
                   ) : (
-                    renderMessageContent(message.content, message.role === "assistant")
+                    renderMessageContent(
+                      message.content,
+                      message.role === "assistant"
+                    )
                   )}
                 </div>
               </div>
             ))
           )}
-          
+
           {thinking && (
             <div className="flex justify-start">
               <div className="bg-gray-800 text-gray-200 rounded-lg px-4 py-3">
@@ -317,32 +348,40 @@ Would you like me to provide more specific information about any of these topics
               </div>
             </div>
           )}
-          
+
           <div ref={messagesEndRef} />
         </div>
 
         {/* Input */}
-        <div className="border-t border-gray-700 p-4">
-          <div className="flex items-end space-x-4">
-            <div className="flex-1">
+        <div className="p-4">
+          <div className="flex bg-transparent justify-center items-end">
+            <div className="flex items-center p-1 bg-dark/80 backdrop-blur-sm border border-[#6b7c93]/40 rounded-2xl shadow-lg w-full hover:border-[#6b7c93]/60 focus-within:ring-1 focus-within:ring-bright transition-colors duration-150">
               <textarea
                 ref={inputRef}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Ask a question about your documents..."
-                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-gray-200 placeholder-gray-400 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                placeholder="How can I help you today?"
+                className="flex-1 px-4 py-2 bg-transparent border-none focus:outline-none focus:ring-0 text-sm text-bright resize-none min-h-[40px] leading-6"
+                disabled={isCreatingSession}
                 rows={1}
-                style={{ minHeight: "44px", maxHeight: "120px" }}
+                style={{ maxHeight: "120px" }}
               />
+              <button
+                onClick={handleSendMessage}
+                disabled={!inputValue.trim() || isCreatingSession}
+                className="rounded-full p-1.5 h-fit bg-bright mr-2 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity duration-200"
+              >
+                {isCreatingSession ? (
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-dark"></div>
+                ) : (
+                  <ArrowUpIcon
+                    size={14}
+                    className="text-dark"
+                  />
+                )}
+              </button>
             </div>
-            <button
-              onClick={handleSendMessage}
-              disabled={!inputValue.trim() || isCreatingSession}
-              className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white p-3 rounded-lg transition-colors duration-200"
-            >
-              <ArrowUpIcon className="w-5 h-5" />
-            </button>
           </div>
         </div>
       </div>
@@ -352,4 +391,4 @@ Would you like me to provide more specific information about any of these topics
 
 Chat.displayName = "Chat";
 
-export default Chat; 
+export default Chat;

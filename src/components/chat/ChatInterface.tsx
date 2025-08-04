@@ -110,13 +110,13 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
     return (
       <AnimatePresence>
         <motion.div
-          className="fixed inset-0 bg-gray-900 z-50"
+          className="fixed inset-0 bg-transparent z-50"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
         >
-          <div className="flex h-full">
+          <div className="flex w-full h-full bg-[#1F1F1F] bg-[url(/dark-bg.webp)] bg-cover">
             {/* Chat Section - Subtle scale down */}
             <motion.div
               className="flex-1 flex flex-col"
@@ -179,7 +179,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
   }
 
   return (
-    <div className="flex flex-col relative h-full bg-gray-900">
+    <div className="flex flex-col relative h-full bg-[url(/dark-bg.webp)] bg-cover">
       {selectedSession && (
         <div className="absolute w-full top-0 left-0 right-[1rem] z-10 p-3 pointer-events-none px-4">
           <div className="flex justify-between">

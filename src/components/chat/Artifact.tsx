@@ -33,7 +33,7 @@ const Artifact = ({
     return (
       <AnimatePresence>
         <motion.div
-          className={`${isFullScreen ? 'w-full h-full' : 'absolute top-0 right-0 w-80 max-w-[50%]'} bg-gray-900 border-l border-gray-700 shadow-lg z-50`}
+          className={`${isFullScreen ? 'w-full h-full' : 'absolute top-0 right-0 w-80 max-w-[50%]'} bg-fulldark50 border-fulldark shadow-md shadow-lg z-50`}
           initial={{
             x: isFullScreen ? 0 : "100%",
             opacity: 0,
@@ -55,7 +55,7 @@ const Artifact = ({
         >
           <div className="h-full flex flex-col">
             {/* Header */}
-            <div className="flex justify-between items-center p-4 border-b border-gray-700 bg-gray-800">
+            <div className="flex justify-between items-center p-4 border-b border-gray-700 bg-fulldark50">
               <h3 className="text-lg font-medium text-gray-200">
                 Document Viewer
               </h3>
