@@ -25,6 +25,7 @@ interface InteractiveDemoProps {
     badgeText?: string;
     badgeLink?: string;
     extractionCompleteContent: React.ReactNode;
+    onExtractionComplete?: () => void;
 }
 
 export default function InteractiveDemo({
@@ -32,7 +33,8 @@ export default function InteractiveDemo({
     description,
     badgeText,
     badgeLink,
-    extractionCompleteContent
+    extractionCompleteContent,
+    onExtractionComplete
 }: InteractiveDemoProps) {
     const [isOverUpload, setIsOverUpload] = useState(false);
     const [extractionComplete, setExtractionComplete] = useState(false);
@@ -89,6 +91,9 @@ export default function InteractiveDemo({
             setTimeout(() => {
                 setExtractionComplete(true);
                 setIsUploading(false);
+                if (onExtractionComplete) {
+                    onExtractionComplete();
+                }
             }, ANIMATION_CONFIG.transition.duration);
         }
         setIsDraggingFile(false);
