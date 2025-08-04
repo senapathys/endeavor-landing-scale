@@ -5,12 +5,17 @@ import { useState, useEffect } from "react";
 import { NavigationMenuDemo } from "./NavigationMenu";
 import { Menu, X } from "lucide-react";
 
-function Navbar() {
-  const [navbarState, setNavbarState] = useState("hero"); // 'hero', 'scrolled', 'scroll-feature', 'security', 'testimonials', 'form'
+function Navbar({ theme = "auto" }) {
+  const [navbarState, setNavbarState] = useState(theme === "light" ? "scroll-feature" : "hero"); // 'hero', 'scrolled', 'scroll-feature', 'security', 'testimonials', 'form'
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    // If theme is forced to light, don't change navbar state based on scroll
+    if (theme === "light") {
+      return;
+    }
+
     const handleScroll = () => {
       const heroHeight = window.innerHeight;
       const scrollFeatureSection = document.getElementById("scroll-feature"); // Desktop scroll feature
