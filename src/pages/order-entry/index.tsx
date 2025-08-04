@@ -61,7 +61,7 @@ function OrderEntry() {
             </div>
 
             {/* Right half - Form */}
-            <div className="w-4/5 h-full flex flex-col items-start justify-start pr-25 pt-8 space-y-6">
+            <div className="w-4/5 h-full flex flex-col items-start justify-center pr-18 space-y-6">
                 {/* Order Details title centered */}
                 <div className="flex justify-center w-full">
                     <h4 className="text-xl font-semibold text-green-300">
@@ -127,7 +127,7 @@ function OrderEntry() {
                             <thead>
                                 <tr className="bg-slate-700">
                                     <th className="px-4 py-2 text-left text-sm font-medium text-slate-300 w-1/2">Extracted Item</th>
-                                    <th className="px-4 py-2 text-left text-sm font-medium text-slate-300 w-1/2">Suggested Match</th>
+                                    <th className="px-4 py-2 text-left text-sm font-medium text-slate-300 w-1/2">Suggested Catalog Match</th>
                                 </tr>
                             </thead>
                             <tbody>
