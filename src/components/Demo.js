@@ -15,7 +15,7 @@ const Demo = () => {
   }, []);
 
   return (
-    <div className="pt-6 sm:pt-10 relative lg:min-h-[800px] px-4 sm:px-6">
+    <div className="pt-6 sm:pt-10 relative lg:min-h-[600px] xl:min-h-[800px] px-4 sm:px-6">
       {/* <div className="absolute inset-0 cosmic-grid opacity-20 pointer-events-none"></div> */}
       {/* <div className="absolute left-0 right-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[rgba(0,0,0,0.07)] pointer-events-none z-20"></div> */}
       <div
