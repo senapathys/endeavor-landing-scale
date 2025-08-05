@@ -4,7 +4,7 @@ function Hero({ heroRef }) {
   return (
     <div
       ref={heroRef}
-      className="grid grid-cols-1 pt-24 sm:pt-32 md:pt-40 text-center pb-6 sm:pb-10 relative px-4 sm:px-6"
+      className="grid grid-cols-1 pt-24 sm:pt-32 md:pt-40 text-center pb-6 sm:pb-8 relative px-4 sm:px-6"
     >
       {/* <div className="absolute inset-0 cosmic-grid opacity-20 pointer-events-none"></div> */}
       <div className="max-w-4xl mx-auto relative z-10">

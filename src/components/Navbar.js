@@ -18,11 +18,13 @@ function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (typeof window === 'undefined') return;
+      if (typeof window === "undefined") return;
 
       const heroHeight = window.innerHeight;
       const scrollFeatureSection = document.getElementById("scroll-feature"); // Desktop scroll feature
-      const scrollFeatureMobile = document.getElementById("scroll-feature-mobile"); // Mobile scroll feature
+      const scrollFeatureMobile = document.getElementById(
+        "scroll-feature-mobile"
+      ); // Mobile scroll feature
       const securitySection = document.getElementById("security");
       const testimonialsSection = document.getElementById("testimonials");
       const formSection = document.getElementById("form");
@@ -49,24 +51,23 @@ function Navbar() {
       let nearScrollFeature = false;
 
       // Check desktop scroll feature
-      if (scrollFeatureSection && window.innerWidth >= 1024) {
+      if (scrollFeatureSection && window.innerWidth >= 1025) {
         const sectionTop = scrollFeatureSection.offsetTop;
         const sectionBottom = sectionTop + scrollFeatureSection.offsetHeight;
         const scrollPosition = window.scrollY + window.innerHeight * 0.1;
 
         nearScrollFeature =
-          scrollPosition > sectionTop &&
-          window.scrollY < sectionBottom + 20;
+          scrollPosition > sectionTop && window.scrollY < sectionBottom + 20;
       }
 
       // Check mobile scroll feature
-      if (scrollFeatureMobile && window.innerWidth < 1024) {
+      if (scrollFeatureMobile && window.innerWidth <= 1024) {
         const sectionTop = scrollFeatureMobile.offsetTop;
         const sectionBottom = sectionTop + scrollFeatureMobile.offsetHeight;
         const scrollPosition = window.scrollY + window.innerHeight * 0.05;
 
         nearScrollFeature =
-          scrollPosition > (sectionTop - 100) &&
+          scrollPosition > sectionTop - 100 &&
           window.scrollY < sectionBottom + 10;
       }
 
@@ -124,7 +125,7 @@ function Navbar() {
       }
     };
 
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       window.addEventListener("scroll", handleScroll);
       return () => window.removeEventListener("scroll", handleScroll);
     }
@@ -189,6 +190,49 @@ function Navbar() {
     }
   };
 
+  const handleScrollToForm = () => {
+    const formElement = document.getElementById("form");
+    if (formElement) {
+      const elementPosition = formElement.offsetTop;
+      const isMobile = window.innerWidth < 768;
+      const offset = isMobile ? 60 : 100; // 60px on mobile, 100px on desktop
+      const offsetPosition = elementPosition - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    } else {
+      console.warn("Form element not found");
+    }
+  };
+
+  const handleMobileNavClick = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const elementPosition = element.offsetTop;
+      const isMobile = window.innerWidth < 768;
+      
+      // Use smaller offset for features section on mobile
+      let offset;
+      if (sectionId === "features" && isMobile) {
+        offset = 20; // Smaller offset for features on mobile
+      } else {
+        offset = isMobile ? 60 : 100; // Default offsets
+      }
+      
+      const offsetPosition = elementPosition - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+      
+      // Close mobile menu
+      setMobileMenuOpen(false);
+    }
+  };
+
   return (
     <nav
       className={`py-4 fixed top-0 z-50 w-full transition-all duration-150 ${getNavbarClasses()}`}
@@ -214,28 +258,40 @@ function Navbar() {
             <GlowEffect
               mode="rotate"
               blur="softest"
-              colors={['rgba(208, 30, 40, 0.8)', 'rgba(37, 115, 163, 0.8)', 'rgba(208, 30, 40, 0.8)']}
+              colors={[
+                "rgba(208, 30, 40, 0.8)",
+                "rgba(37, 115, 163, 0.8)",
+                "rgba(208, 30, 40, 0.8)",
+              ]}
               duration={5}
               scale={1.1}
               className="rounded-lg"
             />
-            <Link href="/order-entry">
+            {/* <Link href="/order-entry">
               <Button
-                color={isClient ? `${navbarState === "scrolled" || navbarState === "scroll-feature"
-                  ? "white"
-                  : "dark"
-                  }` : "dark"}
+                color={
+                  isClient
+                    ? `${
+                        navbarState === "scrolled" ||
+                        navbarState === "scroll-feature"
+                          ? "white"
+                          : "dark"
+                      }`
+                    : "dark"
+                }
                 className="relative z-20 transition-all duration-300 cursor-pointer"
               >
                 Experience Endeavor
               </Button>
-            </Link>
+            </Link> */}
           </div>
           <Button
-            color={`${navbarState === "scrolled" || navbarState === "scroll-feature"
-              ? "dark"
-              : "white"
-              }`}
+            onClick={handleScrollToForm}
+            color={`${
+              navbarState === "scrolled" || navbarState === "scroll-feature"
+                ? "dark"
+                : "white"
+            }`}
             className="transition-all duration-300"
           >
             Book a demo
@@ -260,58 +316,71 @@ function Navbar() {
         <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md border-b border-gray-200/20 shadow-lg">
           <div className="px-4 py-6 space-y-4">
             <div className="space-y-2">
-              <Link
-                href="#solution"
-                className="block py-2 text-gray-900 hover:text-gray-700 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+              <button
+                className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-left w-full"
+                onClick={() => handleMobileNavClick("features")}
+              >
+                Features
+              </button>
+              <button
+                className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-left w-full"
+                onClick={() => handleMobileNavClick("solution")}
               >
                 Solutions
-              </Link>
-              <Link
-                href="#demo"
-                className="block py-2 text-gray-900 hover:text-gray-700 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+              </button>
+              <button
+                className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-left w-full"
+                onClick={() => handleMobileNavClick("implementation")}
               >
-                Demo
-              </Link>
-              <Link
-                href="#testimonials"
-                className="block py-2 text-gray-900 hover:text-gray-700 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+                Implementation
+              </button>
+              <button
+                className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-left w-full"
+                onClick={() => handleMobileNavClick("faq")}
               >
-                Testimonials
-              </Link>
-              <Link
-                href="#form"
-                className="block py-2 text-gray-900 hover:text-gray-700 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Contact
-              </Link>
+                FAQ
+              </button>
             </div>
             <div className="pt-4 border-t border-gray-200/20 space-y-3">
-              <div className="relative">
+              {/* <div className="relative">
                 <GlowEffect
                   mode="rotate"
                   blur="softest"
-                  colors={['rgba(208, 30, 40, 0.8)', 'rgba(37, 115, 163, 0.8)', 'rgba(208, 30, 40, 0.8)']}
+                  colors={[
+                    "rgba(208, 30, 40, 0.8)",
+                    "rgba(37, 115, 163, 0.8)",
+                    "rgba(208, 30, 40, 0.8)",
+                  ]}
                   duration={5}
                   scale={1.1}
                   className="rounded-lg"
                 />
                 <Link href="/order-entry">
                   <Button
-                    color={isClient ? `${navbarState === "scrolled" || navbarState === "scroll-feature"
-                      ? "white"
-                      : "dark"
-                      }` : "dark"}
+                    color={
+                      isClient
+                        ? `${
+                            navbarState === "scrolled" ||
+                            navbarState === "scroll-feature"
+                              ? "white"
+                              : "dark"
+                          }`
+                        : "dark"
+                    }
                     className="relative z-20 w-full transition-all duration-300 cursor-pointer"
                   >
                     Experience Endeavor
                   </Button>
                 </Link>
-              </div>
-              <Button color="dark" className="w-full">
+              </div> */}
+              <Button
+                onClick={() => {
+                  handleScrollToForm();
+                  setMobileMenuOpen(false);
+                }}
+                color="dark"
+                className="w-full"
+              >
                 Book a demo
               </Button>
             </div>

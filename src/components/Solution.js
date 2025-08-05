@@ -45,7 +45,7 @@ function Solution() {
             </p>
             <img src="/solution/pricing.svg" alt="pricing" className="mt-2 sm:mt-4" />
           </div>
-          <div className="col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-3 p-4 sm:p-6 md:p-8 rounded-lg bg-[#E5E7EB]/40 border-secondary-200/40 border-1">
+          <div className="flex flex-col justify-between items-center col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-3 p-4 pb-0 sm:p-6 sm:pb-0 md:p-8 md:pb-0 rounded-lg bg-[#E5E7EB]/40 border-secondary-200/40 border-1">
             <h3 className="text-lg sm:text-xl text-zinc-900 px-2 sm:px-8">Automated Emailing</h3>
             <p className="text-zinc-600 text-xs sm:text-sm mt-2 px-2 sm:px-8">
               Email quotes directly to your customers with one click

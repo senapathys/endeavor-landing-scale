@@ -59,9 +59,69 @@ interface NavigationMenuProps {
 
 export function NavigationMenuDemo({ getLinkClasses }: NavigationMenuProps) {
   return (
-    <NavigationMenu viewport={false}>
-      <NavigationMenuList>
+    <NavigationMenu viewport={false} className="">
+      <NavigationMenuList className="">
         <NavigationMenuItem
+          className={`bg-transparent transition-colors duration-300 ${getLinkClasses()}`}
+        >
+          <NavigationMenuLink
+            asChild
+            className={`!bg-transparent hover:!bg-transparent focus:bg-transparent data-[state=open]:!bg-transparent hover:text-current focus:text-current data-[state=open]:text-current ${navigationMenuTriggerStyle()}`}
+          >
+            <Link
+              href="#solution"
+              className={`bg-transparent transition-colors duration-300 ${getLinkClasses()}`}
+              onClick={(e) => {
+                e.preventDefault();
+                const solutionElement = document.getElementById("features");
+                if (solutionElement) {
+                  solutionElement.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+
+                  // Remove focus after scroll animation completes (typically ~500-800ms)
+                  setTimeout(() => {
+                    (e.target as HTMLElement)?.blur();
+                  }, 800);
+                }
+              }}
+            >
+              Features
+            </Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem
+          className={`bg-transparent transition-colors duration-300 ${getLinkClasses()}`}
+        >
+          <NavigationMenuLink
+            asChild
+            className={`!bg-transparent hover:!bg-transparent focus:bg-transparent data-[state=open]:!bg-transparent hover:text-current focus:text-current data-[state=open]:text-current ${navigationMenuTriggerStyle()}`}
+          >
+            <Link
+              href="#solution"
+              className={`bg-transparent transition-colors duration-300 ${getLinkClasses()}`}
+              onClick={(e) => {
+                e.preventDefault();
+                const solutionElement = document.getElementById("solution");
+                if (solutionElement) {
+                  solutionElement.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+
+                  // Remove focus after scroll animation completes (typically ~500-800ms)
+                  setTimeout(() => {
+                    (e.target as HTMLElement)?.blur();
+                  }, 800);
+                }
+              }}
+            >
+              Solutions
+            </Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        {/* <NavigationMenuItem
           className={`bg-transparent transition-colors duration-300 ${getLinkClasses()}`}
         >
           <NavigationMenuTrigger className="bg-transparent hover:!bg-transparent focus:bg-transparent data-[state=open]:!bg-transparent hover:text-current focus:text-current data-[state=open]:text-current">
@@ -133,7 +193,7 @@ export function NavigationMenuDemo({ getLinkClasses }: NavigationMenuProps) {
                   </a>
                 </NavigationMenuLink>
               </li>
-              {/* <ListItem href="/docs" title="Introduction">
+              <ListItem href="/docs" title="Introduction">
                 Re-usable components built using Radix UI and Tailwind CSS.
               </ListItem>
               <ListItem href="/docs/installation" title="Installation">
@@ -141,17 +201,17 @@ export function NavigationMenuDemo({ getLinkClasses }: NavigationMenuProps) {
               </ListItem>
               <ListItem href="/docs/primitives/typography" title="Typography">
                 Styles for headings, paragraphs, lists...etc
-              </ListItem> */}
+              </ListItem>
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem
+        </NavigationMenuItem> */}
+        {/* <NavigationMenuItem
           className={`bg-transparent transition-colors duration-300 ${getLinkClasses()}`}
         >
           <NavigationMenuTrigger className="bg-transparent hover:!bg-transparent focus:bg-transparent data-[state=open]:!bg-transparent hover:text-current focus:text-current data-[state=open]:text-current">
             Components
           </NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent className="">
             <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {components.map((component) => (
                 <ListItem
@@ -179,17 +239,17 @@ export function NavigationMenuDemo({ getLinkClasses }: NavigationMenuProps) {
               Docs
             </Link>
           </NavigationMenuLink>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
         {/* <NavigationMenuItem
           className={`bg-transparent transition-colors duration-300 ${getLinkClasses()}`}
         >
           <NavigationMenuTrigger className="bg-transparent hover:!bg-transparent focus:bg-transparent data-[state=open]:!bg-transparent hover:text-current focus:text-current data-[state=open]:text-current">
             List
           </NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent className="">
             <ul className="grid w-[300px] gap-4">
               <li>
-                <NavigationMenuLink asChild>
+                <NavigationMenuLink asChild className="">
                   <Link href="#">
                     <div className="font-medium">Components</div>
                     <div className="text-muted-foreground">
@@ -197,7 +257,7 @@ export function NavigationMenuDemo({ getLinkClasses }: NavigationMenuProps) {
                     </div>
                   </Link>
                 </NavigationMenuLink>
-                <NavigationMenuLink asChild>
+                <NavigationMenuLink asChild className="">
                   <Link href="#">
                     <div className="font-medium">Documentation</div>
                     <div className="text-muted-foreground">
@@ -205,7 +265,7 @@ export function NavigationMenuDemo({ getLinkClasses }: NavigationMenuProps) {
                     </div>
                   </Link>
                 </NavigationMenuLink>
-                <NavigationMenuLink asChild>
+                <NavigationMenuLink asChild className="">
                   <Link href="#">
                     <div className="font-medium">Blog</div>
                     <div className="text-muted-foreground">
@@ -223,16 +283,16 @@ export function NavigationMenuDemo({ getLinkClasses }: NavigationMenuProps) {
           <NavigationMenuTrigger className="bg-transparent hover:!bg-transparent focus:bg-transparent data-[state=open]:!bg-transparent hover:text-current focus:text-current data-[state=open]:text-current">
             Simple
           </NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent className="">
             <ul className="grid w-[200px] gap-4">
               <li>
-                <NavigationMenuLink asChild>
+                <NavigationMenuLink asChild className="">
                   <Link href="#">Components</Link>
                 </NavigationMenuLink>
-                <NavigationMenuLink asChild>
+                <NavigationMenuLink asChild className="">
                   <Link href="#">Documentation</Link>
                 </NavigationMenuLink>
-                <NavigationMenuLink asChild>
+                <NavigationMenuLink asChild className="">
                   <Link href="#">Blocks</Link>
                 </NavigationMenuLink>
               </li>
@@ -242,25 +302,95 @@ export function NavigationMenuDemo({ getLinkClasses }: NavigationMenuProps) {
         <NavigationMenuItem
           className={`bg-transparent transition-colors duration-300 ${getLinkClasses()}`}
         >
+          <NavigationMenuLink
+            asChild
+            className={`!bg-transparent hover:!bg-transparent focus:bg-transparent data-[state=open]:!bg-transparent hover:text-current focus:text-current data-[state=open]:text-current ${navigationMenuTriggerStyle()}`}
+          >
+            <Link
+              href="#solution"
+              className={`bg-transparent transition-colors duration-300 ${getLinkClasses()}`}
+              onClick={(e) => {
+                e.preventDefault();
+                const implementationElement = document.getElementById("implementation");
+                if (implementationElement) {
+                  const elementPosition = implementationElement.offsetTop;
+                  const isMobile = window.innerWidth < 768;
+                  const offset = isMobile ? 60 : 100;
+                  const offsetPosition = elementPosition - offset;
+
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth",
+                  });
+
+                  // Remove focus after scroll animation completes (typically ~500-800ms)
+                  setTimeout(() => {
+                    (e.target as HTMLElement)?.blur();
+                  }, 800);
+                }
+              }}
+            >
+              Implementation
+            </Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem
+          className={`bg-transparent transition-colors duration-300 ${getLinkClasses()}`}
+        >
+          <NavigationMenuLink
+            asChild
+            className={`!bg-transparent hover:!bg-transparent focus:bg-transparent data-[state=open]:!bg-transparent hover:text-current focus:text-current data-[state=open]:text-current ${navigationMenuTriggerStyle()}`}
+          >
+            <Link
+              href="#solution"
+              className={`bg-transparent transition-colors duration-300 ${getLinkClasses()}`}
+              onClick={(e) => {
+                e.preventDefault();
+                const faqElement = document.getElementById('faq');
+                if (faqElement) {
+                  const elementPosition = faqElement.offsetTop;
+                  const isMobile = window.innerWidth < 768;
+                  const offset = isMobile ? 60 : 100;
+                  const offsetPosition = elementPosition - offset;
+
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth',
+                  });
+                  
+                  // Remove focus after scroll animation completes (typically ~500-800ms)
+                  setTimeout(() => {
+                    (e.target as HTMLElement)?.blur();
+                  }, 800);
+                }
+              }}
+            >
+              FAQ
+            </Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        {/* <NavigationMenuItem
+          className={`bg-transparent transition-colors duration-300 ${getLinkClasses()}`}
+        >
           <NavigationMenuTrigger className="bg-transparent hover:!bg-transparent focus:bg-transparent data-[state=open]:!bg-transparent hover:text-current focus:text-current data-[state=open]:text-current">
             With Icon
           </NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent className="">
             <ul className="grid w-[200px] gap-4">
               <li>
-                <NavigationMenuLink asChild>
+                <NavigationMenuLink asChild className="">
                   <Link href="#" className="flex-row items-center gap-2">
                     <CircleHelpIcon />
                     Backlog
                   </Link>
                 </NavigationMenuLink>
-                <NavigationMenuLink asChild>
+                <NavigationMenuLink asChild className="">
                   <Link href="#" className="flex-row items-center gap-2">
                     <CircleIcon />
                     To Do
                   </Link>
                 </NavigationMenuLink>
-                <NavigationMenuLink asChild>
+                <NavigationMenuLink asChild className="">
                   <Link href="#" className="flex-row items-center gap-2">
                     <CircleCheckIcon />
                     Done
@@ -269,7 +399,7 @@ export function NavigationMenuDemo({ getLinkClasses }: NavigationMenuProps) {
               </li>
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
       </NavigationMenuList>
     </NavigationMenu>
   );
@@ -283,7 +413,7 @@ function ListItem({
 }: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
   return (
     <li {...props}>
-      <NavigationMenuLink asChild>
+      <NavigationMenuLink asChild className="">
         <Link href={href}>
           <div className="text-sm leading-none font-medium">{title}</div>
           <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">

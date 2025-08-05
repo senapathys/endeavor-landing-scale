@@ -197,9 +197,9 @@ export default function ScrollFeatureSection() {
   }, []);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12">
+    <section id="features" className="max-w-7xl mx-auto px-4 py-12">
       {/* MOBILE LAYOUT */}
-      <div id="scroll-feature-mobile" className="lg:hidden">
+      <div id="scroll-feature-mobile" className="xl:hidden">
         <div className="sticky top-16 bg-white pb-4 z-10 border-b border-gray-200 pt-4 mb-8">
           <h2 className="text-3xl font-normal mb-2">
             Turn complexity into conviction
@@ -222,7 +222,7 @@ export default function ScrollFeatureSection() {
       </div>
 
       {/* DESKTOP LAYOUT */}
-      <div id="scroll-feature" className="hidden lg:grid lg:grid-cols-2 gap-20">
+      <div id="scroll-feature" className="hidden xl:grid xl:grid-cols-2 gap-20">
         {/* LEFT COLUMN */}
         <div className="relative h-[calc(100%-25vh)]">
           <div className="sticky top-16 bg-white pb-4 z-10 border-b border-gray-200 pt-4">
