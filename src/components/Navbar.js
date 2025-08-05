@@ -30,9 +30,19 @@ function Navbar() {
       const erpSection = document.getElementById("erp");
       const formSection = document.getElementById("form");
 
-      // Check hero first - more responsive on mobile
-      const pastHero =
-        window.scrollY > heroHeight * (window.innerWidth < 768 ? 0.8 : 1.5);
+      // Check hero first - adjusted for ultra-wide screens
+      let heroMultiplier;
+      if (window.innerWidth < 768) {
+        heroMultiplier = 0.8; // Mobile
+      } else if (window.innerWidth >= 3000) {
+        heroMultiplier = 2.5; // Ultra-wide screens (3440x1440 etc)
+      } else if (window.innerWidth >= 1920) {
+        heroMultiplier = 2.0; // Large screens
+      } else {
+        heroMultiplier = 1.5; // Standard desktop
+      }
+      
+      const pastHero = window.scrollY > heroHeight * heroMultiplier;
 
       // Check testimonials section
       let nearTestimonials = false;
@@ -65,8 +75,8 @@ function Navbar() {
       // Check scroll-feature section
       let nearScrollFeature = false;
 
-      // Check desktop scroll feature
-      if (scrollFeatureSection && window.innerWidth >= 1025) {
+      // Check desktop scroll feature - only for screens 1280px and above
+      if (scrollFeatureSection && window.innerWidth >= 1280) {
         const sectionTop = scrollFeatureSection.offsetTop;
         const sectionBottom = sectionTop + scrollFeatureSection.offsetHeight;
         const scrollPosition = window.scrollY + window.innerHeight * 0.1;
@@ -75,8 +85,8 @@ function Navbar() {
           scrollPosition > sectionTop && window.scrollY < sectionBottom + 20;
       }
 
-      // Check mobile scroll feature
-      if (scrollFeatureMobile && window.innerWidth <= 1024) {
+      // Check mobile scroll feature - for screens below 1280px
+      if (scrollFeatureMobile && window.innerWidth < 1280) {
         const sectionTop = scrollFeatureMobile.offsetTop;
         const sectionBottom = sectionTop + scrollFeatureMobile.offsetHeight;
         const scrollPosition = window.scrollY + window.innerHeight * 0.05;
@@ -156,9 +166,9 @@ function Navbar() {
       case "hero":
         return `text-zinc-900 bg-transparent ${backdropClass}`;
       case "scrolled":
-        return `text-zinc-900 bg-transparent ${backdropClass}`;
+        return `text-zinc-900 bg-white ${backdropClass}`; // White background for scrolled state
       case "scroll-feature":
-        return `text-zinc-900 bg-white ${backdropClass}`; // Different style for scroll feature
+        return `text-zinc-900 bg-white ${backdropClass}`; // White background for scroll feature
       case "testimonials":
         return `text-zinc-900 bg-transparent ${backdropClass}`;
       case "erp":

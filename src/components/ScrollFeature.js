@@ -66,26 +66,22 @@ function MobileStep({ step, isActive, onInView }) {
       ref={ref}
       className="relative"
       initial={{ opacity: 0, y: 20 }}
-      animate={{ 
-        opacity: isActive ? 1 : 0.3, 
-        y: isActive ? 0 : 10 
+      animate={{
+        opacity: isActive ? 1 : 0.3,
+        y: isActive ? 0 : 10,
       }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       {/* Content */}
       <div className="space-y-4 mb-8">
-        <h2 className="text-2xl font-normal text-gray-900">
-          {step.title}
-        </h2>
-        <p className="text-gray-600 leading-relaxed">
-          {step.description}
-        </p>
+        <h2 className="text-2xl font-normal text-gray-900">{step.title}</h2>
+        <p className="text-gray-600 leading-relaxed">{step.description}</p>
       </div>
 
       {/* Full-width Image */}
       <div className="mb-8">
-        <img 
-          src={step.image} 
+        <img
+          src={step.image}
           alt={step.title}
           className="w-full rounded-lg shadow-lg"
         />
@@ -101,27 +97,33 @@ function StickyPanel({ activeStepId, scrollDirection }) {
   const currentIndex = stepsData.findIndex((s) => s.id === activeStepId);
 
   return (
-    <div id="scroll-feature" className="sticky top-20 h-[70vh] flex items-center justify-center bg-[url(/dark-gradient-bg.svg)] bg-cover rounded-xl shadow-lg relative overflow-hidden">
+    <div
+      id="scroll-feature"
+      className="sticky top-20 h-[70vh] flex items-center justify-center bg-[url(/dark-gradient-bg.svg)] bg-cover rounded-xl shadow-lg relative overflow-hidden"
+    >
       <div className="flex justify-end items-end w-full h-full relative">
-        
         {/* Render all images with proper layering */}
         <AnimatePresence>
           {stepsData.map((stepItem, index) => {
             const isActive = stepItem.id === activeStepId;
-            const isScrollingDown = scrollDirection === 'down';
-            
+            const isScrollingDown = scrollDirection === "down";
+
             return (
               <motion.img
                 key={stepItem.id}
                 src={stepItem.image}
                 alt={stepItem.title}
-                initial={isActive ? {
-                  y: isScrollingDown ? "100%" : "-100%",
-                  opacity: 0,
-                  scale: 0.95,
-                } : false}
+                initial={
+                  isActive
+                    ? {
+                        y: isScrollingDown ? "100%" : "-100%",
+                        opacity: 0,
+                        scale: 0.95,
+                      }
+                    : false
+                }
                 animate={{
-                  y: isActive ? 0 : (index < currentIndex ? "-50%" : "50%"),
+                  y: isActive ? 0 : index < currentIndex ? "-50%" : "50%",
                   opacity: isActive ? 1 : 0,
                   scale: isActive ? 1 : 0.95,
                 }}
@@ -133,25 +135,23 @@ function StickyPanel({ activeStepId, scrollDirection }) {
                 transition={{
                   duration: isActive ? 1.2 : 0.8,
                   ease: [0.25, 0.46, 0.45, 0.94],
-                  y: { 
-                    type: "spring", 
-                    stiffness: 300, 
-                    damping: 35 
+                  y: {
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 35,
                   },
                   scale: { duration: 0.5 },
-                  opacity: { duration: isActive ? 0.4 : 0.3 }
+                  opacity: { duration: isActive ? 0.4 : 0.3 },
                 }}
-                style={{ 
+                style={{
                   height: "90%",
-                  zIndex: isActive ? 20 : (10 - Math.abs(index - currentIndex))
+                  zIndex: isActive ? 20 : 10 - Math.abs(index - currentIndex),
                 }}
                 className="absolute bottom-0 right-0 rounded-tl-lg"
               />
             );
           })}
         </AnimatePresence>
-        
-
       </div>
     </div>
   );
@@ -159,21 +159,23 @@ function StickyPanel({ activeStepId, scrollDirection }) {
 
 export default function ScrollFeatureSection() {
   const [activeStep, setActiveStep] = useState(stepsData[0].id);
-  const [scrollDirection, setScrollDirection] = useState('down');
+  const [scrollDirection, setScrollDirection] = useState("down");
   const lastScrollY = useRef(0);
   const lastActiveStep = useRef(stepsData[0].id);
 
   const handleStepInView = useCallback((id) => {
-    const currentIndex = stepsData.findIndex(s => s.id === id);
-    const prevIndex = stepsData.findIndex(s => s.id === lastActiveStep.current);
-    
+    const currentIndex = stepsData.findIndex((s) => s.id === id);
+    const prevIndex = stepsData.findIndex(
+      (s) => s.id === lastActiveStep.current
+    );
+
     // Determine scroll direction based on step index change
     if (currentIndex > prevIndex) {
-      setScrollDirection('down');
+      setScrollDirection("down");
     } else if (currentIndex < prevIndex) {
-      setScrollDirection('up');
+      setScrollDirection("up");
     }
-    
+
     setActiveStep(id);
     lastActiveStep.current = id;
   }, []);
@@ -182,38 +184,40 @@ export default function ScrollFeatureSection() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       if (currentScrollY > lastScrollY.current) {
-        setScrollDirection('down');
+        setScrollDirection("down");
       } else {
-        setScrollDirection('up');
+        setScrollDirection("up");
       }
-      
+
       lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <section id="features" className="max-w-7xl mx-auto px-4 py-12">
+    <section id="features" className="max-w-7xl mx-auto py-12">
       {/* MOBILE LAYOUT */}
       <div id="scroll-feature-mobile" className="xl:hidden">
-        <div className="sticky top-16 bg-white pb-4 z-10 border-b border-gray-200 pt-4 mb-8">
-          <h2 className="text-3xl font-normal mb-2">
-            Turn complexity into conviction
-          </h2>
-          <span className="font-light text-gray-600">
-            Incredibly flexible and fun finance copilot
-          </span>
+        <div className="sticky top-16 bg-white z-10 pt-4 mb-8 px-4 sm:px-6 md:px-8">
+          <div className="border-b border-gray-200 pb-4">
+            <h2 className="text-3xl font-normal mb-2">
+              Turn complexity into conviction
+            </h2>
+            <span className="font-light text-gray-600">
+              Incredibly flexible and fun finance copilot
+            </span>
+          </div>
         </div>
 
-        <div className="space-y-16">
+        <div className="space-y-16 px-4 sm:px-6 md:px-8">
           {stepsData.map((step, index) => (
-            <MobileStep 
-              key={step.id} 
-              step={step} 
+            <MobileStep
+              key={step.id}
+              step={step}
               isActive={step.id === activeStep}
               onInView={handleStepInView}
             />
@@ -230,8 +234,8 @@ export default function ScrollFeatureSection() {
               Order entry in seconds, not hours
             </h2>
             <span className="font-light">
-              Simplify your order process and respond to your customers instantly
-              with AI.
+              Simplify your order process and respond to your customers
+              instantly with AI.
             </span>
           </div>
 
@@ -244,7 +248,10 @@ export default function ScrollFeatureSection() {
 
         {/* RIGHT COLUMN */}
         <div>
-          <StickyPanel activeStepId={activeStep} scrollDirection={scrollDirection} />
+          <StickyPanel
+            activeStepId={activeStep}
+            scrollDirection={scrollDirection}
+          />
         </div>
       </div>
     </section>
