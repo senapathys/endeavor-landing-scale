@@ -69,7 +69,7 @@ const testimonials = [
 
 export function InfiniteSliderHoverSpeed() {
   return (
-    <div id="testimonials" className="bg-[#121212] py-12 sm:py-16 md:py-24 mb-8 sm:px-6">
+    <div id="testimonials" className="bg-[#121212] py-12 sm:py-16 md:py-24 mb-8">
       <div className="">
         {/* Header */}
         <div className="text-center space-y-3 mb-8 sm:mb-12 flex items-center flex-col mx-auto">

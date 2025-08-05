@@ -15,14 +15,14 @@ const stepsData = [
     title: "Shape data to your business logic",
     description:
       "Create flexible, structured models built to scale with your organization. Define custom inputs, tie in dimensions, and reuse inputs across plans to maintain consistency and reduce redundancy. Transform raw data into meaningful business metrics that align with your unique processes and reporting requirements.",
-    image: "/card-2.svg",
+    image: "/card-6.svg",
   },
   {
     id: "test",
     title: "Pressure test every plan",
     description:
       "Run what-if scenarios and plan for best and worst cases with ease. Stress test your assumptions by adjusting key variables and instantly see the impact across all connected metrics. Build confidence in your strategic decisions by exploring multiple outcomes before committing to a path forward.",
-    image: "/card-1.svg",
+    image: "/card-7.svg",
   },
 ];
 

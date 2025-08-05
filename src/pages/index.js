@@ -13,6 +13,7 @@ import { InfiniteSliderHoverSpeed } from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import Form from "@/components/Form";
+import Erp from "@/components/Erp";
 
 const logos = [
   {
@@ -107,6 +108,7 @@ function Home() {
         </div>
       </div>
 
+      <Erp />
       <InfiniteSliderHoverSpeed />
       <ScrollFeatureSection />
       <Solution />

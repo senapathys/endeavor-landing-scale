@@ -3,11 +3,27 @@ import Image from "next/image";
 import React from "react";
 
 const Footer = () => {
+  const handleScrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const elementPosition = element.offsetTop;
+      const isMobile = window.innerWidth < 768;
+      const offset = isMobile ? 60 : 100;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <footer className="text-white relative overflow-hidden px-4 sm:px-6 md:px-8">
-      <div className=" max-w-7xl mx-auto py-12 sm:py-16 rounded-2xl">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-8">
-          <div className="lg:col-span-1">
+      <div className="max-w-7xl mx-auto py-12 sm:py-16">
+        {/* Logo and Navigation */}
+        <div className="flex flex-col md:flex-row justify-between items-center mb-8 space-y-6 md:space-y-0">
+          <div className="flex flex-col items-center md:items-start">
             <Link className="flex items-center space-x-2 md:space-x-3" href="/">
               <Image
                 src="/industrial-ai-logo.svg"
@@ -18,8 +34,8 @@ const Footer = () => {
               />
             </Link>
 
-            {/* Social links */}
-            <div className="flex space-x-4 mt-6 sm:mt-8">
+            {/* Social Icons */}
+            <div className="flex space-x-4 mt-6 sm:mt-8 justify-center md:justify-start">
               <a
                 href="#"
                 className="w-10 h-10 bg-[#121212] hover:bg-zinc-700 rounded-lg flex items-center justify-center transition-colors"
@@ -71,149 +87,66 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Product */}
-          <div>
-            <h3 className="text-zinc-900 font-medium mb-6">Product</h3>
-            <ul className="space-y-4">
-              <li>
-                <a
-                  href="#"
-                  className="text-zinc-400 hover:text-white transition-colors"
-                >
-                  Product Updates
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-zinc-400 hover:text-white transition-colors"
-                >
-                  Features
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-zinc-400 hover:text-white transition-colors"
-                >
-                  Pricing
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-zinc-400 hover:text-white transition-colors"
-                >
-                  Integrations
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h3 className="text-zinc-900 font-medium mb-6">Resources</h3>
-            <ul className="space-y-4">
-              <li>
-                <a
-                  href="#"
-                  className="text-zinc-400 hover:text-white transition-colors"
-                >
-                  Customer stories
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-zinc-400 hover:text-white transition-colors"
-                >
-                  Product docs
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-zinc-400 hover:text-white transition-colors"
-                >
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-zinc-400 hover:text-white transition-colors"
-                >
-                  Help Center
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h3 className="text-zinc-900 font-medium mb-6">Company</h3>
-            <ul className="space-y-4">
-              <li>
-                <a
-                  href="#"
-                  className="text-zinc-400 hover:text-white transition-colors"
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-zinc-400 hover:text-white transition-colors inline-flex items-center"
-                >
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-zinc-400 hover:text-white transition-colors"
-                >
-                  Press
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-zinc-400 hover:text-white transition-colors"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Navigation Links */}
+          <nav className="flex flex-wrap justify-center gap-6 md:gap-8 px-4 sm:px-0">
+            <button
+              onClick={() => handleScrollToSection("features")}
+              className="text-[#121212] hover:text-[#121212]/60 transition-colors"
+            >
+              Features
+            </button>
+            <button
+              onClick={() => handleScrollToSection("solution")}
+              className="text-[#121212] hover:text-[#121212]/60 transition-colors"
+            >
+              Solutions
+            </button>
+            <button
+              onClick={() => handleScrollToSection("implementation")}
+              className="text-[#121212] hover:text-[#121212]/60 transition-colors"
+            >
+              Implementation
+            </button>
+            <button
+              onClick={() => handleScrollToSection("faq")}
+              className="text-[#121212] hover:text-[#121212]/60 transition-colors"
+            >
+              FAQ
+            </button>
+            <button
+              onClick={() => handleScrollToSection("form")}
+              className="text-[#121212] hover:text-[#121212]/60 transition-colors"
+            >
+              Contact
+            </button>
+          </nav>
         </div>
-        <div className="relative mb-12 sm:mb-16">
+        {/* Large background text */}
+        <div className="relative mb-8">
           <div className="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none overflow-hidden">
             <span className="text-[clamp(6rem,15vw,24rem)] font-bold leading-none tracking-tight">
               Endeavor
             </span>
           </div>
         </div>
-        {/* Bottom section */}
-        <div className="pt-6 sm:pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-zinc-400 text-light text-xs leading-relaxed">
-              832 Sansome St, San Francisco CA, 94114
-              <br />
-              <br />© 2025 Endeavor AI, Inc. All rights reserved. The services
-              and the content on this website are provided on an "as is" basis.
-              Endeavor, its licensors, and its suppliers, to the fullest extent
-              permitted by law, disclaim all warranties, either express or
-              implied, statutory or otherwise, including but not limited to the
-              implied warranties of merchantability, non-infringement of third
-              parties' rights, and fitness for particular purpose. Without
-              limiting the foregoing, Endeavor, its licensors, and its suppliers
-              make no representations or warranties about the accuracy,
-              reliability, completeness, currentness, or timeliness of the
-              content, software, text, graphics, links, or communications
-              provided on or through the use of the website.
-            </div>
+
+        {/* Copyright and Legal */}
+        <div className="pt-6">
+          <div className="text-zinc-400 text-light text-xs leading-relaxed">
+            832 Sansome St, San Francisco CA, 94114
+            <br />
+            <br />© 2025 Endeavor AI, Inc. All rights reserved. The services and
+            the content on this website are provided on an &quot;as is&quot;
+            basis. Endeavor, its licensors, and its suppliers, to the fullest
+            extent permitted by law, disclaim all warranties, either express or
+            implied, statutory or otherwise, including but not limited to the
+            implied warranties of merchantability, non-infringement of third
+            parties&apos; rights, and fitness for particular purpose. Without
+            limiting the foregoing, Endeavor, its licensors, and its suppliers
+            make no representations or warranties about the accuracy,
+            reliability, completeness, currentness, or timeliness of the
+            content, software, text, graphics, links, or communications provided
+            on or through the use of the website.
           </div>
         </div>
       </div>

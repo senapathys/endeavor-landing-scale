@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 import { GlowEffect } from "@/components/core/glow-effect";
 
 function Navbar() {
-  const [navbarState, setNavbarState] = useState("hero"); // 'hero', 'scrolled', 'scroll-feature', 'security', 'testimonials', 'form'
+  const [navbarState, setNavbarState] = useState("hero"); // 'hero', 'scrolled', 'scroll-feature', 'security', 'testimonials', 'erp', 'form'
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isClient, setIsClient] = useState(false);
@@ -27,6 +27,7 @@ function Navbar() {
       ); // Mobile scroll feature
       const securitySection = document.getElementById("security");
       const testimonialsSection = document.getElementById("testimonials");
+      const erpSection = document.getElementById("erp");
       const formSection = document.getElementById("form");
 
       // Check hero first - more responsive on mobile
@@ -43,6 +44,20 @@ function Navbar() {
           window.innerHeight * (window.innerWidth < 1024 ? 0.05 : 0.1);
 
         nearTestimonials =
+          scrollPosition > sectionTop &&
+          window.scrollY < sectionBottom - (window.innerWidth < 1024 ? 30 : 50);
+      }
+
+      // Check ERP section
+      let nearErp = false;
+      if (erpSection) {
+        const sectionTop = erpSection.offsetTop;
+        const sectionBottom = sectionTop + erpSection.offsetHeight;
+        const scrollPosition =
+          window.scrollY +
+          window.innerHeight * (window.innerWidth < 1024 ? 0.05 : 0.1);
+
+        nearErp =
           scrollPosition > sectionTop &&
           window.scrollY < sectionBottom - (window.innerWidth < 1024 ? 30 : 50);
       }
@@ -113,6 +128,9 @@ function Navbar() {
       } else if (nearTestimonials) {
         console.log("testimonials");
         setNavbarState("testimonials");
+      } else if (nearErp) {
+        console.log("erp");
+        setNavbarState("erp");
       } else if (nearScrollFeature) {
         console.log("scroll-feature");
         setNavbarState("scroll-feature");
@@ -143,6 +161,8 @@ function Navbar() {
         return `text-zinc-900 bg-white ${backdropClass}`; // Different style for scroll feature
       case "testimonials":
         return `text-zinc-900 bg-transparent ${backdropClass}`;
+      case "erp":
+        return `text-zinc-900 bg-transparent ${backdropClass}`;
       case "form":
         return `text-zinc-900 bg-transparent ${backdropClass}`;
       case "security":
@@ -162,6 +182,8 @@ function Navbar() {
         return "text-[#121212] hover:!text-[#121212]/60"; // Dark text for scroll feature
       case "testimonials":
         return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
+      case "erp":
+        return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
       case "form":
         return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
       case "security":
@@ -180,6 +202,8 @@ function Navbar() {
       case "scroll-feature":
         return ""; // Normal logo for scroll feature
       case "testimonials":
+        return "invert";
+      case "erp":
         return "invert";
       case "form":
         return "invert";
