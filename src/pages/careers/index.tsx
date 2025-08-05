@@ -20,7 +20,7 @@ function Careers() {
             </Head>
             <Navbar theme="light" />
 
-            <main className="mx-auto max-w-4xl px-6 pt-28 pb-12 leading-relaxed" style={{ fontFamily: "'Anonymous Pro', monospace" }}>
+            <main className="mx-auto max-w-4xl px-4 sm:px-6 md:px-8 pt-28 pb-12 leading-relaxed" style={{ fontFamily: "'Anonymous Pro', monospace" }}>
                 <h1 className="text-3xl font-semibold mb-8 text-zinc-900">Endeavor is AI for World Building</h1>
 
                 <p className="mb-6">
@@ -67,45 +67,101 @@ function Careers() {
                     While labs build the models of the future, we build the last-mile delivery for them. We must model complex environments, deliver reliable results, and bridge the gap between models and the antiquated ecosystems in which they must operate.
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-6 text-zinc-900">Join Us.</h2>
+                <h2 className="text-2xl font-semibold mb-10 text-zinc-900">Join Us.</h2>
 
-                <dl className="space-y-8">
+                <div className="space-y-8">
+                    {/* Engineering Section */}
                     <div>
-                        <dt className="text-lg font-semibold mb-2 text-zinc-900">
-                            AI/ML Engineer
-                        </dt>
-                        <dd className="pl-4">
-                            <p>Transform tribal knowledge into workflows and environments for frontier models to perform economically valuable tasks.</p>
-                        </dd>
+                        <h3 className="text-xl font-semibold mb-4 text-zinc-900">Engineering</h3>
+                        <dl className="space-y-6">
+                            <div>
+                                <dt className="text-lg font-semibold mb-2 text-zinc-900">
+                                    <a
+                                        href="https://jobs.ashbyhq.com/endeavor/4a5774bf-a970-4547-b938-05008e5d8194"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-zinc-700 hover:text-zinc-900 underline transition-colors"
+                                    >
+                                        AI/ML Engineer
+                                    </a>
+                                </dt>
+                                <dd className="pl-4">
+                                    <p>Transform tribal knowledge into workflows and environments for frontier models to perform economically valuable tasks.</p>
+                                </dd>
+                            </div>
+
+                            <div>
+                                <dt className="text-lg font-semibold mb-2 text-zinc-900">
+                                    <a
+                                        href="https://jobs.ashbyhq.com/endeavor/eb8b2ef9-544c-4793-96f9-c7b626fea5f8"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-zinc-700 hover:text-zinc-900 underline transition-colors"
+                                    >
+                                        Sr. Backend Engineer
+                                    </a>
+                                </dt>
+                                <dd className="pl-4">
+                                    <p>Scale infrastructure for deploying autonomous systems to operate in high-stakes environments.</p>
+                                </dd>
+                            </div>
+
+                            <div>
+                                <dt className="text-lg font-semibold mb-2 text-zinc-900">
+                                    <a
+                                        href="https://jobs.ashbyhq.com/endeavor/958f3769-f706-44d4-ac4a-424146b35d70"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-zinc-700 hover:text-zinc-900 underline transition-colors"
+                                    >
+                                        Forward Deployed Engineer
+                                    </a>
+                                </dt>
+                                <dd className="pl-4">
+                                    <p>Support enterprises in understanding model capabilities and accelerating world building.</p>
+                                </dd>
+                            </div>
+                        </dl>
                     </div>
 
+                    {/* Go-to-Market Section */}
                     <div>
-                        <dt className="text-lg font-semibold mb-2 text-zinc-900">
-                            Sr. Backend Engineer
-                        </dt>
-                        <dd className="pl-4">
-                            <p>Scale infrastructure for deploying autonomous systems to operate in high-stakes environments.</p>
-                        </dd>
-                    </div>
+                        <h3 className="text-xl font-semibold mb-4 text-zinc-900">Go-to-Market</h3>
+                        <dl className="space-y-6">
+                            <div>
+                                <dt className="text-lg font-semibold mb-2 text-zinc-900">
+                                    <a
+                                        href="https://jobs.ashbyhq.com/endeavor/6e8da79a-e631-4c91-b76d-8ff8e80a8d1d"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-zinc-700 hover:text-zinc-900 underline transition-colors"
+                                    >
+                                        Account Executive
+                                    </a>
+                                </dt>
+                                <dd className="pl-4">
+                                    <p>Scale the adoption of AI systems by leading industrial enterprises.</p>
+                                </dd>
+                            </div>
 
-                    <div>
-                        <dt className="text-lg font-semibold mb-2 text-zinc-900">
-                            Forward Deployed Engineer
-                        </dt>
-                        <dd className="pl-4">
-                            <p>Support enterprises in understanding model capabilities and accelerating world building.</p>
-                        </dd>
+                            <div>
+                                <dt className="text-lg font-semibold mb-2 text-zinc-900">
+                                    <a
+                                        href="https://jobs.ashbyhq.com/endeavor/8a1a89cd-ee9b-4100-9bf5-c096d66003b2"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-zinc-700 hover:text-zinc-900 underline transition-colors"
+                                    >
+                                        Business Development Representative
+                                    </a>
+                                </dt>
+                                <dd className="pl-4">
+                                    <p>Scale the adoption of AI systems by leading industrial enterprises.</p>
+                                </dd>
+                            </div>
+                        </dl>
                     </div>
-
-                    <div>
-                        <dt className="text-lg font-semibold mb-2 text-zinc-900">
-                            Go-to-Market
-                        </dt>
-                        <dd className="pl-4">
-                            <p>Scale the adoption of AI systems by leading industrial enterprises.</p>
-                        </dd>
-                    </div>
-                </dl>
+                </div>
             </main>
         </div>
     );
