@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import {
   Form as ShadcnForm,
   FormControl,
-  FormDescription,
+
   FormField,
   FormItem,
   FormLabel,
@@ -135,7 +135,7 @@ const Form = () => {
             Anon
           </div>
           <p className="text-[#F6F6F6]/60 text-sm sm:text-md mt-4 sm:mt-6 max-w-md leading-relaxed">
-            Ready to transform your quoting process? Get started with Endeavor's
+            Ready to transform your quoting process? Get started with Endeavor&apos;s
             AI-powered platform and see results in minutes.
           </p>
         </div>
@@ -266,7 +266,7 @@ const Form = () => {
               {submitStatus === "success" && (
                 <div className="p-4 bg-green-900/50 border border-green-700 rounded-lg">
                   <p className="text-green-300 text-sm">
-                    Thank you! Your message has been sent successfully. We'll
+                    Thank you! Your message has been sent successfully. We&apos;ll
                     get back to you soon.
                   </p>
                 </div>
@@ -281,7 +281,7 @@ const Form = () => {
                 </div>
               )}
 
-              {/* @ts-ignore */}
+              {/* @ts-expect-error Button component type mismatch */}
               <Button
                 type="submit"
                 disabled={isSubmitting}
