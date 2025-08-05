@@ -99,7 +99,7 @@ function StickyPanel({ activeStepId, scrollDirection }) {
   return (
     <div
       id="scroll-feature"
-      className="sticky top-20 h-[70vh] flex items-center justify-center bg-[url(/dark-gradient-bg.svg)] bg-cover rounded-xl shadow-lg relative overflow-hidden"
+      className="sticky top-20 h-[65vh] min-h-[600px] max-h-[700px] flex items-center justify-center bg-[url(/dark-gradient-bg.svg)] bg-cover rounded-xl shadow-lg relative overflow-hidden"
     >
       <div className="flex justify-end items-end w-full h-full relative">
         {/* Render all images with proper layering */}
@@ -145,6 +145,7 @@ function StickyPanel({ activeStepId, scrollDirection }) {
                 }}
                 style={{
                   height: "90%",
+                  maxWidth: "95%",
                   zIndex: isActive ? 20 : 10 - Math.abs(index - currentIndex),
                 }}
                 className="absolute bottom-0 right-0 rounded-tl-lg"
@@ -226,7 +227,7 @@ export default function ScrollFeatureSection() {
       </div>
 
       {/* DESKTOP LAYOUT */}
-      <div id="scroll-feature" className="hidden xl:grid xl:grid-cols-2 gap-20">
+      <div id="scroll-feature" className="hidden xl:grid xl:grid-cols-2 gap-20 md:px-8">
         {/* LEFT COLUMN */}
         <div className="relative h-[calc(100%-25vh)]">
           <div className="sticky top-16 bg-white pb-4 z-10 border-b border-gray-200 pt-4">
