@@ -142,7 +142,7 @@ function StickyPanel({ activeStepId, scrollDirection }) {
                   opacity: { duration: isActive ? 0.4 : 0.3 }
                 }}
                 style={{ 
-                  width: "90%",
+                  height: "90%",
                   zIndex: isActive ? 20 : (10 - Math.abs(index - currentIndex))
                 }}
                 className="absolute bottom-0 right-0 rounded-tl-lg"
