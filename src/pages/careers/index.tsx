@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 function Careers() {
     return (
@@ -163,6 +164,7 @@ function Careers() {
                     </div>
                 </div>
             </main>
+            <Footer />
         </div>
     );
 }
