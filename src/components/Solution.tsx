@@ -40,7 +40,7 @@ function Solution() {
             </p>
             <Image src="/solution/po.svg" alt="po" className="mt-2 sm:mt-4" width={400} height={200} />
           </div>
-          <div className="col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-3 p-4 sm:p-6 md:p-8 rounded-lg bg-[#E5E7EB]/40 border-secondary-200/40 border-1">
+          <div className="col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-3 p-4 sm:p-6 md:p-8 rounded-lg bg-[#E5E7EB]/40 border-secondary-200/40 border-1 flex flex-col justify-center items-center">
             <h3 className="text-lg sm:text-xl text-zinc-900">AI-Powered Pricing</h3>
             <p className="text-zinc-600 text-xs sm:text-sm mt-2">
               Intelligent pricing based on customer, product, and volume
@@ -52,7 +52,7 @@ function Solution() {
             <p className="text-zinc-600 text-xs sm:text-sm mt-2 px-2 sm:px-8">
               Email quotes directly to your customers with one click
             </p>
-            <Image src="/solution/email.svg" alt="email" className="mt-2 sm:mt-4" width={400} height={200} />
+            <Image src="/solution/email.svg" alt="email" className="mt-2 sm:mt-4" width={500} height={300} />
           </div>
         </div>
       </div>
