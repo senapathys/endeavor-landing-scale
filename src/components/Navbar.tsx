@@ -166,7 +166,7 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
       case "hero":
         return `text-zinc-900 bg-transparent ${backdropClass}`;
       case "scrolled":
-        return `text-zinc-900 bg-white ${backdropClass}`; // White background for scrolled state
+        return `text-zinc-900 bg-transparent ${backdropClass}`;
       case "scroll-feature":
         return `text-zinc-900 bg-white ${backdropClass}`; // White background for scroll feature
       case "testimonials":
