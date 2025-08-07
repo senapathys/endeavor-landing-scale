@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { GlowEffect } from "@/components/core/glow-effect";
 
-function Email({ style = "fill", centered = true }) {
+function Email({ style = "fill", centered = true, responsiveCentered = false }) {
   const containerClass =
     style === "fill" ? "bg-zinc-50" : "bg-white border border-zinc-200";
 
@@ -59,8 +59,12 @@ function Email({ style = "fill", centered = true }) {
     }
   };
 
+  const alignmentClass = responsiveCentered 
+    ? 'items-center lg:items-start' 
+    : (centered ? 'items-center' : 'items-start');
+
   return (
-    <div className={`w-full flex flex-col justify-center ${centered ? 'items-center' : 'items-start'}`}>
+    <div className={`w-full flex flex-col justify-center ${alignmentClass}`}>
       <form
         onSubmit={handleGetStarted}
         className="relative z-10 max-w-xs sm:max-w-sm md:max-w-sm lg:max-w-md xl:max-w-lg w-full"

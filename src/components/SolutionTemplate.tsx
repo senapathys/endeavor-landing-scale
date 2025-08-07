@@ -23,18 +23,18 @@ const SolutionHero: React.FC<{ config: SolutionConfig }> = ({ config }) => {
       <div className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 pt-24 sm:pt-32 md:pt-40 pb-12 sm:pb-16 px-4 sm:px-6 max-w-7xl mx-auto items-center">
           {/* Left side - Content */}
-          <div className="flex flex-col justify-center space-y-6 lg:space-y-8">
+          <div className="flex flex-col justify-center space-y-6 lg:space-y-8 text-center lg:text-left">
             <h1 className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-medium tracking-tighter leading-tight text-[#F6F6F6]">
               {config.title}
             </h1>
-            <p className="text-base sm:text-md md:text-lg text-[#F6F6F6] font-light leading-relaxed max-w-xl">
+            <p className="text-base sm:text-md md:text-lg text-[#F6F6F6] font-light leading-relaxed max-w-xl mx-auto lg:mx-0">
               {config.description}
             </p>
-            <div className="flex justify-start">
-              <Email style="fill" centered={false} />
+            <div className="flex justify-center lg:justify-start">
+              <Email style="fill" centered={false} responsiveCentered={true} />
             </div>
             {config.badgeText && config.badgeLink && (
-              <div className="mt-2">
+              <div className="mt-2 flex justify-center lg:justify-start">
                 <a
                   href={config.badgeLink}
                   className="inline-flex items-center px-4 py-2 text-sm text-[#F6F6F6] hover:text-[#F6F6F6]/80 transition-colors duration-200 rounded-xl border border-[#F6F6F6]/60"
@@ -47,7 +47,7 @@ const SolutionHero: React.FC<{ config: SolutionConfig }> = ({ config }) => {
           </div>
 
           {/* Right side - Hero Image/Video */}
-          <div className="flex items-center justify-center order-first lg:order-last mb-8 lg:mb-0">
+          <div className="flex items-center justify-center order-last lg:order-last mt-8 lg:mt-0">
             <div className="relative w-full max-w-2xl">
               {config.heroImage.endsWith(".mp4") ? (
                 <video
@@ -87,6 +87,7 @@ const FeatureSection: React.FC<{
 
   return (
     <section
+      id={`solution-feature-${index}`}
       className={`py-16 sm:py-20 md:py-24 ${
         index % 2 === 0 ? "bg-white" : "bg-white"
       }`}
@@ -103,7 +104,7 @@ const FeatureSection: React.FC<{
               !isImageLeft ? "lg:col-start-2 lg:pl-16" : "lg:pr-16"
             }`}
           >
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-gray-900 leading-tight">
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-gray-900 leading-tight">
               {feature.title}
             </h2>
             <p className="text-base sm:text-md text-gray-700 font-light leading-relaxed">
@@ -115,7 +116,7 @@ const FeatureSection: React.FC<{
           <div
             className={`${
               !isImageLeft ? "lg:col-start-1" : ""
-            } order-first lg:order-none`}
+            } order-first lg:order-none p-4 sm:p-6 md:p-8 rounded-lg bg-[#E5E7EB]/40 border-secondary-200/40 border-1`}
           >
             <div className="relative">
               <Image
@@ -123,7 +124,7 @@ const FeatureSection: React.FC<{
                 alt={feature.imageAlt}
                 width={700}
                 height={500}
-                className="w-full h-auto rounded-lg shadow-lg"
+                className="w-full h-auto"
               />
             </div>
           </div>

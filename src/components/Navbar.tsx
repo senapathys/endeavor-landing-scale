@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 import { GlowEffect } from "@/components/core/glow-effect";
 
 function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement | null>; demoRef?: React.RefObject<HTMLDivElement | null> }) {
-  const [navbarState, setNavbarState] = useState("hero"); // 'hero', 'scrolled', 'scroll-feature', 'security', 'testimonials', 'erp', 'form'
+  const [navbarState, setNavbarState] = useState("hero"); // 'hero', 'scrolled', 'scroll-feature', 'solution-feature', 'security', 'testimonials', 'erp', 'form'
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isClient, setIsClient] = useState(false);
@@ -30,10 +30,14 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
       const erpSection = document.getElementById("erp");
       const formSection = document.getElementById("form");
 
-      // Check hero first - adjusted for ultra-wide screens
+      // Check hero first - adjusted for different screen sizes
       let heroMultiplier;
-      if (window.innerWidth < 768) {
-        heroMultiplier = 0.8; // Mobile
+      if (window.innerWidth < 480) {
+        heroMultiplier = 1.0; // Small mobile (390px, etc)
+      } else if (window.innerWidth < 768) {
+        heroMultiplier = 1.1; // Medium mobile (480-767px)
+      } else if (window.innerWidth < 1024) {
+        heroMultiplier = 1.2; // Tablet/large mobile (768-1023px, including 725px)
       } else if (window.innerWidth >= 3000) {
         heroMultiplier = 2.5; // Ultra-wide screens (3440x1440 etc)
       } else if (window.innerWidth >= 1920) {
@@ -125,6 +129,27 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
           window.scrollY < sectionBottom - (window.innerWidth < 1024 ? 30 : 50);
       }
 
+      // Check solution template feature sections
+      let nearSolutionFeature = false;
+      for (let i = 0; i < 5; i++) { // Check up to 5 feature sections
+        const solutionFeatureSection = document.getElementById(`solution-feature-${i}`);
+        if (solutionFeatureSection) {
+          const sectionTop = solutionFeatureSection.offsetTop;
+          const sectionBottom = sectionTop + solutionFeatureSection.offsetHeight;
+          const scrollPosition =
+            window.scrollY +
+            window.innerHeight * (window.innerWidth < 1024 ? 0.05 : 0.1);
+
+          if (
+            scrollPosition > sectionTop &&
+            window.scrollY < sectionBottom - (window.innerWidth < 1024 ? 30 : 50)
+          ) {
+            nearSolutionFeature = true;
+            break;
+          }
+        }
+      }
+
       // Update scroll state
       setIsScrolled(window.scrollY > 30);
 
@@ -144,6 +169,9 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
       } else if (nearScrollFeature) {
         console.log("scroll-feature");
         setNavbarState("scroll-feature");
+      } else if (nearSolutionFeature) {
+        console.log("solution-feature");
+        setNavbarState("solution-feature");
       } else if (pastHero) {
         console.log("scrolled");
         setNavbarState("scrolled");
@@ -169,6 +197,8 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
         return `text-zinc-900 bg-transparent ${backdropClass}`;
       case "scroll-feature":
         return `text-zinc-900 bg-white ${backdropClass}`; // White background for scroll feature
+      case "solution-feature":
+        return `text-zinc-900 bg-transparent ${backdropClass}`; // Same as scrolled for solution feature sections
       case "testimonials":
         return `text-zinc-900 bg-transparent ${backdropClass}`;
       case "erp":
@@ -190,6 +220,8 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
         return "text-[#121212] hover:!text-[#121212]/60";
       case "scroll-feature":
         return "text-[#121212] hover:!text-[#121212]/60"; // Dark text for scroll feature
+      case "solution-feature":
+        return "text-[#121212] hover:!text-[#121212]/60"; // Dark text for solution feature sections
       case "testimonials":
         return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
       case "erp":
@@ -211,6 +243,8 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
         return "";
       case "scroll-feature":
         return ""; // Normal logo for scroll feature
+      case "solution-feature":
+        return ""; // Normal logo for solution feature sections
       case "testimonials":
         return "invert";
       case "erp":
@@ -323,7 +357,7 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
           <Button
             onClick={handleScrollToForm}
             color={`${
-              navbarState === "scrolled" || navbarState === "scroll-feature"
+              navbarState === "scrolled" || navbarState === "scroll-feature" || navbarState === "solution-feature"
                 ? "dark"
                 : "white"
             }`}
@@ -396,7 +430,8 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
                       isClient
                         ? `${
                             navbarState === "scrolled" ||
-                            navbarState === "scroll-feature"
+                            navbarState === "scroll-feature" ||
+                            navbarState === "solution-feature"
                               ? "white"
                               : "dark"
                           }`
