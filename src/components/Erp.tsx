@@ -38,7 +38,7 @@ export default function Erp() {
             We work with
           </h2> */}
           <p className="text-zinc-300 text-sm sm:text-base max-w-2xl mx-auto">
-            Seamlessly integrate with your existing ERP system
+            We integrate with your existing ERP system
           </p>
         </div>
 

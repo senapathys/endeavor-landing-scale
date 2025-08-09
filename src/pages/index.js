@@ -89,14 +89,14 @@ function Home() {
   return (
     <div className="">
       <Head>
-        <title>Quoting Made Smarter | Respond to RFQs in Seconds</title>
+        <title>AI Order Entry and Quoting | Endeavor</title>
         <meta
           property="og:title"
-          content="Quoting Made Smarter - Respond to RFQs in Seconds"
+          content="AI Order Entry and Quoting | Endeavor"
         />
         <meta
           property="og:description"
-          content="Harness the power of Generative AI to simplify your quoting process."
+          content="AI Order Entry implemented in just 1 day. Accurate and easy to use AI, built for manufacturers and distributors."
         />
         <meta property="og:image" content="/hero.png" />
       </Head>

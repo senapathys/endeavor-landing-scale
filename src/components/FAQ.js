@@ -17,14 +17,14 @@ const FAQ = () => {
         "Yes, we will integrate with your ERP system to automate PO entry. However, an ERP integration is not necessary to use the tool.",
     },
     {
-      question: "Do I need to give you prior examples of RFQs?",
+      question: "Do I need to give you prior examples of RFQs, POs, or quotes?",
       answer:
         "Our AI works without prior examples and only needs product descriptions. However, prior examples improve accuracy significantly.",
     },
     {
       question: "What if the AI makes mistakes?",
       answer:
-        "A user must approve and can correct any AI-generated quote. Additionally, our AI learns from its mistakes over time.",
+        "A user must approve and can correct any AI-generated quote or order. Additionally, our AI learns from its mistakes over time.",
     },
     {
       question: "How much does the AI tool cost?",
@@ -34,7 +34,7 @@ const FAQ = () => {
     {
       question: "Who are the people behind Endeavor?",
       answer:
-        "We're a team of Texas-based engineers and AI experts with experience from Amazon Web Services (AWS), the US Air Force, and Palantir.",
+        "We're a team of Silicon Valley-based AI engineers with experience from Palantir, the military, and top universities like UC Berkeley and UPenn.",
     },
   ];
 

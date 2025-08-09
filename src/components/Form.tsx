@@ -130,13 +130,13 @@ const Form = () => {
       <div className="w-full rounded-xl max-w-7xl flex flex-col lg:flex-row bg-[url(/gradient-bg.svg)] bg-cover p-4 sm:p-6 md:p-8 gap-6 md:gap-8">
         <div className="flex flex-1 flex-col">
           <div className="text-[#F6F6F6] text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-            Accelerate,
+            Implement AI
             <br />
-            Anon
+            in 1 day
           </div>
           <p className="text-[#F6F6F6]/60 text-sm sm:text-md mt-4 sm:mt-6 max-w-md leading-relaxed">
-            Ready to transform your quoting process? Get started with Endeavor's
-            AI-powered platform and see results in minutes.
+            Ready to transform your order entry and quoting processes? Get started with Endeavor's
+            AI-powered platform and go live in 1 day.
           </p>
         </div>
 

@@ -5,24 +5,24 @@ import { AnimatePresence, motion } from "framer-motion";
 const stepsData = [
   {
     id: "analyze",
-    title: "Analyze with AI",
+    title: "Handwritten, emails, and documents OK",
     description:
-      "Accelerate workflows, drill into variance, and deeply understand your business. Our AI-powered analytics automatically surface key insights and anomalies in your data, saving hours of manual investigation. Get intelligent recommendations and predictive forecasts that help you make data-driven decisions with confidence.",
-    image: "/card-1.svg",
-  },
-  {
-    id: "shape",
-    title: "Shape data to your business logic",
-    description:
-      "Create flexible, structured models built to scale with your organization. Define custom inputs, tie in dimensions, and reuse inputs across plans to maintain consistency and reduce redundancy. Transform raw data into meaningful business metrics that align with your unique processes and reporting requirements.",
+    "Upload and forward purchase orders of any size, format, or language. Our AI can process them in seconds. Even the handwritten ones.",
     image: "/card-6.svg",
   },
   {
-    id: "test",
-    title: "Pressure test every plan",
+    id: "shape",
+    title: "AI learns your part number mappings",
     description:
-      "Run what-if scenarios and plan for best and worst cases with ease. Stress test your assumptions by adjusting key variables and instantly see the impact across all connected metrics. Build confidence in your strategic decisions by exploring multiple outcomes before committing to a path forward.",
+    "If you've tried other solutions, you know manual mappings are a pain. Our system learns your mappings from item descriptions rapidly.",
     image: "/card-7.svg",
+  },
+  {
+    id: "test",
+    title: "Performance analytics at your fingertips",
+    description:
+      "Tap into all the unstructured data to get an understanding of how many orders, what products, and who's processing them.",
+    image: "/card-1.svg",
   },
 ];
 

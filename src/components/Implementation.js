@@ -93,7 +93,7 @@ function Implementation() {
               {implementationSteps.map((step, index) => (
                 <div key={index} className="flex items-center justify-center">
                   <span className="leading-trim text-sm rounded-md border border-zinc-300 px-4 py-2.5 bg-white">
-                    {index === 0 ? "Today" : index === 1 ? "Day 5" : "Day 30"}
+                    {index === 0 ? "Today" : index === 1 ? "Day 5" : "Day 10"}
                   </span>
                 </div>
               ))}
@@ -164,7 +164,7 @@ function Implementation() {
                         : ""
                     }`}
                   >
-                    {index === 0 ? "Today" : index === 1 ? "Day 5" : "Day 30"}
+                    {index === 0 ? "Today" : index === 1 ? "Day 5" : "Day 10"}
                   </span>
 
                   {/* Content card */}

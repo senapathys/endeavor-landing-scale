@@ -11,10 +11,10 @@ const testimonials = [
   },
   {
     quote:
-      "Endeavor has shown us that AI Agents are the future of the food and beverage industry. Love it - we're going to be using this for a lot of things.",
+      "Endeavor is doing some really exciting things for Schreiber Foods.",
     logo: "/customer_logos/image.png",
-    name: "Michael Wagner",
-    role: "Global Director, PIM",
+    name: "Senior Executive",
+    role: "InformationTechnology",
     company: "Schreiber Foods",
   },
   {
@@ -35,35 +35,35 @@ const testimonials = [
   },
   {
     quote:
-      "Endeavor's AI has transformed our order processing. What used to take hours now happens in minutes, and the accuracy is incredible.",
-    logo: "/customer_logos/Building-Supply.png",
-    name: "Jason Cohen",
-    role: "President",
-    company: "Northeast Building Supply",
+      "I'm never usually speechless, but now I'm speechless.",
+    logo: "/customer_logos/Russin_Main-Logo_White_web.webp",
+    name: "Jordan Russin",
+    role: "Co President",
+    company: "Russin Lumber",
   },
   {
     quote:
-      "Endeavor has shown us that AI Agents are the future of the food and beverage industry. Love it - we're going to be using this for a lot of things.",
-    logo: "/customer_logos/image.png",
-    name: "Michael Wagner",
-    role: "Global Director, PIM",
-    company: "Schreiber Foods",
+      "Connect with Endeavor AI to get advice on how to optimize your business with AI. This is an amazing team of AI scientists doing some amazing work!!",
+    logo: "/customer_logos/Oshkosh_Corporation_2019_Logo.svg.png",
+    name: "Sanjeev Tara",
+    role: "Former COO/CFO, Commercial",
+    company: "Oskosh",
   },
   {
     quote:
-      "F**k that’s awesome. This makes my life so much easier and with just this one tool. I can turn around quotes in half the time as I was before.",
-    logo: "/customer_logos/viking-group-inc-logo-png-transparent.png",
-    name: "Matt S.",
-    role: "Customer Success Rep",
-    company: "Viking Group Inc.",
+    "At Endeavor we are revolutionizing smarter manufacturing through the power of AI. Our focus on innovation is driving a paradigm shift in  the industry.",
+    logo: "/customer_logos/Bridgestone_logo.svg",
+    name: "Gabriel Asbun",
+    role: "Former CEO, Americas",
+    company: "Bridgestone",
   },
   {
     quote:
-      "Endeavor has been an invaluable strategic partner to solve several critical business problems facing our company and the construction industry.",
-    logo: "/customer_logos/ClarkDietrich_rgb.png",
-    name: "Brian Panuccio",
-    role: "CEO and President",
-    company: "ClarkDietrich",
+    "Businesses that address these challenges will gain a significant edge as AI reshapes the future of work. Those that wait risk falling behind.",
+    logo: "/customer_logos/Kimberly-Clark_Logo.png",
+    name: "Pete Dulcamara",
+    role: "Former Chief Scientist",
+    company: "Kimberly-Clark",
   },
 ];
 
