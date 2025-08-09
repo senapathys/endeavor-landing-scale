@@ -9,7 +9,7 @@ function Solution() {
         <div className="text-center space-y-3 mb-8 sm:mb-12 flex items-center flex-col mx-auto">
           <div className="bg-black w-4 h-4 rounded" />
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-zinc-900 px-4">
-            Order entry in seconds, not hours
+            Implement AI in days, not years
           </h2>
           <p className="px-4 sm:px-12 text-zinc-700 max-w-lg text-sm sm:text-base">
             Simplify your order process and respond to your customers instantly
