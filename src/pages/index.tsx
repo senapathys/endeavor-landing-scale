@@ -103,7 +103,7 @@ function Home() {
         <link rel="preload" as="image" href="/dashboard-with-chat.svg" />
       </Head>
       <Navbar heroRef={heroRef} demoRef={demoRef} />
-      <div className="relative bg-[url(/dark-gradient-bg.svg)] bg-cover before:absolute before:inset-0 before:bg-gradient-to-b before:from-transparent before:to-[#121212] before:pointer-events-none" style={{ marginBottom: '-1px' }}>
+      <div className="relative bg-[#121212] bg-[url(/dark-gradient-bg.svg)] bg-no-repeat bg-cover before:absolute before:inset-0 before:bg-gradient-to-b before:from-transparent before:to-[#121212] before:pointer-events-none" style={{ marginBottom: '-1px' }}>
         <div className="relative z-10">
           <Hero heroRef={heroRef} />
           <Demo demoRef={demoRef} />
