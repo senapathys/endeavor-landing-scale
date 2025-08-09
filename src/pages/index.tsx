@@ -97,7 +97,7 @@ function Home() {
           property="og:description"
           content="AI Order Entry implemented in just 1 day. Accurate and easy to use AI, built for manufacturers and distributors."
         />
-        <meta property="og:image" content="/hero.png" />
+        <meta property="og:image" content="/hero-2.png" />
         {/* Preload hero background and demo image to speed up first paint */}
         <link rel="preload" as="image" href="/dark-gradient-bg.svg" type="image/svg+xml" />
         <link rel="preload" as="image" href="/dashboard-with-chat.svg" />
