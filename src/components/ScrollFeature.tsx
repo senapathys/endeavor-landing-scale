@@ -217,7 +217,7 @@ export default function ScrollFeatureSection() {
         <div className="sticky top-16 bg-white z-10 pt-4 mb-8 px-4 sm:px-6 md:px-8">
           <div className="border-b border-gray-200 pb-4">
             <h2 className="text-3xl font-normal mb-2">
-              This isn't your regular OCR...
+              This isn&apos;t your regular OCR...
             </h2>
             <span className="font-light text-gray-600">
               Simplify your order process and respond to your customers
@@ -244,7 +244,7 @@ export default function ScrollFeatureSection() {
         <div className="relative h-[calc(100%-25vh)]">
           <div className="sticky top-16 bg-white pb-8 z-10 border-b border-gray-200 pt-4">
             <h2 className="text-4xl font-normal mb-2">
-              This isn't your regular OCR...
+              This isn&apos;t your regular OCR...
             </h2>
             <span className="font-light">
               Simplify your order process and respond to your customers
