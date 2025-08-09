@@ -26,7 +26,15 @@ const stepsData = [
   },
 ];
 
-function Step({ step, onInView }: { step: { id: string; title: string; description: string; image: string }; onInView: (id: string) => void }) {
+function Step({
+  step,
+  onInView,
+  isActive,
+}: {
+  step: { id: string; title: string; description: string; image: string };
+  onInView: (id: string) => void;
+  isActive: boolean;
+}) {
   const { ref, inView } = useInView({
     threshold: 0.5,
     rootMargin: "-20% 0px -60% 0px",
@@ -39,13 +47,16 @@ function Step({ step, onInView }: { step: { id: string; title: string; descripti
   }, [inView, step.id, onInView]);
 
   return (
-    <div
+    <motion.div
       ref={ref}
-      className="max-h-[30vh] min-h-[30vh] py-8 border-b border-gray-200 flex flex-col justify-start"
+      className="max-h-[22vh] min-h-[22vh] py-6 border-b border-gray-200 flex flex-col justify-start last:mb-[120px]"
+      initial={false}
+      animate={{ opacity: isActive ? 1 : 0.4 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
     >
-      <h2 className="text-2xl font-normal mb-4">{step.title}</h2>
+      <h2 className="text-2xl font-normal mb-3">{step.title}</h2>
       <p className="text-md font-light text-gray-600">{step.description}</p>
-    </div>
+    </motion.div>
   );
 }
 
@@ -200,16 +211,17 @@ export default function ScrollFeatureSection() {
   }, []);
 
   return (
-    <section id="features" className="max-w-7xl mx-auto py-12">
+    <section id="features" className="max-w-7xl mx-auto pt-20 pb-12">
       {/* MOBILE LAYOUT */}
       <div id="scroll-feature-mobile" className="xl:hidden">
         <div className="sticky top-16 bg-white z-10 pt-4 mb-8 px-4 sm:px-6 md:px-8">
           <div className="border-b border-gray-200 pb-4">
             <h2 className="text-3xl font-normal mb-2">
-              Turn complexity into conviction
+              This isn't your regular OCR...
             </h2>
             <span className="font-light text-gray-600">
-              Incredibly flexible and fun finance copilot
+              Simplify your order process and respond to your customers
+              instantly with AI.
             </span>
           </div>
         </div>
@@ -230,9 +242,9 @@ export default function ScrollFeatureSection() {
       <div id="scroll-feature" className="hidden xl:grid xl:grid-cols-2 gap-20 md:px-8">
         {/* LEFT COLUMN */}
         <div className="relative h-[calc(100%-25vh)]">
-          <div className="sticky top-16 bg-white pb-4 z-10 border-b border-gray-200 pt-4">
+          <div className="sticky top-16 bg-white pb-8 z-10 border-b border-gray-200 pt-4">
             <h2 className="text-4xl font-normal mb-2">
-              Order entry in seconds, not hours
+              This isn't your regular OCR...
             </h2>
             <span className="font-light">
               Simplify your order process and respond to your customers
@@ -242,7 +254,12 @@ export default function ScrollFeatureSection() {
 
           <div className="flex flex-col pb-[30vh]">
             {stepsData.map((step) => (
-              <Step key={step.id} step={step} onInView={handleStepInView} />
+              <Step
+                key={step.id}
+                step={step}
+                onInView={handleStepInView}
+                isActive={step.id === activeStep}
+              />
             ))}
           </div>
         </div>
