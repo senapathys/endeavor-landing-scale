@@ -13,6 +13,7 @@ import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import Form from "@/components/Form";
 import Erp from "@/components/Erp";
+import CustomerUseCases from "@/components/CustomerUseCases";
 
 const logos = [
   {
@@ -112,6 +113,7 @@ function Home() {
 
       <Erp />
       <InfiniteSliderHoverSpeed />
+      <CustomerUseCases />
       <ScrollFeatureSection />
       <Solution />
       <Security />

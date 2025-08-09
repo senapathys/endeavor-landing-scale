@@ -14,7 +14,7 @@ const testimonials = [
       "Endeavor is doing some really exciting things for Schreiber Foods.",
     logo: "/customer_logos/image.png",
     name: "Senior Executive",
-    role: "InformationTechnology",
+    role: "Information Technology",
     company: "Schreiber Foods",
   },
   {
