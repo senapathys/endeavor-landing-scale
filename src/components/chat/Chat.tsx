@@ -127,7 +127,7 @@ const Chat = forwardRef<ChatRef, ChatProps>(
           remarkPlugins={[remarkGfm]}
           components={{
             // Custom component for citations
-            code: ({ className, children, ...props }: any) => {
+            code: ({ className, children, ...props }: React.HTMLAttributes<HTMLElement>) => {
               const match = /language-(\w+)/.exec(className || "");
               const isInline = !match;
               if (!isInline) {
@@ -149,7 +149,7 @@ const Chat = forwardRef<ChatRef, ChatProps>(
               );
             },
             // Custom component for links that look like citations
-            a: ({ href, children }: any) => {
+            a: ({ href, children }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
               // Check if this looks like a citation link
               if (href && href.startsWith("#citation-")) {
                 const citationData = {

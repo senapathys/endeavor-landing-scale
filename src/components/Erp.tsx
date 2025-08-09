@@ -32,17 +32,11 @@ export default function Erp() {
   return (
     <section id="erp" className="bg-[#121212] py-8 pt-12 sm:py-12 pt-16 md:py-16 pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-        {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
-          {/* <h2 className="text-2xl sm:text-3xl md:text-4xl text-zinc-900 mb-4">
-            We work with
-          </h2> */}
           <p className="text-zinc-300 text-sm sm:text-base max-w-2xl mx-auto">
             We integrate with your existing ERP system
           </p>
         </div>
-
-        {/* Logo Grid */}
         <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
           {erpLogos.map((logo, index) => (
             <div
