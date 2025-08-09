@@ -34,6 +34,9 @@ const Demo = ({ demoRef }: { demoRef?: React.RefObject<HTMLDivElement | null> })
       src="/dashboard-with-chat.svg"
       alt="Sample Web Application Dashboard"
       className="w-full h-auto object-cover rounded-t-lg sm:rounded-t-xl md:rounded-t-2xl lg:rounded-t-3xl"
+      loading="eager"
+      fetchPriority="high"
+      decoding="sync"
     />
     {/* Gradient overlay that fades image to transparent */}
     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#121212] pointer-events-none rounded-t-lg sm:rounded-t-xl md:rounded-t-2xl lg:rounded-t-3xl" style={{ marginBottom: '-1px' }}></div>
