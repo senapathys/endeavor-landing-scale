@@ -88,14 +88,14 @@ function Home() {
   return (
     <div className="">
       <Head>
-        <title>AI Order Entry and Quoting | Endeavor</title>
+        <title>Sell Products Smarter | Endeavor</title>
         <meta
           property="og:title"
-          content="AI Order Entry and Quoting | Endeavor"
+          content="Sell Products Smarter | Endeavor"
         />
         <meta
           property="og:description"
-          content="AI Order Entry implemented in just 1 day. Accurate and easy to use AI, built for manufacturers and distributors."
+          content="AI use cases built for manufacturers and distributors. Sell products smarter, deliver faster."
         />
         <meta property="og:image" content="/hero-2.png" />
         {/* Preload hero background and demo image to speed up first paint */}
