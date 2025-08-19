@@ -87,7 +87,7 @@ const CustomerUseCases: React.FC = () => {
   return (
     <section
       id="use-cases"
-      className="flex justify-center items-center my-8 mt-12 sm:my-16 sm:mt-24 px-4 sm:px-6"
+      className="flex justify-center items-center my-8 mt-24 sm:my-16 sm:mt-32 px-4 sm:px-6"
     >
       <div className="w-full rounded-xl max-w-7xl flex flex-col lg:flex-row bg-[url(/gradient-bg.svg)] bg-cover p-4 sm:p-6 md:p-8 gap-6 md:gap-8 overflow-hidden">
         {/* Left side: header, subtext, tabs */}
@@ -132,7 +132,7 @@ const CustomerUseCases: React.FC = () => {
                       <div className="flex items-center gap-4 sm:gap-5">
                         <div
                           className={[
-                            "mt-1 h-9 w-9 sm:h-10 sm:w-10 rounded-lg border flex items-center justify-center transition-colors",
+                            "mt-1 max-h-9 max-w-9 p-2 sm:h-10 sm:w-10 rounded-full border flex items-center justify-center transition-colors",
                             isActive
                               ? "bg-white border-white text-black"
                               : "bg-white/5 border-white/15 text-white/80",
@@ -143,7 +143,7 @@ const CustomerUseCases: React.FC = () => {
                             return (
                               <Icon
                                 className={[
-                                  "h-4 w-4 sm:h-5 sm:w-5 transition-opacity",
+                                  "h-3 w-3 sm:h-4 sm:w-4 transition-opacity",
                                   isActive ? "opacity-100" : "opacity-60",
                                 ].join(" ")}
                               />
