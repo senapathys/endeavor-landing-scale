@@ -29,6 +29,7 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
       const testimonialsSection = document.getElementById("testimonials");
       const erpSection = document.getElementById("erp");
       const formSection = document.getElementById("form");
+      const useCasesSection = document.getElementById("use-cases");
 
       // Check hero first - adjusted for ultra-wide screens
       let heroMultiplier;
@@ -96,6 +97,20 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
           window.scrollY < sectionBottom + 10;
       }
 
+      // Check use-cases section
+      let nearUseCases = false;
+      if (useCasesSection) {
+        const sectionTop = useCasesSection.offsetTop + (window.innerWidth < 1024 ? 20 : 40);
+        const sectionBottom = sectionTop + useCasesSection.offsetHeight;
+        const scrollPosition =
+          window.scrollY +
+          window.innerHeight * (window.innerWidth < 1024 ? 0.05 : 0.1);
+
+        nearUseCases =
+          scrollPosition > sectionTop &&
+          window.scrollY < sectionBottom - (window.innerWidth < 1024 ? 40 : 80);
+      }
+
       // Check form section
       let nearForm = false;
       if (formSection) {
@@ -141,6 +156,9 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
       } else if (nearErp) {
         console.log("erp");
         setNavbarState("erp");
+      } else if (nearUseCases) {
+        console.log("use-cases");
+        setNavbarState("use-cases");
       } else if (nearScrollFeature) {
         console.log("scroll-feature");
         setNavbarState("scroll-feature");
@@ -173,6 +191,8 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
         return `text-zinc-900 bg-transparent ${backdropClass}`;
       case "erp":
         return `text-zinc-900 bg-transparent ${backdropClass}`;
+      case "use-cases":
+        return `text-zinc-900 bg-transparent ${backdropClass}`;
       case "form":
         return `text-zinc-900 bg-transparent ${backdropClass}`;
       case "security":
@@ -194,6 +214,8 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
         return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
       case "erp":
         return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
+      case "use-cases":
+        return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
       case "form":
         return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
       case "security":
@@ -214,6 +236,8 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
       case "testimonials":
         return "invert";
       case "erp":
+        return "invert";
+      case "use-cases":
         return "invert";
       case "form":
         return "invert";

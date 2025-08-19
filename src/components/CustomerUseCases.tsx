@@ -25,10 +25,22 @@ const useCases: UseCase[] = [
     subtext: "How Schreiber Foods uses AI to accelerate R&D",
     description:
         "Supplier specs take months to review manually, slowing time-to-market and leaving millions in revenue on the table. Endeavor helps Schreiebr Foods automate spec review, reducing onboarding to days and creating new revenue streams.",
-    imageSrc: "/dashboard-with-chat.svg",
+    imageSrc: "/schreiber-use-case.webp",
     tags: ["Food & Beverage", "R&D", "PIM", "Supplier Specifications"],
     logoSrc: "/customer_logos/image.png",
     icon: Utensils,
+  },
+  {
+    id: "manufacturing",
+    customer: "ClarkDietrich",
+    title: "Turnaround quotes in minutes, not days with AI",
+    subtext: "How ClarkDietrich uses AI to win more quotes",
+    description:
+      "Quoting is challening, manual, and requires expertise in long product catalogs. Endeavor helps ClarkDietrich automate quotes and product matching, turning around quotes in minutes when competitors take days.",
+    imageSrc: "/clarkdietrich-use-case.webp",
+    tags: ["Manufacturing", "Inside Sales", "Quoting", "Product Mapping"],
+    logoSrc: "/customer_logos/ClarkDietrich_rgb.png",
+    icon: Building2,
   },
   {
     id: "cabot-corporation",
@@ -37,7 +49,7 @@ const useCases: UseCase[] = [
     subtext: "How Cabot uses AI to deliver exceptional order support",
     description:
       "Order entry and support can be manual, error-prone, and slow. Inside sales departments can balloon in size. Endeavor helps Cabot improve productivity with AI-powered order entry and customer support.",
-    imageSrc: "/dashboard-dark-1.png",
+    imageSrc: "/cabot-use-case.webp",
     tags: ["Chemicals", "Customer Support", "Order Entry", "Order Support"],
     logoSrc: "/customer_logos/Cabot_Corporation_Logo.svg.png",
     icon: FlaskConical,
@@ -49,37 +61,33 @@ const useCases: UseCase[] = [
     subtext: "How Menasha uses AI to satisfy customer standards",
     description:
       "Product design requires compliance with customer requirements and standards, which can be a challenge with siloed systems. Endeavor helps Menasha easily query specifications data to ensure compliance.",
-    imageSrc: "/dashboard-with-chat.svg",
+    imageSrc: "/menasha-use-case.webp",
     tags: ["Packaging", "Product Design", "Customer Specifications", "Knowledge Base"],
     logoSrc: "/customer_logos/Menasha-Logo_MMIH_2Color.webp",
     icon: Package,
-  },
-  {
-    id: "manufacturing",
-    customer: "ClarkDietrich",
-    title: "Turnaround quotes in minutes, not days with AI",
-    subtext: "How ClarkDietrich uses AI to win more quotes",
-    description:
-      "Quoting is challening, mnanual, and requires expertise in long product catalogs. Endeavor helps ClarkDietrich automate quotes and product matching, turning around quotes in minutes when competitors take days.",
-    imageSrc: "/dashboard.png",
-    tags: ["Manufacturing", "Inside Sales", "Quoting", "Product Mapping"],
-    logoSrc: "/customer_logos/ClarkDietrich_rgb.png",
-    icon: Building2,
   },
 ];
 
 const CustomerUseCases: React.FC = () => {
   const [activeId, setActiveId] = useState<string>(useCases[0].id);
+  const [imageLoading, setImageLoading] = useState(false);
 
   const active = useMemo(
     () => useCases.find((c) => c.id === activeId) ?? useCases[0],
     [activeId]
   );
 
+  const handleUseCaseChange = (newId: string) => {
+    setImageLoading(true);
+    setActiveId(newId);
+    // Reset loading state after animation completes
+    setTimeout(() => setImageLoading(false), 50);
+  };
+
   return (
     <section
       id="use-cases"
-      className="flex justify-center items-center py-8 sm:py-16 px-4 sm:px-6"
+      className="flex justify-center items-center my-8 mt-12 sm:my-16 sm:mt-24 px-4 sm:px-6"
     >
       <div className="w-full rounded-xl max-w-7xl flex flex-col lg:flex-row bg-[url(/gradient-bg.svg)] bg-cover p-4 sm:p-6 md:p-8 gap-6 md:gap-8 overflow-hidden">
         {/* Left side: header, subtext, tabs */}
@@ -97,7 +105,7 @@ const CustomerUseCases: React.FC = () => {
               <span>{active.customer}</span>
             )}
           </div>
-          <div className="text-[#F6F6F6] transition-colors text-2xl sm:text-3xl md:text-4xl lg:text-4xl mt-4 sm:mt-6 leading-tight">
+          <div className="text-[#F6F6F6] transition-colors text-2xl sm:text-3xl md:text-4xl lg:text-4xl mt-4 py-4 sm:mt-6 leading-tight">
             {active.title}
           </div>
 
@@ -110,7 +118,7 @@ const CustomerUseCases: React.FC = () => {
                   <div key={uc.id} className="group">
                     <button
                       type="button"
-                      onClick={() => setActiveId(uc.id)}
+                      onClick={() => handleUseCaseChange(uc.id)}
                       aria-expanded={isActive}
                       className={[
                         "w-full text-left flex items-start justify-between gap-4 px-2",
@@ -204,15 +212,19 @@ const CustomerUseCases: React.FC = () => {
         {/* Right side: demo image */}
         <div className="flex flex-1 items-center justify-center lg:justify-end">
           <div
-            className="relative w-full max-w-xl lg:max-w-[42rem] xl:max-w-[48rem] h-[360px] sm:h-[420px] md:h-[500px] lg:h-[560px] xl:h-[620px] -mr-4 sm:-mr-6 md:-mr-12 lg:-mr-20 xl:-mr-28 2xl:-mr-36"
+            className="relative w-full max-w-full lg:max-w-[42rem] xl:max-w-[48rem] h-[360px] sm:h-[420px] md:h-[500px] lg:h-[560px] xl:h-[620px] mx-2 lg:mx-0 lg:-mr-20 xl:-mr-20"
           >
             <Image
+              key={active.id}
               src={active.imageSrc ?? "/dashboard-with-chat.svg"}
               alt="Product demo"
               fill
               priority={false}
-              sizes="(max-width: 1024px) 100vw, 650px"
-              className="rounded-lg object-cover shadow-[0_10px_30px_rgba(0,0,0,0.4)] transition-all duration-300"
+              sizes="(max-width: 1600px) 100vw, 1600px"
+              className={`rounded-lg object-cover shadow-[0_10px_30px_rgba(0,0,0,0.4)] transition-opacity duration-500 ease-in-out ${
+                imageLoading ? 'opacity-0' : 'opacity-100'
+              }`}
+              objectPosition={active.id === "manufacturing" ? "center" : "left"}
             />
           </div>
         </div>
