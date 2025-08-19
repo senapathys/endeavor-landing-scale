@@ -92,7 +92,7 @@ const CustomerUseCases: React.FC = () => {
       <div className="w-full rounded-xl max-w-7xl flex flex-col lg:flex-row bg-[url(/gradient-bg.svg)] bg-cover p-4 sm:p-6 md:p-8 gap-6 md:gap-8 overflow-hidden">
         {/* Left side: header, subtext, tabs */}
         <div className="flex flex-1 flex-col">
-          <div className="text-[#F6F6F6] transition-colors">
+          <div className="text-[#F6F6F6] transition-colors pt-2">
             {active.logoSrc ? (
               <Image
                 src={active.logoSrc}

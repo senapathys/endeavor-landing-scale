@@ -114,7 +114,7 @@ function MobileTimeline() {
                         isVisible ? "animate-marker-appear" : ""
                       }`}
                       style={{
-                        animationDelay: isVisible ? `${index * 0.6}s` : "0s",
+                        animationDelay: isVisible ? `${index * 0.3}s` : "0s",
                         animationFillMode: "forwards",
                       }}
                     ></div>
@@ -125,7 +125,7 @@ function MobileTimeline() {
                         isVisible ? "animate-card-appear" : ""
                       }`}
                       style={{
-                        animationDelay: isVisible ? `${index * 0.5}s` : "0s",
+                        animationDelay: isVisible ? `${index * 0.2}s` : "0s",
                         animationFillMode: "forwards",
                       }}
                     >
@@ -205,7 +205,7 @@ function MobileTimeline() {
                         isVisible ? "animate-marker-appear" : ""
                       }`}
                       style={{
-                        animationDelay: isVisible ? `${index * 0.9}s` : "0s",
+                        animationDelay: isVisible ? `${index * 0.5}s` : "0s",
                         animationFillMode: "forwards",
                       }}
                     ></div>
@@ -222,7 +222,7 @@ function MobileTimeline() {
                       isVisible ? "animate-card-appear" : ""
                     }`}
                     style={{
-                      animationDelay: isVisible ? `${index * 0.8}s` : "0s",
+                      animationDelay: isVisible ? `${index * 0.4}s` : "0s",
                       animationFillMode: "forwards",
                     }}
                   >

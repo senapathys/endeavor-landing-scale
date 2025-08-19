@@ -20,17 +20,17 @@ function Hero({ heroRef }: { heroRef?: React.RefObject<HTMLDivElement | null> })
         <div className="mt-4 sm:mt-6 w-full px-4">
           <div className="mx-auto max-w-4xl flex flex-wrap items-center justify-center gap-3">
             {/* @ts-expect-error Button component type mismatch */}
-            <Button className="justify-center">Quoting</Button>
+            <Button className="justify-center text-xs md:text-sm lg:text-base">Quoting</Button>
             {/* @ts-expect-error Button component type mismatch */}
-            <Button className="justify-center">Order Entry</Button>
+            <Button className="justify-center text-xs md:text-sm lg:text-base">Order Entry</Button>
             {/* @ts-expect-error Button component type mismatch */}
-            <Button className="justify-center">Product Onboarding</Button>
+            <Button className="justify-center text-xs md:text-sm lg:text-base">Product Onboarding</Button>
             {/* @ts-expect-error Button component type mismatch */}
-            <Button className="justify-center">Order Status</Button>
+            <Button className="justify-center text-xs md:text-sm lg:text-base">Order Status</Button>
             {/* @ts-expect-error Button component type mismatch */}
-            <Button className="justify-center">Supplier Specs</Button>
+            <Button className="justify-center text-xs md:text-sm lg:text-base">Supplier Specs</Button>
             {/* @ts-expect-error Button component type mismatch */}
-            <Button className="justify-center">Invoices</Button>
+            <Button className="justify-center text-xs md:text-sm lg:text-base">Invoices</Button>
           </div>
         </div>
         <div className="mt-8 sm:mt-12 w-full flex justify-center px-4">

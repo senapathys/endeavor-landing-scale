@@ -252,19 +252,19 @@
 }
 
 .animate-timeline-fill {
-  animation: timeline-fill 2s ease-out 0.2s forwards;
+  animation: timeline-fill 1.5s ease-out 0.2s forwards;
 }
 
 .animate-marker-appear {
-  animation: marker-appear 0.4s ease-out forwards;
+  animation: marker-appear 0.3s ease-out forwards;
 }
 
 .animate-card-appear {
-  animation: card-appear 0.6s ease-out forwards;
+  animation: card-appear 0.4s ease-out forwards;
 }
 
 .animate-timeline-fill-vertical {
-  animation: timeline-fill-vertical 1.5s ease-out 0.1s forwards;
+  animation: timeline-fill-vertical 1s ease-out 0.1s forwards;
 }
 
 body {
