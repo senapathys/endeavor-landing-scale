@@ -388,7 +388,7 @@ export default function Company() {
       id: 'pov',
       name: 'Jake Boggs',
       role: 'Head of AI/ML',
-      description: 'Open source contributor to Nous Research. Former software engineer for the Port of Virgina.',
+      description: 'Built AI models for everything from stock trading to maritine port operations. Open source contributor.',
       logoSrc: '/customer_logos/pov-logo.png',
       logoAlt: 'POV',
       profilePhoto: '/team/jake-boggs.jpg'
@@ -397,7 +397,7 @@ export default function Company() {
       id: 'microsoft',
       name: 'Ryan Huang',
       role: 'Head of Product',
-      description: 'Former founder in Microsoft for Startups and AI Lab software engineer.',
+      description: 'Founded Osmos Learn, an AI grading platform backed by Microsoft, at 16. Former AI lab software engineer.',
       logoSrc: '/customer_logos/microsoft-logo.png',
       logoAlt: 'Microsoft',
       profilePhoto: '/team/ryan-huang.jpg'
