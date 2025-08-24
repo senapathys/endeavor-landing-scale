@@ -399,6 +399,14 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
               >
                 FAQ
               </button>
+              <Link href="/company">
+                <button
+                  className="block py-2 text-gray-900 hover:text-gray-700 transition-colors text-left w-full"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Company
+                </button>
+              </Link>
             </div>
             <div className="pt-4 border-t border-gray-200/20 space-y-3">
               {/* <div className="relative">
