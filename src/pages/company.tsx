@@ -379,7 +379,7 @@ export default function Company() {
       id: 'uc-berkeley',
       name: 'Yuanbo "YC" Chen',
       role: 'Head of Deployments',
-      description: 'UC Berkeley Artificial Intelligence Graduate Degree. Former computer vision researcher.',
+      description: 'UC Berkeley Artificial Intelligence Graduate Researcher in computer vision and robotics.',
       logoSrc: '/customer_logos/uc-berkeley-logo.png',
       logoAlt: 'UC Berkeley',
       profilePhoto: '/team/yuanbo-chen.jpg'
