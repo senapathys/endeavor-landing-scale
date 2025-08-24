@@ -477,9 +477,10 @@ export default function Company() {
   return (
     <>
       <Head>
-        <title>Company - Endeavor Industrial AI</title>
-        <meta name="description" content="Learn about Endeavor Industrial AI - our mission, team, and vision for transforming industrial operations with AI." />
+        <title>Company | Endeavor AI</title>
+        <meta name="description" content="Learn about Endeavor AI - our mission, team, and vision for transforming industrial enterprises with AI." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:image" content="/hero-2.png" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
