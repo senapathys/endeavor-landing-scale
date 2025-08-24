@@ -782,10 +782,10 @@ export default function Company() {
         <section className="flex justify-center items-center py-8 sm:py-16 px-4 sm:px-6">
           <div className="w-full rounded-xl max-w-7xl flex flex-col lg:flex-row bg-[url(/gradient-bg.svg)] bg-cover p-4 sm:p-6 md:p-8 gap-6 md:gap-8 items-center text-center lg:text-left">
             <div className="flex flex-1 flex-col">
-              <div className="text-[#F6F6F6] text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
+              <div className="text-[#F6F6F6] text-2xl sm:text-4xl md:text-5xl leading-tight">
                 Join Us. We&apos;re Hiring.
               </div>
-              <p className="text-[#F6F6F6]/60 text-sm sm:text-md mt-4 sm:mt-6 max-w-md lg:max-w-none leading-relaxed">
+              <p className="text-[#F6F6F6]/60 text-sm sm:text-md md:text-lg mt-4 sm:mt-6 max-w-md lg:max-w-none leading-relaxed">
                 We&apos;re growing rapidly and looking for exceptional individuals to join our team.
               </p>
             </div>
@@ -803,7 +803,7 @@ export default function Company() {
                   {/* @ts-expect-error Button component type mismatch */}
                   <Button 
                     color="white"
-                    className="relative w-full px-16 py-6 text-xl sm:text-2xl font-medium"
+                    className="relative w-full px-16 py-6 text-md sm:text-2xl font-medium"
                   >
                     Get in Touch
                   </Button>

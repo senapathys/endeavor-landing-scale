@@ -95,6 +95,14 @@ const Footer = () => {
             >
               Contact
             </button>
+            <Link href="/company">
+              <button
+                onClick={() => handleScrollToSection("company")}
+                className="text-[#121212] hover:text-[#121212]/60 transition-colors"
+              >
+                Company
+              </button>
+            </Link>
           </nav>
         </div>
         {/* Large background text */}

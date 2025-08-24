@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import Image from 'next/image';
 
 // Your component
 const Demo = ({ demoRef }: { demoRef?: React.RefObject<HTMLDivElement | null> }) => {
@@ -30,13 +31,13 @@ const Demo = ({ demoRef }: { demoRef?: React.RefObject<HTMLDivElement | null> })
   }`}
 >
   <div className="relative">
-    <img
-      src="/dashboard-with-chat.svg"
+    <Image
+      src="/dashboard-with-chat.webp"
       alt="Sample Web Application Dashboard"
+      width={1200}
+      height={800}
       className="w-full h-auto object-cover rounded-t-lg sm:rounded-t-xl md:rounded-t-2xl lg:rounded-t-3xl"
-      loading="eager"
-      fetchPriority="high"
-      decoding="sync"
+      priority
     />
     {/* Gradient overlay that fades image to transparent */}
     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#121212] pointer-events-none rounded-t-lg sm:rounded-t-xl md:rounded-t-2xl lg:rounded-t-3xl" style={{ marginBottom: '-1px' }}></div>
