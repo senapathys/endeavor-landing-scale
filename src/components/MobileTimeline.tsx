@@ -1,6 +1,7 @@
 import { Button } from "./ui/button";
 import { FiCheck, FiArrowRight } from "react-icons/fi";
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
 const implementationSteps = [
   {
@@ -80,11 +81,13 @@ function MobileTimeline() {
             <h2 className="text-2xl sm:text-3xl md:text-4xl text-zinc-900">
               AI shouldn&apos;t take months to implement.
             </h2>
+            <Link href="/#form">
             {/* @ts-expect-error Button component type mismatch */}
             <Button className="min-w-28 md:min-w-32 min-h-12" plain>
               Check it out
               <FiArrowRight className="w-4 h-4" />
             </Button>
+            </Link>
           </div>
 
           {/* Mobile Timeline */}

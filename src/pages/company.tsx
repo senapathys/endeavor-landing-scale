@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { GlowEffect } from "@/components/core/glow-effect";
 import { NavigationMenuDemo } from "@/components/NavigationMenu";
-import { FiChevronRight } from "react-icons/fi";
+import { FiChevronRight, FiHome } from "react-icons/fi";
 import { useState, useEffect, useRef } from "react";
 
 // Growth phases data
@@ -92,117 +92,197 @@ function GrowthPhases() {
             </h2>
           </div>
 
-          {/* Timeline */}
-          <div className="relative mx-auto flex w-fit flex-col">
-            {/* Phase labels above timeline */}
-            <div className="hidden grid-cols-1 grid-rows-3 gap-12 md:grid lg:mb-8 lg:grid-cols-3 lg:grid-rows-1 lg:gap-0">
-              {growthPhases.map((phase, index) => (
-                <div key={index} className="flex items-center justify-center">
-                  <span className="leading-trim text-sm rounded-md border border-zinc-300 px-4 py-2.5 bg-white">
-                    {phase.phase}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Timeline line and markers container */}
-            <div className="relative lg:px-6 lg:py-0">
-              {/* Vertical line for mobile/tablet - static */}
-              <div className="absolute left-1/2 top-3 bottom-3 w-px -translate-x-1/2 bg-zinc-300 lg:hidden"></div>
-
-              {/* Desktop timeline lines */}
-              <div className="hidden lg:block">
-                {/* Static background line */}
-                <div
-                  className="absolute left-1/2 top-1/2 h-px -translate-y-1/2 -translate-x-1/2 bg-zinc-300"
-                  style={{ width: "66.67%" }}
-                ></div>
-
-                {/* Animated line that grows from left to right */}
-                <div
-                  className={`absolute top-1/2 h-px -translate-y-1/2 bg-zinc-900 opacity-0 origin-left ${
-                    isVisible ? "animate-timeline-fill" : ""
-                  }`}
-                  style={{
-                    width: "66.67%",
-                    left: "calc(50% - 33.335%)",
-                  }}
-                ></div>
-              </div>
-
-              {/* Timeline markers */}
-              <div className="relative grid h-full grid-cols-1 grid-rows-3 justify-between gap-12 lg:grid-cols-3 lg:grid-rows-1">
+          {/* Mobile Timeline */}
+          <div className="lg:hidden">
+            <div className="relative">
+              {/* Vertical Timeline Line */}
+              <div className="absolute left-8 top-12 bottom-0 w-0.5 bg-zinc-300"></div>
+              
+              {/* Animated vertical line that grows from top to bottom */}
+              <div
+                className={`absolute left-8 top-8 w-0.5 bg-zinc-900 origin-top ${
+                  isVisible ? "animate-timeline-fill-vertical" : ""
+                }`}
+                style={{
+                  height: "calc(100% - 2rem)",
+                  transform: "scaleY(0)",
+                }}
+              ></div>
+              
+              {/* Timeline Steps */}
+              <div className="space-y-8">
                 {growthPhases.map((phase, index) => (
-                  <div
-                    key={index}
-                    className={`relative z-10 mt-3 size-3 rounded bg-zinc-900 md:mt-0 place-self-center opacity-0 ${
-                      isVisible ? "animate-marker-appear" : ""
-                    }`}
-                    style={{
-                      animationDelay: isVisible ? `${index * 0.9}s` : "0s",
-                      animationFillMode: "forwards",
-                    }}
-                  ></div>
+                  <div key={index} className="relative flex">
+                    {/* Timeline Square */}
+                    <div 
+                      className={`absolute left-[33px] w-3 h-3 bg-zinc-900 -translate-x-1/2 mt-7 opacity-0 ${
+                        isVisible ? "animate-marker-appear" : ""
+                      }`}
+                      style={{
+                        animationDelay: isVisible ? `${index * 0.3}s` : "0s",
+                        animationFillMode: "forwards",
+                      }}
+                    ></div>
+                    
+                    {/* Content */}
+                    <div 
+                      className={`ml-16 flex-1 opacity-0 translate-y-4 ${
+                        isVisible ? "animate-card-appear" : ""
+                      }`}
+                      style={{
+                        animationDelay: isVisible ? `${index * 0.2}s` : "0s",
+                        animationFillMode: "forwards",
+                      }}
+                    >
+                      {/* Mobile phase labels */}
+                      <span className="leading-trim text-sm w-fit rounded-md border border-zinc-300 px-3 py-2 bg-white mb-4 block">
+                        {phase.phase}
+                      </span>
+                      
+                      {/* Content Card */}
+                      <div className="bg-white rounded-xl border border-zinc-300 px-3 sm:px-4 py-4 sm:py-6">
+                        {/* Phase image */}
+                        <div className="w-full h-48 bg-zinc-200 rounded-lg mb-4 mt-2 overflow-hidden">
+                          {phase.imageSrc.startsWith('http') || phase.imageSrc.startsWith('/') ? (
+                            <img 
+                              src={phase.imageSrc} 
+                              alt={`${phase.title} phase`}
+                              className="w-full h-full object-cover"
+                              style={{ objectPosition: 'center 10%' }}
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center">
+                              <span className="text-zinc-500 text-sm">{phase.title} Phase</span>
+                            </div>
+                          )}
+                        </div>
+
+                        <h3 className="text-base sm:text-lg font-medium mb-3 sm:mb-4 leading-trim text-zinc-900">
+                          {phase.contentTitle}
+                        </h3>
+                        <ul className="space-y-4">
+                          {phase.bullets.map((bullet, bulletIndex) => (
+                            <li key={bulletIndex} className="flex items-start">
+                              <FiChevronRight className="text-zinc-600 mr-2 size-3 sm:size-4 flex-none md:size-5 mt-0.5" />
+                              <span className="leading-trim text-xs sm:text-sm text-zinc-700">
+                                {bullet}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
+          </div>
 
-            {/* Timeline content cards */}
-            <div className="ml-5 grid grid-rows-3 gap-12 lg:ml-0 lg:mt-8 lg:grid-cols-3 lg:grid-rows-1">
-              {growthPhases.map((phase, index) => (
-                <div
-                  key={index}
-                  className={`flex flex-col gap-4 opacity-0 translate-y-4 ${
-                    isVisible ? "animate-card-appear" : ""
-                  }`}
-                  style={{
-                    animationDelay: isVisible ? `${index * 0.8}s` : "0s",
-                    animationFillMode: "forwards",
-                  }}
-                >
-                  {/* Mobile phase labels */}
-                  <span className="leading-trim text-sm w-fit rounded-md border border-zinc-300 px-3 py-2 bg-white md:hidden">
-                    {phase.phase}
-                  </span>
-
-                  {/* Content card */}
-                  <div
-                    className={`h-full rounded-xl border border-zinc-300 bg-white px-3 sm:px-4 py-4 sm:py-6 md:px-6 md:py-8 ${
-                      index === 2 ? "shadow-xl shadow-zinc-300" : ""
-                    }`}
-                  >
-                    {/* Phase image */}
-                    <div className="w-full h-48 bg-zinc-200 rounded-lg mb-4 mt-2 overflow-hidden">
-                      {phase.imageSrc.startsWith('http') || phase.imageSrc.startsWith('/') ? (
-                        <img 
-                          src={phase.imageSrc} 
-                          alt={`${phase.title} phase`}
-                          className="w-full h-full object-cover"
-                          style={{ objectPosition: 'center 10%' }}
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center">
-                          <span className="text-zinc-500 text-sm">{phase.title} Phase</span>
-                        </div>
-                      )}
-                    </div>
-                    
-                    <h3 className="text-base sm:text-lg font-medium mb-3 sm:mb-4 leading-trim text-zinc-900">
-                      {phase.contentTitle}
-                    </h3>
-                    <ul className="space-y-4">
-                      {phase.bullets.map((bullet, bulletIndex) => (
-                        <li key={bulletIndex} className="flex items-start">
-                          <FiChevronRight className="text-zinc-600 mr-2 size-3 sm:size-4 flex-none md:size-5 mt-0.5" />
-                          <span className="leading-trim text-xs sm:text-sm text-zinc-700">
-                            {bullet}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+          {/* Desktop Timeline */}
+          <div className="hidden lg:block">
+            <div className="relative mx-auto flex w-fit flex-col">
+              {/* Phase labels above timeline */}
+              <div className="hidden grid-cols-1 grid-rows-3 gap-12 md:grid lg:mb-8 lg:grid-cols-3 lg:grid-rows-1 lg:gap-0">
+                {growthPhases.map((phase, index) => (
+                  <div key={index} className="flex items-center justify-center">
+                    <span className="leading-trim text-sm rounded-md border border-zinc-300 px-4 py-2.5 bg-white">
+                      {phase.phase}
+                    </span>
                   </div>
+                ))}
+              </div>
+
+              {/* Timeline line and markers container */}
+              <div className="relative lg:px-6 lg:py-0">
+                {/* Desktop timeline lines */}
+                <div className="hidden lg:block">
+                  {/* Static background line */}
+                  <div
+                    className="absolute left-1/2 top-1/2 h-px -translate-y-1/2 -translate-x-1/2 bg-zinc-300"
+                    style={{ width: "66.67%" }}
+                  ></div>
+
+                  {/* Animated line that grows from left to right */}
+                  <div
+                    className={`absolute top-1/2 h-px -translate-y-1/2 bg-zinc-900 opacity-0 origin-left ${
+                      isVisible ? "animate-timeline-fill" : ""
+                    }`}
+                    style={{
+                      width: "66.67%",
+                      left: "calc(50% - 33.335%)",
+                    }}
+                  ></div>
                 </div>
-              ))}
+
+                {/* Timeline markers */}
+                <div className="relative grid h-full grid-cols-1 grid-rows-3 justify-between gap-12 lg:grid-cols-3 lg:grid-rows-1">
+                  {growthPhases.map((phase, index) => (
+                    <div
+                      key={index}
+                      className={`relative z-10 mt-3 size-3 rounded bg-zinc-900 md:mt-0 place-self-center opacity-0 ${
+                        isVisible ? "animate-marker-appear" : ""
+                      }`}
+                      style={{
+                        animationDelay: isVisible ? `${index * 0.9}s` : "0s",
+                        animationFillMode: "forwards",
+                      }}
+                    ></div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Timeline content cards */}
+              <div className="ml-5 grid grid-rows-3 gap-12 lg:ml-0 lg:mt-8 lg:grid-cols-3 lg:grid-rows-1">
+                {growthPhases.map((phase, index) => (
+                  <div
+                    key={index}
+                    className={`flex flex-col gap-4 opacity-0 translate-y-4 ${
+                      isVisible ? "animate-card-appear" : ""
+                    }`}
+                    style={{
+                      animationDelay: isVisible ? `${index * 0.8}s` : "0s",
+                      animationFillMode: "forwards",
+                    }}
+                  >
+                    {/* Content card */}
+                    <div
+                      className={`h-full rounded-xl border border-zinc-300 bg-white px-3 sm:px-4 py-4 sm:py-6 md:px-6 md:py-8 ${
+                        index === 2 ? "shadow-xl shadow-zinc-300" : ""
+                      }`}
+                    >
+                      {/* Phase image */}
+                      <div className="w-full h-48 bg-zinc-200 rounded-lg mb-4 mt-2 overflow-hidden">
+                        {phase.imageSrc.startsWith('http') || phase.imageSrc.startsWith('/') ? (
+                          <img 
+                            src={phase.imageSrc} 
+                            alt={`${phase.title} phase`}
+                            className="w-full h-full object-cover"
+                            style={{ objectPosition: 'center 10%' }}
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <span className="text-zinc-500 text-sm">{phase.title} Phase</span>
+                          </div>
+                        )}
+                      </div>
+                      
+                      <h3 className="text-base sm:text-lg font-medium mb-3 sm:mb-4 leading-trim text-zinc-900">
+                        {phase.contentTitle}
+                      </h3>
+                      <ul className="space-y-4">
+                        {phase.bullets.map((bullet, bulletIndex) => (
+                          <li key={bulletIndex} className="flex items-start">
+                            <FiChevronRight className="text-zinc-600 mr-2 size-3 sm:size-4 flex-none md:size-5 mt-0.5" />
+                            <span className="leading-trim text-xs sm:text-sm text-zinc-700">
+                              {bullet}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -438,12 +518,10 @@ export default function Company() {
               </Button>
             </div>
 
-            {/* Mobile menu button */}
-            <button className="md:hidden p-2 rounded-lg transition-colors duration-200 text-zinc-900 hover:bg-zinc-100">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
+            {/* Mobile home button */}
+            <Link href="/" className="md:hidden p-2 rounded-lg transition-colors duration-200 text-zinc-900 hover:bg-zinc-100">
+              <FiHome className="w-6 h-6" />
+            </Link>
           </div>
         </nav>
         
@@ -559,7 +637,7 @@ export default function Company() {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
               {customerStories.map((customer) => (
                 <div key={customer.id} className="bg-[#1F1F1F]/40 text-[#F5F7F9] backdrop-blur-lg p-4 sm:p-6 md:p-8 rounded-xl border-[#F5F7F9]/10 border-1">
                   <div className="mb-4 sm:mb-6">
@@ -711,8 +789,8 @@ export default function Company() {
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 w-full lg:w-auto">
-              <div className="relative sm:w-auto">
+            <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 w-full lg:w-auto">
+              <div className="relative w-full sm:w-auto">
                 <GlowEffect
                   colors={["#D01E28aa", "#EF4444aa", "#46ADCaa", "#2573A3aa"]}
                   mode="rotate"
@@ -724,7 +802,7 @@ export default function Company() {
                   {/* @ts-expect-error Button component type mismatch */}
                   <Button 
                     color="white"
-                    className="relative w-full sm:w-auto px-16 py-6 text-xl sm:text-2xl font-medium"
+                    className="relative w-full px-16 py-6 text-xl sm:text-2xl font-medium"
                   >
                     Get in Touch
                   </Button>
