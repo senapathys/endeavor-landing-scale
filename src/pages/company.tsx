@@ -679,7 +679,7 @@ export default function Company() {
                Leaders in AI and industry 
              </h2>
              <p className="px-4 sm:px-12 text-zinc-700 max-w-lg text-sm sm:text-base">
-                Meet the experts driving innovation in industrial AI
+                Built in Silicon Valley, deployed in the American Heartland
               </p>
             </div>
             
