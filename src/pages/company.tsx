@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { GlowEffect } from "@/components/core/glow-effect";
@@ -89,7 +88,7 @@ function GrowthPhases() {
           <div className="text-center space-y-3 mb-8 sm:mb-12 flex items-center flex-col mx-auto max-w-2xl px-4">
             <div className="bg-black w-4 h-4 rounded" />
             <h2 className="text-2xl sm:text-3xl md:text-4xl text-zinc-900">
-              Our Founder's Journey
+              Our Founder&apos;s Journey
             </h2>
           </div>
 
@@ -556,7 +555,7 @@ export default function Company() {
             <div className="text-center mb-8 sm:mb-12">
               <h2 className="text-2xl sm:text-3xl md:text-4xl text-white mb-4">Our Customers</h2>
               <p className="text-zinc-100 max-w-2xl mx-auto text-sm sm:text-base">
-                We are often our customer's first AI partner, supporting enterprises in industries like food and beverage, chemicals, and manufacturing and distribution.
+                We are often our customer&apos;s first AI partner, supporting enterprises in industries like food and beverage, chemicals, and manufacturing and distribution.
               </p>
             </div>
             
@@ -667,7 +666,7 @@ export default function Company() {
                     case 'quote':
                       return (
                         <blockquote key={index} className="border-l-4 border-white/30 pl-4 italic text-[#F5F7F9]/80 bg-white/5 p-4 rounded-r-lg">
-                          "{item.text}"
+                          &ldquo;{item.text}&rdquo;
                           {item.source && (
                             <footer className="mt-2 text-sm not-italic">
                               — <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline text-[#F5F7F9]/90 hover:text-white">{item.source}</a>
@@ -705,10 +704,10 @@ export default function Company() {
           <div className="w-full rounded-xl max-w-7xl flex flex-col lg:flex-row bg-[url(/gradient-bg.svg)] bg-cover p-4 sm:p-6 md:p-8 gap-6 md:gap-8 items-center text-center lg:text-left">
             <div className="flex flex-1 flex-col">
               <div className="text-[#F6F6F6] text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
-                Join Us. We're Hiring.
+                Join Us. We&apos;re Hiring.
               </div>
               <p className="text-[#F6F6F6]/60 text-sm sm:text-md mt-4 sm:mt-6 max-w-md lg:max-w-none leading-relaxed">
-                We're growing rapidly and looking for exceptional individuals to join our team.
+                We&apos;re growing rapidly and looking for exceptional individuals to join our team.
               </p>
             </div>
             
