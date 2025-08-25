@@ -106,6 +106,36 @@ function Home() {
     }
   };
 
+  // Handle scroll to section after redirect from company page
+  useEffect(() => {
+    const targetSection = sessionStorage.getItem('scrollToSection');
+    if (targetSection) {
+      // Clear the sessionStorage immediately
+      sessionStorage.removeItem('scrollToSection');
+      
+      // Wait for the page to fully load and render
+      const element = document.getElementById(targetSection);
+      if (element) {
+        const elementPosition = element.offsetTop;
+        const isMobile = window.innerWidth < 768;
+        const offset = isMobile ? 80 : 100; // Base offset
+        
+        // Add static offset for specific sections when redirecting from company page
+        let staticOffset = 0;
+        if (targetSection === "implementation" || targetSection === "faq") {
+          staticOffset = isMobile ? 450 : 250; // Different offset for mobile vs desktop
+        }
+        
+        const finalPosition = elementPosition - offset + staticOffset;
+        
+        window.scrollTo({
+          top: finalPosition,
+          behavior: "smooth"
+        });
+      }
+    }
+  }, []);
+
   return (
     <div className="">
       <Head>
