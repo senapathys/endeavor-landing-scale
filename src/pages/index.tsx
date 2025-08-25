@@ -1,5 +1,5 @@
 // pages/index.js
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Solution from "@/components/Solution";
@@ -85,55 +85,26 @@ const logos = [
 function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const demoRef = useRef<HTMLDivElement>(null);
+  const [activeUseCase, setActiveUseCase] = useState<string>("schreiber-foods");
 
-  // Handle scroll to section after redirect from company page
-  useEffect(() => {
-    const targetSection = sessionStorage.getItem('scrollToSection');
-    if (targetSection) {
-      // Clear the stored section
-      sessionStorage.removeItem('scrollToSection');
+  const handleUseCaseChange = (useCaseId: string) => {
+    setActiveUseCase(useCaseId);
+  };
+
+  const handleScrollToUseCases = () => {
+    const useCasesSection = document.getElementById("use-cases");
+    if (useCasesSection) {
+      const elementPosition = useCasesSection.offsetTop;
+      const isMobile = window.innerWidth < 768;
+      const offset = isMobile ? 80 : 100;
+      const offsetPosition = elementPosition - offset;
       
-                // Scroll to section with proper offset (no delay needed with static offset)
-          const element = document.getElementById(targetSection);
-          if (element) {
-            const elementPosition = element.offsetTop;
-            const isMobile = window.innerWidth < 768;
-            
-            // Use a more conservative offset that accounts for navbar state changes
-            let offset;
-            if (isMobile) {
-              // Mobile: use larger offset to account for navbar state changes
-              offset = 120; // Increased from 82 to 120
-            } else {
-              // Desktop: use larger offset for consistency
-              offset = 140; // Increased from 100 to 140
-            }
-            
-            // Add static offset only for sections that need it (Implementation and FAQ) and only on mobile
-            let staticOffset = 0;
-            if (isMobile && (targetSection === "implementation" || targetSection === "faq")) {
-              staticOffset = -580; // Negative to compensate for measurement difference (mobile only)
-            }
-            const totalOffset = offset + staticOffset;
-            const offsetPosition = elementPosition - totalOffset;
-            
-            console.log('Scroll debug (with static offset):', {
-              section: targetSection,
-              elementPosition,
-              baseOffset: offset,
-              staticOffset: staticOffset,
-              totalOffset: totalOffset,
-              finalPosition: offsetPosition,
-              isMobile
-            });
-            
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth"
-            });
-          }
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
     }
-  }, []);
+  };
 
   return (
     <div className="">
@@ -155,14 +126,21 @@ function Home() {
       <Navbar heroRef={heroRef} demoRef={demoRef} />
       <div className="relative bg-[#121212] bg-[url(/dark-gradient-bg.svg)] bg-no-repeat bg-cover before:absolute before:inset-0 before:bg-gradient-to-b before:from-transparent before:to-[#121212] before:pointer-events-none" style={{ marginBottom: '-1px' }}>
         <div className="relative z-10">
-          <Hero heroRef={heroRef} />
+          <Hero 
+            heroRef={heroRef} 
+            onUseCaseChange={handleUseCaseChange}
+            onScrollToUseCases={handleScrollToUseCases}
+          />
           <Demo demoRef={demoRef} />
         </div>
       </div>
 
       <Erp />
       <InfiniteSliderHoverSpeed />
-      <CustomerUseCases />
+      <CustomerUseCases 
+        externalActiveId={activeUseCase}
+        onUseCaseChange={handleUseCaseChange}
+      />
       <ScrollFeatureSection />
       <Solution />
       <Security />

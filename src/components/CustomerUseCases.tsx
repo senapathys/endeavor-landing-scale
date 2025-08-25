@@ -31,7 +31,7 @@ const useCases: UseCase[] = [
     icon: Utensils,
   },
   {
-    id: "manufacturing",
+    id: "clark-dietrich",
     customer: "ClarkDietrich",
     title: "Turnaround quotes in minutes, not days with AI",
     subtext: "How ClarkDietrich uses AI to win more quotes",
@@ -68,9 +68,24 @@ const useCases: UseCase[] = [
   },
 ];
 
-const CustomerUseCases: React.FC = () => {
-  const [activeId, setActiveId] = useState<string>(useCases[0].id);
+interface CustomerUseCasesProps {
+  externalActiveId?: string;
+  onUseCaseChange?: (useCaseId: string) => void;
+}
+
+const CustomerUseCases: React.FC<CustomerUseCasesProps> = ({ 
+  externalActiveId, 
+  onUseCaseChange 
+}) => {
+  const [activeId, setActiveId] = useState<string>(externalActiveId || useCases[0].id);
   const [imageLoading, setImageLoading] = useState(false);
+
+  // Handle external active ID changes
+  React.useEffect(() => {
+    if (externalActiveId && externalActiveId !== activeId) {
+      setActiveId(externalActiveId);
+    }
+  }, [externalActiveId, activeId]);
 
   const active = useMemo(
     () => useCases.find((c) => c.id === activeId) ?? useCases[0],
@@ -80,6 +95,12 @@ const CustomerUseCases: React.FC = () => {
   const handleUseCaseChange = (newId: string) => {
     setImageLoading(true);
     setActiveId(newId);
+    
+    // Call parent callback to keep state in sync
+    if (onUseCaseChange) {
+      onUseCaseChange(newId);
+    }
+    
     // Reset loading state after animation completes
     setTimeout(() => setImageLoading(false), 50);
   };
@@ -224,7 +245,7 @@ const CustomerUseCases: React.FC = () => {
               className={`rounded-lg object-cover shadow-[0_10px_30px_rgba(0,0,0,0.4)] transition-opacity duration-500 ease-in-out ${
                 imageLoading ? 'opacity-0' : 'opacity-100'
               }`}
-              objectPosition={active.id === "manufacturing" ? "center" : "left"}
+              objectPosition={active.id === "clark-dietrich" ? "center" : "left"}
             />
           </div>
         </div>

@@ -1,7 +1,18 @@
 import Email from "./Email";
 import { Button } from "./ui/button";
 
-function Hero({ heroRef }: { heroRef?: React.RefObject<HTMLDivElement | null> }) {
+interface HeroProps {
+  heroRef?: React.RefObject<HTMLDivElement | null>;
+  onUseCaseChange?: (useCaseId: string) => void;
+  onScrollToUseCases?: () => void;
+}
+
+function Hero({ heroRef, onUseCaseChange, onScrollToUseCases }: HeroProps) {
+  const handleUseCaseNavigation = (useCaseId: string) => {
+    if (onUseCaseChange) onUseCaseChange(useCaseId);
+    if (onScrollToUseCases) onScrollToUseCases();
+  };
+
   return (
     <div
       ref={heroRef}
@@ -20,17 +31,47 @@ function Hero({ heroRef }: { heroRef?: React.RefObject<HTMLDivElement | null> })
         <div className="mt-4 sm:mt-6 w-full px-4">
           <div className="mx-auto max-w-4xl flex flex-wrap items-center justify-center gap-3">
             {/* @ts-expect-error Button component type mismatch */}
-            <Button className="justify-center text-xs md:text-sm lg:text-base">Quoting</Button>
+            <Button
+              className="justify-center text-xs md:text-sm lg:text-base"
+              onClick={() => handleUseCaseNavigation("clark-dietrich")}
+            >
+              Quoting
+            </Button>
             {/* @ts-expect-error Button component type mismatch */}
-            <Button className="justify-center text-xs md:text-sm lg:text-base">Order Entry</Button>
+            <Button
+              className="justify-center text-xs md:text-sm lg:text-base"
+              onClick={() => handleUseCaseNavigation("cabot-corporation")}
+            >
+              Order Entry
+            </Button>
             {/* @ts-expect-error Button component type mismatch */}
-            <Button className="justify-center text-xs md:text-sm lg:text-base">Product Onboarding</Button>
+            <Button
+              className="justify-center text-xs md:text-sm lg:text-base"
+              onClick={() => handleUseCaseNavigation("menasha")}
+            >
+              Product Onboarding
+            </Button>
             {/* @ts-expect-error Button component type mismatch */}
-            <Button className="justify-center text-xs md:text-sm lg:text-base">Order Status</Button>
+            <Button
+              className="justify-center text-xs md:text-sm lg:text-base"
+              onClick={() => handleUseCaseNavigation("cabot-corporation")}
+            >
+              Order Status
+            </Button>
             {/* @ts-expect-error Button component type mismatch */}
-            <Button className="justify-center text-xs md:text-sm lg:text-base">Supplier Specs</Button>
+            <Button
+              className="justify-center text-xs md:text-sm lg:text-base"
+              onClick={() => handleUseCaseNavigation("schreiber-foods")}
+            >
+              Supplier Specs
+            </Button>
             {/* @ts-expect-error Button component type mismatch */}
-            <Button className="justify-center text-xs md:text-sm lg:text-base">Invoices</Button>
+            <Button
+              className="justify-center text-xs md:text-sm lg:text-base"
+              onClick={() => handleUseCaseNavigation("cabot-corporation")}
+            >
+              Invoices
+            </Button>
           </div>
         </div>
         <div className="mt-8 sm:mt-12 w-full flex justify-center px-4">

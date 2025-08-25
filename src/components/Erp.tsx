@@ -7,9 +7,9 @@ const erpLogos = [
     alt: "Epicor ERP Logo"
   },
   {
-    name: "Epicor Bistrack",
-    src: "/erp_logos/epicor-bistrack.svg",
-    alt: "Infor ERP Logo"
+    name: "SAP",
+    src: "/erp_logos/sap-scaled-1.png",
+    alt: "SAP Logo"
   },
   {
     name: "Infor",
