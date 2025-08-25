@@ -60,10 +60,8 @@ const Form = () => {
   useEffect(() => {
     const checkForStoredEmail = () => {
       const storedEmail = sessionStorage.getItem("userEmail");
-      console.log("Checking for stored email:", storedEmail);
       if (storedEmail) {
         form.setValue("email", storedEmail);
-        console.log("Email auto-populated:", storedEmail);
         // Clear from sessionStorage after using it
         sessionStorage.removeItem("userEmail");
 

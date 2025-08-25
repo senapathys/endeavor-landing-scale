@@ -22,13 +22,11 @@ function Email({ style = "fill" }) {
 
   const handleGetStarted = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Get Started clicked, email:", email);
 
     const cleanedEmail = sanitizeInput(email);
 
     if (!validateEmail(cleanedEmail)) {
       setInvalidEmail(true);
-      console.log("Invalid email:", cleanedEmail);
       return;
     } else {
       setInvalidEmail(false);
@@ -36,7 +34,6 @@ function Email({ style = "fill" }) {
 
     // Store email in sessionStorage for auto-population
     sessionStorage.setItem("userEmail", cleanedEmail);
-    console.log("Email stored in sessionStorage:", cleanedEmail);
     
     // Dispatch custom event to notify Form component
     window.dispatchEvent(new Event('sessionStorageUpdated'));
@@ -49,7 +46,6 @@ function Email({ style = "fill" }) {
       const offset = isMobile ? 60 : 100;
       const offsetPosition = elementPosition - offset;
 
-      console.log("Scrolling to form section at:", offsetPosition);
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth",

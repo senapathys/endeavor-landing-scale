@@ -14,6 +14,16 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
 
   useEffect(() => {
     setIsClient(true);
+    
+    // Set default navbar state based on current page
+    if (typeof window !== "undefined") {
+      const currentPath = window.location.pathname;
+      if (currentPath.includes('/company')) {
+        setNavbarState("scrolled"); // Company page: white background, dark text
+      } else {
+        setNavbarState("hero"); // Main page: transparent background, light text
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -30,6 +40,10 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
       const erpSection = document.getElementById("erp");
       const formSection = document.getElementById("form");
       const useCasesSection = document.getElementById("use-cases");
+      const ourCustomersSection = document.getElementById("our-customers");
+      const teamSection = document.getElementById("team");
+      const heroSection = document.getElementById("hero");
+      const companyHeroSection = document.getElementById("company-hero");
 
       // Check hero first - adjusted for ultra-wide screens
       let heroMultiplier;
@@ -44,6 +58,33 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
       }
       
       const pastHero = window.scrollY > heroHeight * heroMultiplier;
+
+      // Check hero section specifically
+      let nearHero = false;
+      if (heroSection) {
+        const sectionTop = heroSection.offsetTop;
+        const sectionBottom = sectionTop + heroSection.offsetHeight;
+        const scrollPosition = window.scrollY + window.innerHeight * 0.1;
+
+        nearHero =
+          scrollPosition > sectionTop &&
+          window.scrollY < sectionBottom - 100;
+      }
+
+      // Check company-hero section specifically
+      let nearCompanyHero = false;
+      if (companyHeroSection) {
+        const sectionTop = companyHeroSection.offsetTop;
+        const sectionBottom = sectionTop + companyHeroSection.offsetHeight;
+        const scrollPosition = window.scrollY + window.innerHeight * 0.1;
+
+        nearCompanyHero =
+          scrollPosition > sectionTop &&
+          window.scrollY < sectionBottom - 100;
+      }
+
+      // Check if we're on company page by URL
+      const isCompanyPage = typeof window !== 'undefined' && window.location.pathname.includes('/company');
 
       // Check testimonials section
       let nearTestimonials = false;
@@ -111,6 +152,34 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
           window.scrollY < sectionBottom - (window.innerWidth < 1024 ? 40 : 80);
       }
 
+      // Check our-customers section
+      let nearOurCustomers = false;
+      if (ourCustomersSection) {
+        const sectionTop = ourCustomersSection.offsetTop + (window.innerWidth < 1024 ? 20 : 40);
+        const sectionBottom = sectionTop + ourCustomersSection.offsetHeight;
+        const scrollPosition =
+          window.scrollY +
+          window.innerHeight * (window.innerWidth < 1024 ? 0.05 : 0.1);
+
+        nearOurCustomers =
+          scrollPosition > sectionTop &&
+          window.scrollY < sectionBottom - (window.innerWidth < 1024 ? 40 : 80);
+      }
+
+      // Check team section
+      let nearTeam = false;
+      if (teamSection) {
+        const sectionTop = teamSection.offsetTop + (window.innerWidth < 1024 ? 20 : 40);
+        const sectionBottom = sectionTop + teamSection.offsetHeight;
+        const scrollPosition =
+          window.scrollY +
+          window.innerHeight * (window.innerWidth < 1024 ? 0.05 : 0.1);
+
+        nearTeam =
+          scrollPosition > sectionTop &&
+          window.scrollY < sectionBottom - (window.innerWidth < 1024 ? 40 : 80);
+      }
+
       // Check form section
       let nearForm = false;
       if (formSection) {
@@ -144,30 +213,32 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
       setIsScrolled(window.scrollY > 30);
 
       // Set state based on priority (order matters!)
-      if (nearSecurity) {
-        console.log("security");
+      if (nearCompanyHero) {
+        setNavbarState("scrolled");
+      } else if (nearHero) {
+        setNavbarState("hero");
+      } else if (nearSecurity) {
         setNavbarState("security");
       } else if (nearForm) {
-        console.log("form");
         setNavbarState("form");
       } else if (nearTestimonials) {
-        console.log("testimonials");
         setNavbarState("testimonials");
       } else if (nearErp) {
-        console.log("erp");
         setNavbarState("erp");
       } else if (nearUseCases) {
-        console.log("use-cases");
+        setNavbarState("use-cases");
+      } else if (nearOurCustomers) {
         setNavbarState("use-cases");
       } else if (nearScrollFeature) {
-        console.log("scroll-feature");
         setNavbarState("scroll-feature");
       } else if (pastHero) {
-        console.log("scrolled");
         setNavbarState("scrolled");
       } else {
-        console.log("hero");
-        setNavbarState("hero");
+        if (isCompanyPage) {
+          setNavbarState("scrolled");
+        } else {
+          setNavbarState("hero");
+        }
       }
     };
 
@@ -183,6 +254,8 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
     switch (navbarState) {
       case "hero":
         return `text-zinc-900 bg-transparent ${backdropClass}`;
+      case "company-hero":
+        return `text-zinc-900 bg-white ${backdropClass}`; // White background for company page hero
       case "scrolled":
         return `text-zinc-900 bg-transparent ${backdropClass}`;
       case "scroll-feature":
@@ -193,6 +266,8 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
         return `text-zinc-900 bg-transparent ${backdropClass}`;
       case "use-cases":
         return `text-zinc-900 bg-transparent ${backdropClass}`;
+      case "team":
+        return `text-zinc-900 bg-white ${backdropClass}`; // White background for team section
       case "form":
         return `text-zinc-900 bg-transparent ${backdropClass}`;
       case "security":
@@ -206,6 +281,8 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
     switch (navbarState) {
       case "hero":
         return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
+      case "company-hero":
+        return "text-[#121212] hover:!text-[#121212]/60"; // Dark text for company page hero
       case "scrolled":
         return "text-[#121212] hover:!text-[#121212]/60";
       case "scroll-feature":
@@ -216,6 +293,8 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
         return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
       case "use-cases":
         return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
+      case "team":
+        return "text-[#121212] hover:!text-[#121212]/60"; // Dark text for team section
       case "form":
         return "text-[#F6F6F6] hover:!text-[#F6F6F6]/80";
       case "security":
@@ -229,6 +308,8 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
     switch (navbarState) {
       case "hero":
         return "invert";
+      case "company-hero":
+        return ""; // Normal logo for company page hero
       case "scrolled":
         return "";
       case "scroll-feature":
@@ -239,6 +320,8 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
         return "invert";
       case "use-cases":
         return "invert";
+      case "team":
+        return ""; // Normal logo for team section
       case "form":
         return "invert";
       case "security":
@@ -266,29 +349,58 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
   };
 
   const handleMobileNavClick = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const elementPosition = element.offsetTop;
-      const isMobile = window.innerWidth < 768;
-      
-      // Use smaller offset for features section on mobile
-      let offset;
-      if (sectionId === "features" && isMobile) {
-        offset = 20; // Smaller offset for features on mobile
+    // Check if we're on the company page
+    const isCompanyPage = typeof window !== 'undefined' && window.location.pathname.includes('/company');
+    
+    if (isCompanyPage) {
+      // On company page: redirect to home page with section
+      // Add offset for FAQ section to prevent headline cutoff on mobile
+      if (sectionId === "faq") {
+        window.location.href = `/#${sectionId}`;
+        // Add a small delay to ensure the page loads, then apply offset
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            const elementPosition = element.offsetTop;
+            const isMobile = window.innerWidth < 768;
+            const offset = isMobile ? 80 : 100; // Larger offset for FAQ on mobile
+            const offsetPosition = elementPosition - offset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+          }
+        }, 100);
       } else {
-        offset = isMobile ? 60 : 100; // Default offsets
+        window.location.href = `/#${sectionId}`;
       }
-      
-      const offsetPosition = elementPosition - offset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-      
-      // Close mobile menu
-      setMobileMenuOpen(false);
+    } else {
+      // On home page: scroll to section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const elementPosition = element.offsetTop;
+        const isMobile = window.innerWidth < 768;
+        
+        // Use smaller offset for features section on mobile
+        let offset;
+        if (sectionId === "features" && isMobile) {
+          offset = 20; // Smaller offset for features on mobile
+        } else {
+          offset = isMobile ? 60 : 100; // Default offsets
+        }
+        
+        const offsetPosition = elementPosition - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
     }
+    
+    // Close mobile menu
+    setMobileMenuOpen(false);
   };
 
   return (

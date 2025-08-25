@@ -17,6 +17,52 @@ interface NavigationMenuProps {
 }
 
 export function NavigationMenuDemo({ getLinkClasses }: NavigationMenuProps) {
+  // Check if we're on the company page
+  const isCompanyPage = typeof window !== 'undefined' && window.location.pathname.includes('/company');
+
+  const handleNavigation = (sectionId: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    if (isCompanyPage) {
+      // On company page: redirect to home page with section
+      // Add offset for FAQ section to prevent headline cutoff on mobile
+      if (sectionId === "faq") {
+        window.location.href = `/#${sectionId}`;
+        // Add a small delay to ensure the page loads, then apply offset
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            const elementPosition = element.offsetTop;
+            const isMobile = window.innerWidth < 768;
+            const offset = isMobile ? 80 : 100; // Larger offset for FAQ on mobile
+            const offsetPosition = elementPosition - offset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+          }
+        }, 100);
+      } else {
+        window.location.href = `/#${sectionId}`;
+      }
+    } else {
+      // On home page: scroll to section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+
+        // Remove focus after scroll animation completes
+        setTimeout(() => {
+          (e.target as HTMLElement)?.blur();
+        }, 800);
+      }
+    }
+  };
+
   return (
     <NavigationMenu viewport={false} className="">
       <NavigationMenuList className="">
@@ -28,23 +74,9 @@ export function NavigationMenuDemo({ getLinkClasses }: NavigationMenuProps) {
             className={`!bg-transparent hover:!bg-transparent focus:bg-transparent data-[state=open]:!bg-transparent hover:text-current focus:text-current data-[state=open]:text-current ${navigationMenuTriggerStyle()}`}
           >
             <Link
-              href="#solution"
+              href="#features"
               className={`bg-transparent transition-colors duration-300 ${getLinkClasses()}`}
-              onClick={(e) => {
-                e.preventDefault();
-                const solutionElement = document.getElementById("features");
-                if (solutionElement) {
-                  solutionElement.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                  });
-
-                  // Remove focus after scroll animation completes (typically ~500-800ms)
-                  setTimeout(() => {
-                    (e.target as HTMLElement)?.blur();
-                  }, 800);
-                }
-              }}
+              onClick={(e) => handleNavigation("features", e)}
             >
               Features
             </Link>
@@ -60,21 +92,7 @@ export function NavigationMenuDemo({ getLinkClasses }: NavigationMenuProps) {
             <Link
               href="#solution"
               className={`bg-transparent transition-colors duration-300 ${getLinkClasses()}`}
-              onClick={(e) => {
-                e.preventDefault();
-                const solutionElement = document.getElementById("solution");
-                if (solutionElement) {
-                  solutionElement.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                  });
-
-                  // Remove focus after scroll animation completes (typically ~500-800ms)
-                  setTimeout(() => {
-                    (e.target as HTMLElement)?.blur();
-                  }, 800);
-                }
-              }}
+              onClick={(e) => handleNavigation("solution", e)}
             >
               Solutions
             </Link>
@@ -266,28 +284,9 @@ export function NavigationMenuDemo({ getLinkClasses }: NavigationMenuProps) {
             className={`!bg-transparent hover:!bg-transparent focus:bg-transparent data-[state=open]:!bg-transparent hover:text-current focus:text-current data-[state=open]:text-current ${navigationMenuTriggerStyle()}`}
           >
             <Link
-              href="#solution"
+              href="#implementation"
               className={`bg-transparent transition-colors duration-300 ${getLinkClasses()}`}
-              onClick={(e) => {
-                e.preventDefault();
-                const implementationElement = document.getElementById("implementation");
-                if (implementationElement) {
-                  const elementPosition = implementationElement.offsetTop;
-                  const isMobile = window.innerWidth < 768;
-                  const offset = isMobile ? 60 : 100;
-                  const offsetPosition = elementPosition - offset;
-
-                  window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth",
-                  });
-
-                  // Remove focus after scroll animation completes (typically ~500-800ms)
-                  setTimeout(() => {
-                    (e.target as HTMLElement)?.blur();
-                  }, 800);
-                }
-              }}
+              onClick={(e) => handleNavigation("implementation", e)}
             >
               Implementation
             </Link>
@@ -301,28 +300,9 @@ export function NavigationMenuDemo({ getLinkClasses }: NavigationMenuProps) {
             className={`!bg-transparent hover:!bg-transparent focus:bg-transparent data-[state=open]:!bg-transparent hover:text-current focus:text-current data-[state=open]:text-current ${navigationMenuTriggerStyle()}`}
           >
             <Link
-              href="#solution"
+              href="#faq"
               className={`bg-transparent transition-colors duration-300 ${getLinkClasses()}`}
-              onClick={(e) => {
-                e.preventDefault();
-                const faqElement = document.getElementById('faq');
-                if (faqElement) {
-                  const elementPosition = faqElement.offsetTop;
-                  const isMobile = window.innerWidth < 768;
-                  const offset = isMobile ? 60 : 100;
-                  const offsetPosition = elementPosition - offset;
-
-                  window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth',
-                  });
-                  
-                  // Remove focus after scroll animation completes (typically ~500-800ms)
-                  setTimeout(() => {
-                    (e.target as HTMLElement)?.blur();
-                  }, 800);
-                }
-              }}
+              onClick={(e) => handleNavigation("faq", e)}
             >
               FAQ
             </Link>

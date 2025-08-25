@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { GlowEffect } from "@/components/core/glow-effect";
 import { NavigationMenuDemo } from "@/components/NavigationMenu";
@@ -292,6 +293,9 @@ function GrowthPhases() {
 }
 
 export default function Company() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const demoRef = useRef<HTMLDivElement>(null);
+  
   // Mission & Vision data for easy editing
   const missionVisionData = {
     title: "Endeavor is AI for World-Building",
@@ -484,52 +488,13 @@ export default function Company() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen">
-        {/* Custom Navbar for Company Page */}
-        <nav className="py-4 relative z-50 w-full bg-white">
-          <div className="flex justify-between items-center px-4 sm:px-6 md:px-8 max-w-7xl mx-auto">
-            <Link className="flex items-center space-x-2 md:space-x-3" href="/">
-              <Image
-                src="/industrial-ai-logo.svg"
-                alt="Endeavor"
-                className="h-6 w-auto md:h-6 lg:h-7 transition-all duration-300"
-                width={200}
-                height={30}
-              />
-            </Link>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center justify-center space-x-4 flex-1">
-              <NavigationMenuDemo getLinkClasses={() => "text-zinc-900 hover:text-zinc-600"} />
-            </div>
-
-            <div className="hidden md:flex items-center space-x-4">
-              {/* @ts-expect-error Button component type mismatch */}
-              <Button
-                onClick={() => {
-                  const formElement = document.getElementById("form");
-                  if (formElement) {
-                    window.location.href = "/#form";
-                  }
-                }}
-                color="dark"
-                className="transition-all duration-300"
-              >
-                Book a demo
-              </Button>
-            </div>
-
-            {/* Mobile home button */}
-            <Link href="/" className="md:hidden p-2 rounded-lg transition-colors duration-200 text-zinc-900 hover:bg-zinc-100">
-              <FiHome className="w-6 h-6" />
-            </Link>
-          </div>
-        </nav>
+            <div className="min-h-screen">
+        <Navbar heroRef={heroRef} demoRef={demoRef} />
         
         {/* Hero Section */}
         <div className="relative bg-white">
           <div className="relative z-10">
-            <section className="pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8">
+            <section id="company-hero" className="pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <div className="text-center">
                   <div className="flex justify-center mb-10">
@@ -567,8 +532,8 @@ export default function Company() {
           </div>
         </section>
 
-            {/* Customer Logos Section */}
-            <section className="pb-24 sm:pb-36 px-4 sm:px-6 lg:px-8">
+                    {/* Customer Logos Section */}
+        <section id="customers" className="pb-24 sm:pb-36 px-4 sm:px-6 lg:px-8">
               <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-8 sm:mb-12">
                   <p className="text-zinc-600 text-sm sm:text-base max-w-3xl mx-auto">
@@ -628,7 +593,7 @@ export default function Company() {
         </div>
 
                 {/* Customer Stories Section */}
-                <section className="bg-black py-8 sm:py-10 px-4 sm:px-8 md:px-24 md:py-20 relative flex justify-center">
+                <section id="our-customers" className="bg-black py-8 sm:py-10 px-4 sm:px-8 md:px-24 md:py-20 relative flex justify-center">
           <div className="absolute inset-0 bg-[url(/gradient-bg.svg)] bg-cover pointer-events-none"></div>
           <div className="relative z-10 max-w-7xl w-full">
             <div className="text-center mb-8 sm:mb-12">
@@ -672,7 +637,7 @@ export default function Company() {
         </section>
 
         {/* Team Section */}
-                 <section className="pt-10 md:pt-24 pb-16 max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                 <section id="team" className="pt-10 md:pt-24 pb-16 max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
            <div className="text-center space-y-3 mb-8 sm:mb-12 flex items-center flex-col mx-auto">
              <div className="bg-black w-4 h-4 rounded" />
              <h2 className="text-2xl sm:text-3xl md:text-4xl text-zinc-900 px-4">
@@ -719,10 +684,12 @@ export default function Company() {
          </section>
 
         {/* Growth Phases Section */}
-        <GrowthPhases />
+        <section id="solution">
+          <GrowthPhases />
+        </section>
 
         {/* Mission & Vision */}
-        <section className="bg-black py-8 sm:py-10 px-4 sm:px-8 md:px-24 md:py-20 relative flex justify-center">
+        <section id="use-cases" className="bg-black py-8 sm:py-10 px-4 sm:px-8 md:px-24 md:py-20 relative flex justify-center">
           <div className="absolute inset-0 bg-[url(/gradient-bg.svg)] bg-cover pointer-events-none"></div>
           <div className="relative z-10 max-w-7xl w-full">
             <div className="text-center mb-8 sm:mb-12">
