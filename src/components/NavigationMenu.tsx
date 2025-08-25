@@ -23,44 +23,43 @@ export function NavigationMenuDemo({ getLinkClasses }: NavigationMenuProps) {
   const handleNavigation = (sectionId: string, e: React.MouseEvent) => {
     e.preventDefault();
     
-    if (isCompanyPage) {
-      // On company page: redirect to home page with section
-      // Add offset for FAQ section to prevent headline cutoff on mobile
-      if (sectionId === "faq") {
-        window.location.href = `/#${sectionId}`;
-        // Add a small delay to ensure the page loads, then apply offset
-        setTimeout(() => {
-          const element = document.getElementById(sectionId);
-          if (element) {
+          if (isCompanyPage) {
+        // On company page: redirect to home page without anchor, then scroll to section with proper offset
+        window.location.href = '/';
+        // Store the target section in sessionStorage to scroll after page load
+        sessionStorage.setItem('scrollToSection', sectionId);
+            } else {
+        // On home page: scroll to section
+        const element = document.getElementById(sectionId);
+        if (element) {
+          // Add logging for FAQ section to compare with redirect behavior
+          if (sectionId === "faq") {
             const elementPosition = element.offsetTop;
             const isMobile = window.innerWidth < 768;
-            const offset = isMobile ? 80 : 100; // Larger offset for FAQ on mobile
+            const offset = isMobile ? 80 : 100;
             const offsetPosition = elementPosition - offset;
             
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth"
+            console.log('Home page FAQ scroll:', {
+              section: sectionId,
+              elementPosition,
+              offset,
+              finalPosition: offsetPosition,
+              isMobile,
+              method: 'scrollIntoView'
             });
           }
-        }, 100);
-      } else {
-        window.location.href = `/#${sectionId}`;
-      }
-    } else {
-      // On home page: scroll to section
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+          
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
 
-        // Remove focus after scroll animation completes
-        setTimeout(() => {
-          (e.target as HTMLElement)?.blur();
-        }, 800);
+          // Remove focus after scroll animation completes
+          setTimeout(() => {
+            (e.target as HTMLElement)?.blur();
+          }, 800);
+        }
       }
-    }
   };
 
   return (

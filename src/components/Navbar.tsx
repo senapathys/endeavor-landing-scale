@@ -353,28 +353,10 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
     const isCompanyPage = typeof window !== 'undefined' && window.location.pathname.includes('/company');
     
     if (isCompanyPage) {
-      // On company page: redirect to home page with section
-      // Add offset for FAQ section to prevent headline cutoff on mobile
-      if (sectionId === "faq") {
-        window.location.href = `/#${sectionId}`;
-        // Add a small delay to ensure the page loads, then apply offset
-        setTimeout(() => {
-          const element = document.getElementById(sectionId);
-          if (element) {
-            const elementPosition = element.offsetTop;
-            const isMobile = window.innerWidth < 768;
-            const offset = isMobile ? 80 : 100; // Larger offset for FAQ on mobile
-            const offsetPosition = elementPosition - offset;
-            
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth"
-            });
-          }
-        }, 100);
-      } else {
-        window.location.href = `/#${sectionId}`;
-      }
+      // On company page: redirect to home page without anchor, then scroll to section with proper offset
+      window.location.href = '/';
+      // Store the target section in sessionStorage to scroll after page load
+      sessionStorage.setItem('scrollToSection', sectionId);
     } else {
       // On home page: scroll to section
       const element = document.getElementById(sectionId);
@@ -391,6 +373,18 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
         }
         
         const offsetPosition = elementPosition - offset;
+        
+        // Add logging for FAQ section to compare with redirect behavior
+        if (sectionId === "faq") {
+          console.log('Home page mobile FAQ scroll:', {
+            section: sectionId,
+            elementPosition,
+            offset,
+            finalPosition: offsetPosition,
+            isMobile,
+            method: 'mobile scrollTo'
+          });
+        }
         
         window.scrollTo({
           top: offsetPosition,

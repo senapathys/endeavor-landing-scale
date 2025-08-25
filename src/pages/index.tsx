@@ -1,5 +1,5 @@
 // pages/index.js
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Solution from "@/components/Solution";
@@ -85,6 +85,55 @@ const logos = [
 function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const demoRef = useRef<HTMLDivElement>(null);
+
+  // Handle scroll to section after redirect from company page
+  useEffect(() => {
+    const targetSection = sessionStorage.getItem('scrollToSection');
+    if (targetSection) {
+      // Clear the stored section
+      sessionStorage.removeItem('scrollToSection');
+      
+                // Scroll to section with proper offset (no delay needed with static offset)
+          const element = document.getElementById(targetSection);
+          if (element) {
+            const elementPosition = element.offsetTop;
+            const isMobile = window.innerWidth < 768;
+            
+            // Use a more conservative offset that accounts for navbar state changes
+            let offset;
+            if (isMobile) {
+              // Mobile: use larger offset to account for navbar state changes
+              offset = 120; // Increased from 82 to 120
+            } else {
+              // Desktop: use larger offset for consistency
+              offset = 140; // Increased from 100 to 140
+            }
+            
+            // Add static offset only for sections that need it (Implementation and FAQ) and only on mobile
+            let staticOffset = 0;
+            if (isMobile && (targetSection === "implementation" || targetSection === "faq")) {
+              staticOffset = -580; // Negative to compensate for measurement difference (mobile only)
+            }
+            const totalOffset = offset + staticOffset;
+            const offsetPosition = elementPosition - totalOffset;
+            
+            console.log('Scroll debug (with static offset):', {
+              section: targetSection,
+              elementPosition,
+              baseOffset: offset,
+              staticOffset: staticOffset,
+              totalOffset: totalOffset,
+              finalPosition: offsetPosition,
+              isMobile
+            });
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+          }
+    }
+  }, []);
 
   return (
     <div className="">
