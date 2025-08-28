@@ -212,7 +212,6 @@ function Navbar({ heroRef, demoRef }: { heroRef?: React.RefObject<HTMLDivElement
       // Update scroll state
       setIsScrolled(window.scrollY > 30);
 
-      // Set state based on priority (order matters!)
       if (nearCompanyHero) {
         setNavbarState("scrolled");
       } else if (nearHero) {

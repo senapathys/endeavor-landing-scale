@@ -19,7 +19,7 @@ const testimonials = [
   },
   {
     quote:
-      "F**k that’s awesome. This makes my life so much easier and with just this one tool. I can turn around quotes in half the time as I was before.",
+      "Wow that’s awesome. This makes my life so much easier and with just this one tool. I can turn around quotes in half the time as I was before.",
     logo: "/customer_logos/viking-group-inc-logo-png-transparent.png",
     name: "Matt S.",
     role: "Customer Success Rep",
@@ -77,7 +77,7 @@ export function InfiniteSliderHoverSpeed() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl text-white px-4">
             &quot;
             <span className="hover:scale-110 transition-transform duration-200 inline-block">
-              F**k
+              Wow
             </span>
             , that&apos;s awesome.&quot;
           </h2>

@@ -34,7 +34,7 @@ const logos = [
   },
   {
     quote:
-      "F**k that’s awesome. This makes my life so much easier and with just this one tool. I can turn around quotes in half the time as I was before.",
+      "Wow that’s awesome. This makes my life so much easier and with just this one tool. I can turn around quotes in half the time as I was before.",
     logo: "../customer_logos/viking-group-inc-logo-png-transparent.png",
     name: "Matt S.",
     role: "Customer Success Rep",
@@ -66,7 +66,7 @@ const logos = [
   },
   {
     quote:
-      "F**k that’s awesome. This makes my life so much easier and with just this one tool. I can turn around quotes in half the time as I was before.",
+      "Wow that’s awesome. This makes my life so much easier and with just this one tool. I can turn around quotes in half the time as I was before.",
     logo: "../customer_logos/viking-group-inc-logo-png-transparent.png",
     name: "Matt S.",
     role: "Customer Success Rep",
