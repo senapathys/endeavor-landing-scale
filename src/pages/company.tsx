@@ -389,12 +389,12 @@ export default function Company() {
       profilePhoto: '/team/yuanbo-chen.jpg'
     },
     {
-      id: 'pov',
+      id: 'ncp',
       name: 'Jake Boggs',
       role: 'Head of AI/ML',
-      description: 'Built AI models for everything from stock trading to maritine port operations. Open source contributor.',
-      logoSrc: '/customer_logos/pov-logo.png',
-      logoAlt: 'POV',
+      description: 'Built AI models for everything from stock trading to maritime port operations. Open source contributor.',
+      logoSrc: '/customer_logos/north-carolina-ports.svg',
+      logoAlt: 'North Carolina Ports',
       profilePhoto: '/team/jake-boggs.jpg'
     },
     {
@@ -673,7 +673,7 @@ export default function Company() {
                    <Image
                      src={member.logoSrc}
                      alt={member.logoAlt}
-                     width={120}
+                     width={member.id === 'ncp' ? 150 : 120}
                      height={32}
                      className="mx-auto opacity-60"
                    />

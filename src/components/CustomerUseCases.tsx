@@ -36,7 +36,7 @@ const useCases: UseCase[] = [
     title: "Turnaround quotes in minutes, not days with AI",
     subtext: "How ClarkDietrich uses AI to win more quotes",
     description:
-      "Quoting is challening, manual, and requires expertise in long product catalogs. Endeavor helps ClarkDietrich automate quotes and product matching, turning around quotes in minutes when competitors take days.",
+      "Quoting is challenging, manual, and requires expertise in long product catalogs. Endeavor helps ClarkDietrich automate quotes and product matching, turning around quotes in minutes when competitors take days.",
     imageSrc: "/clarkdietrich-use-case.webp",
     tags: ["Manufacturing", "Inside Sales", "Quoting", "Product Mapping"],
     logoSrc: "/customer_logos/ClarkDietrich_rgb.png",
